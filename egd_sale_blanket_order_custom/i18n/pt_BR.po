@@ -1,0 +1,363 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* egd_sale_blanket_order_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
+msgid "Are you sure to remove this order plan?"
+msgstr "Você tem certeza de que deseja remover esse plano de pedido?"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,help:egd_sale_blanket_order_custom.field_sale_blanket_order__ip_order_plan
+msgid "At least one order plan line pending to create order"
+msgstr "Pelo menos uma linha de planejamento de pedido pendente para criar o pedido"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model,name:egd_sale_blanket_order_custom.model_sale_blanket_order
+msgid "Blanket Order"
+msgstr "Pedido Guarda-Chuva"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_create_order_plan
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_make_planned_order
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_make_planned_order
+msgid "Create All Remaining Orders"
+msgstr "Criar Todos os Pedidos Restantes"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_make_planned_order
+msgid "Create Next Order"
+msgstr "Criar Próximo Pedido"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.actions.act_window,name:egd_sale_blanket_order_custom.action_sale_create_order_plan
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_create_order_plan
+msgid "Create Order Plan"
+msgstr "Criar Plano de Pedidos"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
+msgid "Create Order by Plan"
+msgstr "Criar Pedido por Plano"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__create_uid
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order__create_uid
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__create_uid
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__create_date
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order__create_date
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__create_date
+msgid "Created on"
+msgstr "Criado em"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__partner_id
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_order_plan_filter
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields.selection,name:egd_sale_blanket_order_custom.selection__sale_create_order_plan__interval_type__day
+msgid "Day"
+msgstr "Dia"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__display_name
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__display_name
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order__display_name
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__display_name
+msgid "Display Name"
+msgstr "Nome de Exibição"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model,name:egd_sale_blanket_order_custom.model_sale_create_order_plan
+msgid "Fillig order planning criteria"
+msgstr "Preenchimento de critérios de planejamento de pedidos"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_order_plan_filter
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__id
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__id
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order__id
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__id
+msgid "ID"
+msgstr "ID"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,help:egd_sale_blanket_order_custom.field_sale_order_plan__ordered
+msgid "If this line already ordered"
+msgstr "Se você já tiver encomendado essa linha"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,help:egd_sale_blanket_order_custom.field_sale_order_plan__to_order
+msgid "If this line is ready to create new order"
+msgstr "Se essa linha estiver pronta para criar um novo pedido"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__installment
+#: model:ir.model.fields.selection,name:egd_sale_blanket_order_custom.selection__sale_order_plan__order_type__installment
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_order_plan_filter
+msgid "Installment"
+msgstr "Parcela"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__installment_date
+msgid "Installment Date"
+msgstr "Data da Parcela"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__interval
+msgid "Interval"
+msgstr "Intervalo"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__interval_type
+msgid "Interval Type"
+msgstr "Tipo de Intervalo"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__last
+msgid "Last Installment"
+msgstr "Última Parcela"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order____last_update
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan____last_update
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order____last_update
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan____last_update
+msgid "Last Modified on"
+msgstr "Última Modificação em"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__write_uid
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order__write_uid
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__write_uid
+msgid "Last Updated by"
+msgstr "Última Atualização por"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__write_date
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order__write_date
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__write_date
+msgid "Last Updated on"
+msgstr "Última Atualização em"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,help:egd_sale_blanket_order_custom.field_sale_order_plan__last
+msgid "Last installment will create order use remaining amount"
+msgstr "A última parcela criará um pedido de uso do valor restante"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields.selection,name:egd_sale_blanket_order_custom.selection__sale_create_order_plan__interval_type__month
+msgid "Month"
+msgstr "Mês"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__to_order
+msgid "Next Order"
+msgstr "Próximo Pedido"
+
+#. module: egd_sale_blanket_order_custom
+#: code:addons/egd_sale_blanket_order_custom/models/sale_order_plan.py:0
+#, python-format
+msgid "No matched order line for sale order"
+msgstr "Não há linha de pedido correspondente para pedido de venda"
+
+#. module: egd_sale_blanket_order_custom
+#: code:addons/egd_sale_blanket_order_custom/wizard/sale_create_order_plan.py:0
+#, python-format
+msgid "Number Installment must greater than 1"
+msgstr "Número de parcelas deve ser maior que 1"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__num_installment
+msgid "Number of Installment"
+msgstr "Número de Parcelas"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__ordered
+msgid "Order Created"
+msgstr "Pedido Criado"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__order_plan_ids
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
+msgid "Order Plan"
+msgstr "Plano de Pedido"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__ip_order_plan
+msgid "Order Plan In Process"
+msgstr "Plano de Pedidos em Andamento"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model,name:egd_sale_blanket_order_custom.model_sale_order_plan
+msgid "Order Planning Detail"
+msgstr "Detalhe do Planejamento do Pedido"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__sale_order_ids
+msgid "Orders"
+msgstr "Pedidos"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_make_planned_order
+msgid ""
+"Orders will be created in draft for this installment\n"
+"                        so that you can review them before validation."
+msgstr ""
+"Os pedidos serão criados em rascunho para essa parcela\n"
+"                        para que você possa revisá-los antes da validação."
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__percent
+msgid "Percent"
+msgstr "Porcentagem"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__plan_date
+msgid "Plan Date"
+msgstr "Data do Plano"
+
+#. module: egd_sale_blanket_order_custom
+#: code:addons/egd_sale_blanket_order_custom/models/sale_order_plan.py:0
+#, python-format
+msgid ""
+"Plan quantity: %s, exceeds orderable quantity: %s\n"
+"Product should be available before creating the order"
+msgstr ""
+"Quantidade planejada: %s, excede a quantidade solicitável: %s\n"
+"O produto deve estar disponível antes da criação do pedido"
+
+#. module: egd_sale_blanket_order_custom
+#: code:addons/egd_sale_blanket_order_custom/models/blanket_orders.py:0
+#, python-format
+msgid "Please fill percentage for all order plan lines"
+msgstr "Preencha a porcentagem para todas as linhas do plano de pedido"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_order_plan_filter
+msgid "Quotations"
+msgstr "Cotações"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_order_plan_form
+msgid "Related orders"
+msgstr "Pedidos Relacionados"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.actions.act_window,name:egd_sale_blanket_order_custom.action_view_sale_make_planned_order
+msgid "Sale Order"
+msgstr "Pedido de Venda"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__sale_id
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_make_planned_order
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_order_plan_filter
+msgid "Sales Order"
+msgstr "Pedidos de Venda"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.actions.act_window,name:egd_sale_blanket_order_custom.action_sale_order_plan
+#: model:ir.ui.menu,name:egd_sale_blanket_order_custom.menu_sale_order_plan
+msgid "Sales Order Plan"
+msgstr "Plano de Pedidos de Vendas"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_order_plan_filter
+msgid "Sales Orders"
+msgstr "Ordens de Venda"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_order_plan_filter
+msgid "Search Sales Order Plan Lines"
+msgstr "Pesquisar Linhas de Planejamento de Pedidos de Vendas"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__state
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_order_plan_filter
+msgid "Status"
+msgstr "Status"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,help:egd_sale_blanket_order_custom.field_sale_order_plan__percent
+msgid "This percent will be used to calculate new quantity"
+msgstr "Esta porcentagem será usada para calcular a nova quantidade"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.actions.act_window,help:egd_sale_blanket_order_custom.action_sale_order_plan
+msgid "This view show all available order plan line for reporting purposes"
+msgstr "Essa visualização mostra todas as linhas de plano de pedido disponíveis para fins de relatório"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_create_order_plan
+msgid "This wizard help you quickly create order plan."
+msgstr "Esse assistente ajuda você a criar rapidamente um plano de pedido."
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__order_type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__use_order_plan
+msgid "Use Order Plan"
+msgstr "Usar Plano de Pedido"
+
+#. module: egd_sale_blanket_order_custom
+#: code:addons/egd_sale_blanket_order_custom/models/blanket_orders.py:0
+#, python-format
+msgid "Use Order Plan selected, but no plan created"
+msgstr "Usar Plano de Pedido selecionado, mas nenhum plano criado"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.actions.act_window,help:egd_sale_blanket_order_custom.action_sale_order_plan
+msgid "View sales order plan lines"
+msgstr "Visualizar linhas de planejamento de pedidos de vendas"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model,name:egd_sale_blanket_order_custom.model_sale_make_planned_order
+msgid "Wizard when create order by plan"
+msgstr "Assistente ao criar pedido por plano"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields.selection,name:egd_sale_blanket_order_custom.selection__sale_create_order_plan__interval_type__year
+msgid "Year"
+msgstr "Ano"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
+msgid "⇒ Create Order Plan"
+msgstr "⇒ Criar Plano de Pedido"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
+msgid "⇒ Remove Order Plan"
+msgstr "⇒ Remover Plano de Pedido"
