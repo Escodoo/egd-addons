@@ -26,6 +26,29 @@ class SaleBlanketOrder(models.Model):
         compute="_compute_ip_order_plan",
         help="At least one order plan line pending to create order",
     )
+    egd_order_product = fields.One2many(
+        "egd.sale.blanket.order.product",
+        "blanket_order_id",
+        string="Blanket Order Products",
+    )
+
+    egd_order_service = fields.One2many(
+        "egd.sale.blanket.order.service",
+        "blanket_order_id",
+        string="Blanket Order Services",
+    )
+
+    egd_product_total = fields.Monetary(
+        "egd_order_product.amount_total", compute="_compute_egd_total_order_product"
+    )
+
+    egd_service_total = fields.Monetary(
+        "egd_order_service.amount_total", compute="_compute_egd_total_order_service"
+    )
+
+    egd_profit = fields.Monetary(
+        string="Profit", compute="_compute_egd_profit", store=True
+    )
 
     def _compute_ip_order_plan(self):
         for rec in self:
@@ -136,3 +159,32 @@ class SaleBlanketOrder(models.Model):
                 order.date_order = plan.plan_date
             plan.sale_order_ids += orders
         return orders
+
+    @api.depends("egd_order_product.amount_total", "egd_order_service.amount_total")
+    def _compute_egd_profit(self):
+        for order in self:
+            order.egd_profit = sum(
+                [line.amount_total for line in order.egd_order_product]
+            ) + sum([line.amount_total for line in order.egd_order_service])
+
+    def _compute_egd_total_order_product(self):
+        for order in self:
+            order.egd_product_total = sum(
+                [line.amount_total for line in order.egd_order_product]
+            )
+
+    def _compute_egd_total_order_service(self):
+        for order in self:
+            order.egd_service_total = sum(
+                [line.amount_total for line in order.egd_order_service]
+            )
+
+    @api.onchange("egd_order_product", "egd_order_service")
+    def _onchange_egd_order_product_service(self):
+        for order in self:
+            order.egd_service_total = sum(
+                [line.amount_total for line in order.egd_order_service]
+            )
+            order.egd_product_total = sum(
+                [line.amount_total for line in order.egd_order_product]
+            )
