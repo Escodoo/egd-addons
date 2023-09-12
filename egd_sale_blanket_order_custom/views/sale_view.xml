@@ -89,6 +89,71 @@
                         attrs="{'invisible': [('order_plan_ids', '=', [])], 'readonly': [('sale_count', '>', 0)]}"
                     />
                 </page>
+                <page string="Products" name="blanket_product">
+                    <field name="egd_order_product">
+                        <tree name="egd_order_product_tree" editable="bottom">
+                            <field
+                                name="product_id"
+                                domain="[('type', 'in', ['consu'])]"
+                            />
+                            <field name="quantity" />
+                            <field name="price_unit" />
+                            <field name="subtotal" />
+                            <field name="expected_date" />
+                        </tree>
+                    </field>
+                    <group class="oe_subtotal_footer oe_right">
+                        <div class="oe_subtotal_footer_separator oe_inline">
+                            <label for="egd_product_total" string="Total" />
+                        </div>
+                        <field
+                            name="egd_product_total"
+                            nolabel="1"
+                            class="oe_subtotal_footer_separator"
+                            widget="monetary"
+                            options="{'currency_field': 'currency_id'}"
+                        />
+                    </group>
+                </page>
+                <page string="Services" name="blanket_service">
+                    <field name="egd_order_service">
+                        <tree name="egd_order_service_tree" editable="bottom">
+                            <field
+                                name="product_id"
+                                domain="[('type', 'in', ['service'])]"
+                            />
+                            <field name="quantity" />
+                            <field name="price_unit" />
+                            <field name="subtotal" />
+                            <field name="expected_date" />
+                        </tree>
+                    </field>
+                    <group class="oe_subtotal_footer oe_right">
+                        <div class="oe_subtotal_footer_separator oe_inline">
+                            <label for="egd_service_total" string="Total" />
+                        </div>
+                        <field
+                            name="egd_service_total"
+                            nolabel="1"
+                            class="oe_subtotal_footer_separator"
+                            widget="monetary"
+                            options="{'currency_field': 'currency_id'}"
+                        />
+                    </group>
+                </page>
+            </xpath>
+
+            <xpath expr="//field[@name='amount_total']" position="after">
+                <div class="oe_subtotal_footer_separator oe_inline">
+                    <label for="egd_profit" />
+                </div>
+                <field
+                    name="egd_profit"
+                    nolabel="1"
+                    class="oe_subtotal_footer_separator"
+                    widget="monetary"
+                    options="{'currency_field': 'currency_id'}"
+                />
             </xpath>
         </field>
     </record>
@@ -168,11 +233,11 @@
         >{'search_default_draft': 1, 'search_default_sale': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-            View sales order plan lines
-          </p>
+                View sales order plan lines
+            </p>
             <p>
-            This view show all available order plan line for reporting purposes
-          </p>
+                This view show all available order plan line for reporting purposes
+            </p>
         </field>
     </record>
     <menuitem
