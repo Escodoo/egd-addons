@@ -10,10 +10,8 @@
     "author": "Escodoo",
     "website": "https://github.com/Escodoo/egd-addons",
     "depends": [
-        "stock",
         "stock_analytic",
-        "hr",
-        "product",
+        "product_expiry",
         "hr_personal_equipment_request",
     ],
     "data": [
