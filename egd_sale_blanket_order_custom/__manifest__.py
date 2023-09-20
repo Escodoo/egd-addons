@@ -11,10 +11,13 @@
     "website": "https://github.com/Escodoo/egd-addons",
     "depends": ["sale_blanket_order"],
     "data": [
+        "security/egd_sale_blanket_order_product.xml",
+        "security/egd_sale_blanket_order_service.xml",
+        "security/egd_sale_blanket_order_sale_order_plan.xml",
         "security/ir.model.access.csv",
         "wizard/sale_create_order_plan_view.xml",
         "wizard/sale_make_planned_order_view.xml",
-        "views/sale_view.xml",
+        "views/sale_blanket_order.xml",
+        "views/egd_sale_blanket_order_sale_order_plan.xml",
     ],
-    # 'demo': [],
 }
