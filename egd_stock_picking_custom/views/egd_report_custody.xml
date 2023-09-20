@@ -1,0 +1,894 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2023 - TODAY, Rodrigo Neves Trindade <rodrigo.trindade@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <template id="egd_custody_report_stock">
+
+
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t
+                    t-set="o"
+                    t-value="o.with_context(lang=o.partner_id.lang or o.env.lang)"
+                />
+                <!-- <t
+                    t-set="partner"
+                    t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"
+                /> -->
+
+                <div class="page" style="font-size: 10px">
+                    <div class="mt-4 text-right">
+                        <span>Nº Custody: <strong t-field="o.name">
+
+                            </strong>
+                        </span>
+                        <br />
+                        <span> Release: <strong t-field="o.user_id.name">
+
+                            </strong>
+                        </span>
+                        <br />
+                        <span> Date: <strong t-field="o.create_date">
+
+                            </strong>
+                        </span>
+
+                    </div>
+                    <br />
+                    <div class="mt-4 text-center">
+
+                        <strong>EXIT GUIDE</strong>
+                        <br />
+                        <strong>ASSETS AND TOOLS</strong>
+
+                    </div>
+                    <table
+                        class="table table-bordered"
+                        name="info-applicant"
+                        style="font-size: 10px; height:7px; border:1px;"
+                    >
+                        <thead />
+                        <tbody>
+
+                            <tr>
+
+                                <td
+                                    class="center-align"
+                                    width="2%"
+                                    style="padding: 3px;"
+                                >
+                                    <div class="mt-1 text-left">
+                                        <span>Customer or Applicant:</span>
+                                        <span />
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td style="padding: 3px;">
+                                    <div class="row mt-1">
+                                        <div class="col-8">
+                                            <span>Employee: <strong
+                                                    t-field="o.egd_responsible_id.name"
+                                                />
+
+                                            </span>
+                                        </div>
+                                        <div style="clear: both;" />
+                                        <div class="col-4 text-right">
+                                            <span>Cód. Employee:</span>
+                                            <span t-field="o.egd_responsible_id.id" />
+
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td style="padding: 3px;">
+                                    <div class="row mt-1">
+                                        <div class="col-8">
+                                            <span>Function/Job: <strong
+                                                    t-field="o.egd_responsible_id.department_id"
+                                                />
+                                            </span>
+                                        </div>
+                                        <div style="clear: both;" />
+                                        <div class="col-4 text-right">
+                                            <span>Departament: <strong
+                                                    t-field="o.egd_responsible_id.job_id"
+                                                /></span>
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <table
+                        class="table table-bordered"
+                        name="info-solicitante"
+                        style="font-size: 10px"
+                    >
+                        <thead />
+                        <tbody>
+                            <tr>
+                                <td class="center-align" style="padding: 3px;">
+                                    <div class="mt-1 text-left">
+                                        <span>Departure Date:</span>
+                                        <span t-field="o.scheduled_date" />
+
+                                    </div>
+                                </td>
+                                <tr>
+                                    <td class="left-align" style="padding: 3px;">
+                                        <div class="row mt-2">
+                                            <div class="col-4">
+                                                <span>Nº Contract EGD: <t
+                                                        t-foreach="o.move_ids_without_package.analytic_account_id"
+                                                        t-as="product_analytic"
+                                                    >
+
+                                                        <strong
+                                                            t-field="product_analytic.name"
+                                                        />
+                                                        <strong>, </strong>
+
+                                                    </t>
+                                                </span>
+                                            </div>
+                                            <div style="clear: both;" />
+                                            <div class="col-4 text-right">
+                                                <span>Purpose of Custody: <strong
+                                                        t-field="o.picking_type_id.name"
+                                                    />
+                                                </span>
+                                            </div>
+                                            <div style="clear: both;" />
+                                            <div class="col-4 text-right">
+                                                <span>Custody Status: <strong
+                                                        t-field="o.state"
+                                                    />
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="mt-1" style="font-size: 12px">
+
+                        <strong>Outgoing Items</strong>
+                        <br />
+
+                    </div>
+                    <table
+                        class="table "
+                        name="field"
+                        style="font-size:10px; height:12px; border:1px"
+                    >
+                        <thead>
+                            <tr class="table-active table-bordered">
+                                <td style="padding: 3px;">
+                                    <span>Code</span>
+                                </td>
+
+                                <td style="padding: 3px;">
+                                    <span>Description</span>
+                                </td>
+                                <td style="padding: 3px;">
+                                    <span>Unit</span>
+                                </td>
+                                <td style="padding: 3px;">
+                                    <span>Certification</span>
+                                </td>
+                                <td style="padding: 3px;">
+                                    <span>Exp. Calibration</span>
+                                </td>
+                                <td style="padding: 3px;">
+                                    <span>Quant.</span>
+                                </td>
+                                <td style="padding: 3px;">
+                                    <span>Price</span>
+                                </td>
+                                <td style="padding: 3px;">
+                                    <span>Total</span>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="o.move_ids_without_package" t-as="product">
+                                <tr>
+                                    <td style="padding: 3px;">
+                                        <strong>
+                                            <span t-field="product.product_id.id" />
+                                        </strong>
+                                    </td>
+                                    <td style="padding: 3px;">
+                                        <strong>
+                                            <span t-field="product.product_id.name" />
+                                        </strong>
+                                    </td>
+                                    <td style="padding: 3px;">
+                                        <strong>
+                                            <span t-field="product.product_id.uom_id" />
+                                        </strong>
+                                    </td>
+                                    <td style="padding: 3px;">
+                                        <strong>
+                                            <span
+                                                t-field="product.lot_ids.egd_certification"
+                                            />
+                                        </strong>
+                                    </td>
+
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span
+                                                t-field="product.lot_ids.expiration_date"
+                                            />
+                                            </strong>
+                                        </td>
+
+                                    <td style="padding: 3px;">
+                                        <strong>
+                                            <span t-field="product.product_uom_qty" />
+                                        </strong>
+                                    </td>
+                                    <td style="padding: 3px;">
+                                        <strong>
+                                            <span
+                                                t-field="product.product_id.lst_price"
+                                            />
+                                        </strong>
+                                    </td>
+                                    <td style="padding: 3px;">
+                                        <strong>
+                                            <span
+                                                t-esc="product.product_uom_qty * product.product_id.lst_price "
+                                            />
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </t>
+                            <t t-set="total_qty" t-value="0" />
+                            <t t-set="total_price" t-value="0" />
+                            <t t-foreach="o.move_ids_without_package" t-as="product">
+                                <t
+                                    t-set="total_qty"
+                                    t-value="total_qty + product.product_qty"
+                                />
+                                <t
+                                    t-set="total_price"
+                                    t-value="total_price + (product.product_qty * product.product_id.lst_price)"
+                                />
+                            </t>
+                            <tr class="table-active table-bordered">
+                                <td colspan="5">
+                                    <strong>Total</strong>
+                                </td>
+                                <td colspan="2">
+                                    <strong>
+                                        <span t-esc="total_qty" />
+                                    </strong>
+                                </td>
+                                <td style="padding: 3px;">
+                                    <strong>
+                                        <span t-esc="total_price" />
+                                    </strong>
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                    <div class="row mt-1" style="font-size: 10px">
+                        <div class="col-6">
+                            <span> Local: <strong
+                                    t-field="o.company_id.partner_id.city"
+                                />
+                            </span>
+                        </div>
+                        <div class="col-6 text-right">
+                            <span> Date: <strong t-field="o.create_date" />
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <p style="font-size: 10px">
+                            <span>"Responsibility Agreement</span>
+                            <br />
+                            <span
+                            >I declare for the proper purposes that I have received from EGD
+                                ENGINEERING LTD.,
+                                by way of a loan, for my exclusive and mandatory use during working
+                                hours,
+                                as determined by NR-6 Ordinance 3,214/78, the equipment specified in
+                                this responsibility agreement.
+                                I commit to keeping them in perfect condition and returning them in
+                                perfect condition when required by the company, being aware that:
+                            </span>
+                            <br />
+                            <span>
+                                1 - I have received training regarding the necessity of using the
+                                mentioned PPE,
+                                the correct way to use them, store them, and clean them,
+                                as well as my responsibility for their use as determined by NR-1 of
+                                Ordinance 3,214/78.
+                            </span>
+                            <br />
+                            <span>
+                                2 - If the equipment is damaged or rendered unusable due to improper
+                                use, misuse, negligence, or loss, the company will provide me with a
+                                replacement and charge me the cost of equipment of the same brand or
+                                equivalent to market value (Paragraph 1 of Article 462 of the Labor
+                                Code).
+                            </span>
+                            <br />
+                            <span>
+                                3 - I am prohibited from giving or lending the equipment under my
+                                responsibility unless I receive written authorization from the
+                                authorized person to do so.
+                            </span>
+                            <br />
+                            <span>
+                                4 - In case of damage, rendering unusable, or loss of the equipment,
+                                I must immediately report it to the relevant department.
+                            </span>
+                            <br />
+                            <span>
+                                5 - Upon completion of the services or in the event of termination
+                                of the employment contract, I will return the equipment complete and
+                                in perfect condition, considering the duration of its use, to the
+                                relevant department.
+                            </span>
+                            <br />
+                            <span>
+                                6 - While the equipment is in my possession, I will be subject to
+                                inspections without prior notice.
+                            </span>
+                            <br />
+                            <span>
+                                I am aware that failure to use personal protective equipment while
+                                working will subject me to appropriate disciplinary actions, ranging
+                                from simple warnings to dismissal for just cause, in accordance with
+                                Article 482 of the Labor Code, in conjunction with NR-1 and NR-6 of
+                                Ordinance 3,214/78.
+                            </span>
+                        </p>
+
+                    </div>
+                    <div style="clear: both;" />
+                    <div class="row mt-2" style="font-size: 10px">
+                        <div class="col-6 text-left" colspan="2">
+                            <span> Requester: <strong
+                                    t-field="o.user_id.partner_id.name"
+                                />
+                            </span>
+                        </div>
+                        <div class="col-6 text-right">
+                            <span>
+                                _______________________________________________________________________________
+                            </span>
+                        </div>
+
+                    </div>
+                    <div style="clear: both;" />
+                    <div class="row mt-2">
+                        <div
+                            class="col-6 text-left"
+                            colspan="2"
+                            style="font-size: 10px"
+                        >
+                            <span> Carrier: <strong
+                                    t-field="o.user_id.partner_id.name"
+                                />
+                            </span>
+                        </div>
+                        <div class="col-6 text-right">
+                            <span>
+                                _______________________________________________________________________________
+                            </span>
+                        </div>
+                    </div>
+                    <br />
+                    <table class="table table-bordered" name="observacao">
+                        <tbody>
+                            <tr>
+                                <td width="10%" height="50"> Observations<span
+                                        t-field="o.note"
+                                    />
+                                </td>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </t>
+        </t>
+
+    </template>
+
+    <template id="egd_custody_report_stock_equipament_personal">
+
+
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t
+                    t-set="o"
+                    t-value="o.with_context(lang=o.partner_id.lang or o.env.lang)"
+                />
+                <!-- <t
+                    t-set="partner"
+                    t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"
+                /> -->
+
+                <div class="page" style="font-size: 10px">
+                    <div class="mt-4 text-right">
+                        <span>Nº Custody: <strong t-field="o.name">
+
+                            </strong>
+                        </span>
+                        <br />
+                        <span> Release: <strong t-field="o.user_id.name">
+
+                            </strong>
+                        </span>
+                        <br />
+                        <span> Date: <strong
+                                t-field="o.equipment_request_id.create_date"
+                            >
+
+                            </strong>
+                        </span>
+
+                    </div>
+                    <br />
+                    <div class="mt-4 text-center">
+
+                        <strong>EXIT GUIDE</strong>
+                        <br />
+                        <strong>ASSETS AND TOOLS</strong>
+
+                    </div>
+                    <table
+                        class="table table-bordered"
+                        name="info-solicitante"
+                        style="font-size: 10px;
+                               border-spacing:0;
+                               padding:0;
+                               margin:0;"
+                    >
+                        <thead />
+                        <tbody>
+
+                            <tr>
+
+                                <td
+                                    class="center-align"
+                                    width="2%"
+                                    style="padding: 3px;"
+                                >
+                                    <div class="mt-1 text-left">
+                                        <span>Customer or Applicant:</span>
+                                        <span />
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td style="padding: 3px;">
+                                    <div class="row mt-1">
+                                        <div class="col-8">
+                                            <span>Employee: <strong
+                                                    t-field="o.equipment_request_id.employee_id.name"
+                                                />
+
+                                            </span>
+                                        </div>
+                                        <div style="clear: both;" />
+                                        <div class="col-4 text-right">
+                                            <span>Cód. Employee:</span>
+                                            <span
+                                                t-field="o.equipment_request_id.employee_id.id"
+                                            />
+
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td style="padding: 3px;">
+                                    <div class="row mt-1">
+                                        <div class="col-8">
+                                            <span>Function/Job: <strong
+                                                    t-field="o.equipment_request_id.employee_id.job_id"
+                                                />
+                                            </span>
+                                        </div>
+                                        <div style="clear: both;" />
+                                        <div class="col-4 text-right">
+                                            <span>Departament: <strong
+                                                    t-field="o.equipment_request_id.employee_id.department_id"
+                                                /></span>
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <table
+                        class="table table-bordered"
+                        name="info-solicitante"
+                        style="font-size: 10px"
+                    >
+                        <thead />
+                        <tbody>
+                            <tr>
+                                <td class="center-align" style="padding: 3px;">
+                                    <div class="mt-1 text-left">
+                                        <span>Departure Date:</span>
+                                        <span t-field="o.scheduled_date" />
+
+                                    </div>
+                                </td>
+                                <tr>
+                                    <td class="left-align" style="padding: 3px;">
+                                        <div class="row mt-2">
+                                            <div class="col-4">
+                                                <span>Nº Contract EGD: <t
+                                                        t-foreach="o.move_ids_without_package.analytic_account_id"
+                                                        t-as="product_analytic"
+                                                    >
+
+                                                        <strong
+                                                            t-field="product_analytic.name"
+                                                        />
+                                                        <strong>, </strong>
+
+                                                    </t>
+                                                </span>
+                                            </div>
+
+                                            <div style="clear: both;" />
+                                            <div class="col-4 text-right">
+                                                <span>Purpose of Custody: <strong
+                                                        t-field="o.equipment_request_id"
+                                                    />
+                                                </span>
+                                            </div>
+                                            <div style="clear: both;" />
+                                            <div class="col-4 text-right">
+                                                <span>Custody Status: <strong
+                                                        t-field="o.equipment_request_id.state"
+                                                    />
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="mt-1" style="font-size: 12px">
+
+                        <strong>Outgoing Items</strong>
+                        <br />
+
+                    </div>
+                    <table class="table " name="campo" style="font-size: 10px">
+                        <thead>
+                            <tr class="table-active table-bordered">
+                                <td style="padding: 3px;">
+                                    <span>Code</span>
+                                </td>
+
+                                <td style="padding: 3px;">
+                                    <span>Description</span>
+                                </td>
+                                <td style="padding: 3px;">
+                                    <span>Unit</span>
+                                </td>
+                                <td style="padding: 3px;">
+                                    <span>Certification</span>
+                                </td>
+                                <td style="padding: 3px;">
+                                    <span>Exp. Calibration</span>
+                                </td>
+                                <td style="padding: 3px;">
+                                    <span>Quant.</span>
+                                </td>
+                                <td style="padding: 3px;">
+                                    <span>Preci</span>
+                                </td>
+                                <td style="padding: 3px;">
+                                    <span>Total</span>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t
+                                t-foreach="o.equipment_request_id.line_ids"
+                                t-as="product"
+                            >
+
+                                <tr>
+                                    <td style="padding: 3px;">
+                                        <strong>
+                                            <span t-field="product.product_id.id" />
+                                        </strong>
+                                    </td>
+                                    <td style="padding: 3px;">
+                                        <strong>
+                                            <span t-field="product.product_id.name" />
+                                        </strong>
+                                    </td>
+                                    <td style="padding: 3px;">
+                                        <strong>
+                                            <span t-field="product.product_uom_id" />
+                                        </strong>
+                                    </td>
+                                    <t t-if="product.certification">
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span t-field="product.certification" />
+                                            </strong>
+                                        </td>
+                                    </t>
+
+                                    <t t-else="">
+                                        <t
+                                            t-foreach="o.move_ids_without_package"
+                                            t-as="egd_product_certification"
+                                        >
+                                            <t
+                                                t-if="product.product_id.id == egd_product_certification.product_id.id"
+                                            >
+
+
+                                                <td style="padding: 3px;">
+                                                    <strong>
+                                                        <span
+                                                            t-field="egd_product_certification.lot_ids.egd_certification"
+                                                        />
+                                                    </strong>
+                                                </td>
+                                            </t>
+                                        </t>
+                                    </t>
+                                    <t t-if="product.expiry_date">
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span t-field="product.expiry_date" />
+                                            </strong>
+                                        </td>
+                                    </t>
+                                    <t t-else="">
+                                        <t
+                                            t-foreach="o.move_ids_without_package"
+                                            t-as="product_venc"
+                                        >
+                                            <t
+                                                t-if="product.product_id.id == product_venc.product_id.id"
+                                            >
+
+                                                <td style="padding: 3px;">
+                                                    <strong>
+                                                        <span
+                                                            t-field="product_venc.lot_ids.expiration_date"
+                                                        />
+                                                    </strong>
+
+                                                </td>
+                                            </t>
+                                        </t>
+                                    </t>
+                                    <td style="padding: 3px;">
+                                        <strong>
+                                            <span t-field="product.quantity" />
+                                        </strong>
+                                    </td>
+                                    <td style="padding: 3px;">
+                                        <strong>
+                                            <span
+                                                t-field="product.product_id.lst_price"
+                                            />
+                                        </strong>
+                                    </td>
+                                    <td style="padding: 3px;">
+                                        <strong>
+                                            <span
+                                                t-esc="product.quantity * product.product_id.lst_price "
+                                            />
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </t>
+                            <t t-set="total_qty" t-value="0" />
+                            <t t-set="total_price" t-value="0" />
+                            <t t-set="lote" t-value="" />
+                            <t t-foreach="o.move_ids_without_package" t-as="product">
+                                <t
+                                    t-set="total_qty"
+                                    t-value="total_qty + product.product_uom_qty"
+                                />
+                                <t
+                                    t-set="total_price"
+                                    t-value="total_price + (product.product_uom_qty *product.product_id.lst_price)"
+                                />
+                                <t t-set="lote" t-value="" />
+                            </t>
+                            <tr class="table-active table-bordered">
+                                <td colspan="5">
+                                    <strong>Total</strong>
+                                </td>
+                                <td colspan="2">
+                                    <strong>
+                                        <span t-esc="total_qty" />
+                                    </strong>
+                                </td>
+                                <td style="padding: 3px;">
+                                    <strong>
+                                        <span t-esc="total_price" />
+                                    </strong>
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                    <div class="row mt-1" style="font-size: 10px">
+                        <div class="col-6">
+                            <span> Local: <strong
+                                    t-field="o.company_id.partner_id.city"
+                                />
+                            </span>
+                        </div>
+                        <div class="col-6 text-right">
+                            <span> Date: <strong t-field="o.create_date" />
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <p style="font-size: 10px">
+                            <span>Responsibility Agreement</span>
+                            <br />
+                            <span
+                            >I declare for the proper purposes that I have received from EGD
+                                ENGINEERING LTD., by way of a loan, for my exclusive and mandatory
+                                use during working hours, as determined by NR-6 Ordinance 3,214/78,
+                                the equipment specified in this responsibility agreement. I commit
+                                to keeping them in perfect condition and returning them in perfect
+                                condition when required by the company, being aware that:
+                            </span>
+                            <br />
+                            <span>
+                                1 - I have received training regarding the necessity of using the
+                                mentioned PPE, the correct way to use them, store them, and clean
+                                them, as well as my responsibility for their use as determined by
+                                NR-1 of Ordinance 3,214/78;
+                            </span>
+                            <br />
+                            <span>
+                                2 - If the equipment is damaged or rendered unusable due to improper
+                                use, misuse, negligence, or loss, the company will provide me with a
+                                replacement and charge me the cost of equipment of the same brand or
+                                equivalent to market value (Paragraph 1 of Article 462 of the Labor
+                                Code).
+                            </span>
+                            <br />
+                            <span>
+                                3 - I am prohibited from giving or lending the equipment under my
+                                responsibility unless I receive written authorization from the
+                                authorized person to do so.
+                            </span>
+                            <br />
+                            <span>
+                                4 - In case of damage, rendering unusable, or loss of the equipment,
+                                I must immediately report it to the relevant department.
+                            </span>
+                            <br />
+                            <span>
+                                5 - Upon completion of the services or in the event of termination
+                                of the employment contract, I will return the equipment complete and
+                                in perfect condition, considering the duration of its use, to the
+                                relevant department;
+                            </span>
+                            <br />
+                            <span>
+                                6 - While the equipment is in my possession, I will be subject to
+                                inspections without prior notice;
+                            </span>
+                            <br />
+                            <span>
+                                I am aware that failure to use personal protective equipment while
+                                working will subject me to appropriate disciplinary actions, ranging
+                                from simple warnings to dismissal for just cause, in accordance with
+                                Article 482 of the Labor Code, in conjunction with NR-1 and NR-6 of
+                                Ordinance 3,214/78.
+                            </span>
+                        </p>
+
+                    </div>
+                    <div style="clear: both;" />
+                    <div class="row mt-2" style="font-size: 10px">
+                        <div class="col-6 text-left" colspan="2">
+                            <span> Requester: <strong
+                                    t-field="o.equipment_request_id.employee_id.name"
+                                />
+                            </span>
+                        </div>
+                        <div class="col-6 text-right">
+                            <span>
+                                _______________________________________________________________________________
+                            </span>
+                        </div>
+
+                    </div>
+                    <div style="clear: both;" />
+                    <div class="row mt-2">
+                        <div
+                            class="col-6 text-left"
+                            colspan="2"
+                            style="font-size: 10px"
+                        >
+                            <span> Carrier: <strong
+                                    t-field="o.equipment_request_id.employee_id.name"
+                                />
+                            </span>
+                        </div>
+                        <div class="col-6 text-right">
+                            <span>
+                                _______________________________________________________________________________
+                            </span>
+                        </div>
+                    </div>
+                    <br />
+                    <table class="table table-bordered" name="observacao">
+                        <tbody>
+                            <tr>
+                                <td width="10%" height="50"> Observations <span
+                                        t-field="o.note"
+                                    />
+                                </td>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </t>
+        </t>
+
+    </template>
+    <template id="egd_custody_document_report">
+        <t t-foreach="docs" t-as="o">
+            <t t-if="o.equipment_request_id">
+                <t
+                    t-call="egd_stock_picking_custom.egd_custody_report_stock_equipament_personal"
+                    t-lang="o.partner_id.lang or o.env.lang"
+                />
+            </t>
+            <t t-else="">
+                <t
+                    t-call="egd_stock_picking_custom.egd_custody_report_stock"
+                    t-lang="o.partner_id.lang or o.env.lang"
+                />
+            </t>
+        </t>
+    </template>
+</odoo>
