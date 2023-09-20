@@ -29,6 +29,22 @@ msgid "Blanket Order"
 msgstr ""
 
 #. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__egd_order_product
+msgid "Blanket Order Products"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__blanket_order_id
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__blanket_order_id
+msgid "Blanket Order Reference"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__egd_order_service
+msgid "Blanket Order Services"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
 #: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_create_order_plan
 #: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_make_planned_order
 msgid "Cancel"
@@ -56,6 +72,8 @@ msgid "Create Order by Plan"
 msgstr ""
 
 #. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__create_uid
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__create_uid
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__create_uid
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order__create_uid
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__create_uid
@@ -63,6 +81,8 @@ msgid "Created by"
 msgstr ""
 
 #. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__create_date
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__create_date
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__create_date
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order__create_date
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__create_date
@@ -81,11 +101,29 @@ msgid "Day"
 msgstr ""
 
 #. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__display_name
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__display_name
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__display_name
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__display_name
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order__display_name
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__display_name
 msgid "Display Name"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model,name:egd_sale_blanket_order_custom.model_egd_sale_blanket_order_product
+msgid "EGD Sale Blanket Order Product"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model,name:egd_sale_blanket_order_custom.model_egd_sale_blanket_order_service
+msgid "EGD Sale Blanket Order Service"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__expected_date
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__expected_date
+msgid "Expected Date"
 msgstr ""
 
 #. module: egd_sale_blanket_order_custom
@@ -99,6 +137,8 @@ msgid "Group By"
 msgstr ""
 
 #. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__id
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__id
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__id
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__id
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order__id
@@ -144,6 +184,8 @@ msgid "Last Installment"
 msgstr ""
 
 #. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product____last_update
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service____last_update
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order____last_update
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan____last_update
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order____last_update
@@ -152,6 +194,8 @@ msgid "Last Modified on"
 msgstr ""
 
 #. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__write_uid
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__write_uid
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__write_uid
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order__write_uid
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__write_uid
@@ -159,6 +203,8 @@ msgid "Last Updated by"
 msgstr ""
 
 #. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__write_date
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__write_date
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__write_date
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order__write_date
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__write_date
@@ -255,6 +301,33 @@ msgid "Please fill percentage for all order plan lines"
 msgstr ""
 
 #. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__price_unit
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__price_unit
+msgid "Price Unit"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__product_id
+msgid "Product"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
+msgid "Products"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__egd_profit
+msgid "Profit"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__quantity
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__quantity
+msgid "Quantity"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
 #: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_order_plan_filter
 msgid "Quotations"
 msgstr ""
@@ -293,9 +366,25 @@ msgid "Search Sales Order Plan Lines"
 msgstr ""
 
 #. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__product_id
+msgid "Service"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
+msgid "Services"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_order_plan__state
 #: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_order_plan_filter
 msgid "Status"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__subtotal
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__subtotal
+msgid "Subtotal"
 msgstr ""
 
 #. module: egd_sale_blanket_order_custom
@@ -311,6 +400,13 @@ msgstr ""
 #. module: egd_sale_blanket_order_custom
 #: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_create_order_plan
 msgid "This wizard help you quickly create order plan."
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__amount_total
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__amount_total
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
+msgid "Total"
 msgstr ""
 
 #. module: egd_sale_blanket_order_custom
@@ -342,6 +438,16 @@ msgstr ""
 #. module: egd_sale_blanket_order_custom
 #: model:ir.model.fields.selection,name:egd_sale_blanket_order_custom.selection__sale_create_order_plan__interval_type__year
 msgid "Year"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__egd_product_total
+msgid "egd_order_product.amount_total"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__egd_service_total
+msgid "egd_order_service.amount_total"
 msgstr ""
 
 #. module: egd_sale_blanket_order_custom
