@@ -4,10 +4,10 @@
 from odoo import api, fields, models
 
 
-class EGDBlanketOrderService(models.Model):
+class EgdBlanketOrderService(models.Model):
 
     _name = "egd.sale.blanket.order.service"
-    _description = "EGD Sale Blanket Order Service"
+    _description = "EGD Sale Blanket Order Service Costs"
 
     blanket_order_id = fields.Many2one(
         "sale.blanket.order",
@@ -24,6 +24,7 @@ class EGDBlanketOrderService(models.Model):
     )
     quantity = fields.Float(
         string="Quantity",
+        default=1,
     )
     price_unit = fields.Float(
         string="Price Unit",

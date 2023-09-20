@@ -1,5 +1,6 @@
-# Copyright 2019 Ecosoft Co., Ltd (http://ecosoft.co.th/)
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
+# Copyright 2023 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+
 from dateutil.relativedelta import relativedelta
 
 from odoo import _, api, fields, models
@@ -10,66 +11,70 @@ from odoo.tools.float_utils import float_round
 class SaleBlanketOrder(models.Model):
     _inherit = "sale.blanket.order"
 
-    order_plan_ids = fields.One2many(
-        comodel_name="sale.order.plan",
+    egd_sale_order_plan_ids = fields.One2many(
+        comodel_name="egd.sale.blanket.order.sale.order.plan",
         inverse_name="sale_id",
-        string="Order Plan",
+        string="Sale Order Plan",
         copy=False,
     )
-    use_order_plan = fields.Boolean(
-        string="Use Order Plan",
+    egd_use_sale_order_plan = fields.Boolean(
+        string="Use Sale Order Plan",
         default=False,
         copy=False,
     )
-    ip_order_plan = fields.Boolean(
-        string="Order Plan In Process",
-        compute="_compute_ip_order_plan",
-        help="At least one order plan line pending to create order",
+    egd_ip_sale_order_plan = fields.Boolean(
+        string="Sale Order Plan In Process",
+        compute="_compute_egd_ip_sale_order_plan",
+        help="At least one order plan line pending to create sale order",
     )
-    egd_order_product = fields.One2many(
+    egd_order_product_ids = fields.One2many(
         "egd.sale.blanket.order.product",
         "blanket_order_id",
-        string="Blanket Order Products",
+        string="Blanket Order Products Costs",
     )
 
-    egd_order_service = fields.One2many(
+    egd_order_service_ids = fields.One2many(
         "egd.sale.blanket.order.service",
         "blanket_order_id",
-        string="Blanket Order Services",
+        string="Blanket Order Services Costs",
     )
 
-    egd_product_total = fields.Monetary(
-        "egd_order_product.amount_total", compute="_compute_egd_total_order_product"
+    egd_total_product_costs = fields.Monetary(
+        "Total Product Cost Target", compute="_compute_egd_total_product_costs"
     )
 
-    egd_service_total = fields.Monetary(
-        "egd_order_service.amount_total", compute="_compute_egd_total_order_service"
+    egd_total_service_costs = fields.Monetary(
+        "Total Service Cost Target", compute="_compute_egd_total_service_costs"
     )
 
-    egd_profit = fields.Monetary(
-        string="Profit", compute="_compute_egd_profit", store=True
+    egd_total_costs = fields.Monetary(
+        string="Total Cost Target (Products Costs + Services Costs)",
+        compute="_compute_egd_total_costs",
+        store=True,
     )
 
-    def _compute_ip_order_plan(self):
+    def _compute_egd_ip_sale_order_plan(self):
         for rec in self:
-            has_order_plan = rec.use_order_plan and rec.order_plan_ids
-            to_order = rec.order_plan_ids.filtered(lambda l: not l.ordered)
+            has_order_plan = rec.egd_use_sale_order_plan and rec.egd_sale_order_plan_ids
+            to_order = rec.egd_sale_order_plan_ids.filtered(lambda l: not l.ordered)
             if rec.state == "open" and has_order_plan and to_order:
-                rec.ip_order_plan = True
+                rec.egd_ip_sale_order_plan = True
                 continue
-            rec.ip_order_plan = False
+            rec.egd_ip_sale_order_plan = False
 
     @api.constrains("state")
     def _check_order_plan(self):
         for rec in self:
             if rec.state != "draft":
-                if rec.order_plan_ids.filtered(lambda l: not l.percent):
+                if rec.egd_sale_order_plan_ids.filtered(lambda l: not l.percent):
                     raise ValidationError(
                         _("Please fill percentage for all order plan lines")
                     )
 
     def action_confirm(self):
-        if self.filtered(lambda r: r.use_order_plan and not r.order_plan_ids):
+        if self.filtered(
+            lambda r: r.egd_use_sale_order_plan and not r.egd_sale_order_plan_ids
+        ):
             raise UserError(_("Use Order Plan selected, but no plan created"))
         return super().action_confirm()
 
@@ -77,7 +82,7 @@ class SaleBlanketOrder(models.Model):
         self, num_installment, installment_date, interval, interval_type
     ):
         self.ensure_one()
-        self.order_plan_ids.unlink()
+        self.egd_sale_order_plan_ids.unlink()
         order_plans = []
         Decimal = self.env["decimal.precision"]
         prec = Decimal.precision_get("Product Unit of Measure")
@@ -98,12 +103,12 @@ class SaleBlanketOrder(models.Model):
             installment_date = self._next_date(
                 installment_date, interval, interval_type
             )
-        self.write({"order_plan_ids": order_plans})
+        self.write({"egd_sale_order_plan_ids": order_plans})
         return True
 
     def remove_order_plan(self):
         self.ensure_one()
-        self.order_plan_ids.unlink()
+        self.egd_sale_order_plan_ids.unlink()
         return True
 
     @api.model
@@ -153,38 +158,32 @@ class SaleBlanketOrder(models.Model):
             self.id
         )  # Usage for compute new quantity
         if order_plan_id:
-            plan = self.env["sale.order.plan"].browse(order_plan_id)
+            plan = self.env["egd.sale.blanket.order.sale.order.plan"].browse(
+                order_plan_id
+            )
             for order in orders:
                 plan._compute_new_order_quantity(blanket_orders)
                 order.date_order = plan.plan_date
             plan.sale_order_ids += orders
         return orders
 
-    @api.depends("egd_order_product.amount_total", "egd_order_service.amount_total")
-    def _compute_egd_profit(self):
+    @api.depends("amount_total", "egd_total_service_costs", "egd_total_product_costs")
+    def _compute_egd_total_costs(self):
         for order in self:
-            order.egd_profit = sum(
-                [line.amount_total for line in order.egd_order_product]
-            ) + sum([line.amount_total for line in order.egd_order_service])
-
-    def _compute_egd_total_order_product(self):
-        for order in self:
-            order.egd_product_total = sum(
-                [line.amount_total for line in order.egd_order_product]
+            order.egd_total_costs = (
+                order.egd_total_product_costs + order.egd_total_service_costs
             )
 
-    def _compute_egd_total_order_service(self):
+    @api.depends("egd_order_product_ids.amount_total")
+    def _compute_egd_total_product_costs(self):
         for order in self:
-            order.egd_service_total = sum(
-                [line.amount_total for line in order.egd_order_service]
+            order.egd_total_product_costs = sum(
+                [line.amount_total for line in order.egd_order_product_ids]
             )
 
-    @api.onchange("egd_order_product", "egd_order_service")
-    def _onchange_egd_order_product_service(self):
+    @api.depends("egd_order_service_ids.amount_total")
+    def _compute_egd_total_service_costs(self):
         for order in self:
-            order.egd_service_total = sum(
-                [line.amount_total for line in order.egd_order_service]
-            )
-            order.egd_product_total = sum(
-                [line.amount_total for line in order.egd_order_product]
+            order.egd_total_service_costs = sum(
+                [line.amount_total for line in order.egd_order_service_ids]
             )
