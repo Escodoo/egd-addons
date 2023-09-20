@@ -1,11 +1,14 @@
+# Copyright 2023 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+
 from odoo import _, fields, models
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools.float_utils import float_compare, float_round
 
 
-class SaleOrderPlan(models.Model):
-    _name = "sale.order.plan"
-    _description = "Order Planning Detail"
+class EgdSaleBlanketOrderSaleOrderPlan(models.Model):
+    _name = "egd.sale.blanket.order.sale.order.plan"
+    _description = "Sale Order Planning Detail"
     _order = "installment"
 
     sale_id = fields.Many2one(
@@ -94,7 +97,7 @@ class SaleOrderPlan(models.Model):
 
     def _compute_last(self):
         for rec in self:
-            last = max(rec.sale_id.order_plan_ids.mapped("installment"))
+            last = max(rec.sale_id.egd_sale_order_plan_ids.mapped("installment"))
             rec.last = rec.installment == last
 
     def _compute_new_order_quantity(self, blanket_order):

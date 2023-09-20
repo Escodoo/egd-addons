@@ -1,5 +1,6 @@
 # Copyright 2023 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+
 from odoo import models
 
 
@@ -13,8 +14,8 @@ class SaleAdvancePaymentOrder(models.TransientModel):
 
         order_plans = (
             self._context.get("all_remain_orders")
-            and sale.order_plan_ids.filtered(lambda l: not l.ordered)
-            or sale.order_plan_ids.filtered("to_order")
+            and sale.egd_sale_order_plan_ids.filtered(lambda l: not l.ordered)
+            or sale.egd_sale_order_plan_ids.filtered("to_order")
         )
 
         for plan in order_plans.sorted("installment"):
