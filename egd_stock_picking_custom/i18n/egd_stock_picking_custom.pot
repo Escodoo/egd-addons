@@ -138,7 +138,7 @@ msgstr ""
 
 #. module: egd_stock_picking_custom
 #: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
-msgid "<span>Preci</span>"
+msgid "<span>Price</span>"
 msgstr ""
 
 #. module: egd_stock_picking_custom
