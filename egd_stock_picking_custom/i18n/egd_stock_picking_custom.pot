@@ -1,0 +1,369 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* egd_stock_picking_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: egd_stock_picking_custom
+#: model:ir.actions.report,print_report_name:egd_stock_picking_custom.action_egd_custody_report
+msgid ""
+"'Custody - %s - %s' % (object.partner_id.name or\n"
+"                '', object.name)"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid ""
+"<span>\n"
+"                                _______________________________________________________________________________\n"
+"                            </span>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+msgid ""
+"<span>\"Responsibility Agreement</span>\n"
+"                            <br/>\n"
+"                            <span>I declare for the proper purposes that I have received from EGD\n"
+"                                ENGINEERING LTD.,\n"
+"                                by way of a loan, for my exclusive and mandatory use during working\n"
+"                                hours,\n"
+"                                as determined by NR-6 Ordinance 3,214/78, the equipment specified in\n"
+"                                this responsibility agreement.\n"
+"                                I commit to keeping them in perfect condition and returning them in\n"
+"                                perfect condition when required by the company, being aware that:\n"
+"                            </span>\n"
+"                            <br/>\n"
+"                            <span>\n"
+"                                1 - I have received training regarding the necessity of using the\n"
+"                                mentioned PPE,\n"
+"                                the correct way to use them, store them, and clean them,\n"
+"                                as well as my responsibility for their use as determined by NR-1 of\n"
+"                                Ordinance 3,214/78.\n"
+"                            </span>\n"
+"                            <br/>\n"
+"                            <span>\n"
+"                                2 - If the equipment is damaged or rendered unusable due to improper\n"
+"                                use, misuse, negligence, or loss, the company will provide me with a\n"
+"                                replacement and charge me the cost of equipment of the same brand or\n"
+"                                equivalent to market value (Paragraph 1 of Article 462 of the Labor\n"
+"                                Code).\n"
+"                            </span>\n"
+"                            <br/>\n"
+"                            <span>\n"
+"                                3 - I am prohibited from giving or lending the equipment under my\n"
+"                                responsibility unless I receive written authorization from the\n"
+"                                authorized person to do so.\n"
+"                            </span>\n"
+"                            <br/>\n"
+"                            <span>\n"
+"                                4 - In case of damage, rendering unusable, or loss of the equipment,\n"
+"                                I must immediately report it to the relevant department.\n"
+"                            </span>\n"
+"                            <br/>\n"
+"                            <span>\n"
+"                                5 - Upon completion of the services or in the event of termination\n"
+"                                of the employment contract, I will return the equipment complete and\n"
+"                                in perfect condition, considering the duration of its use, to the\n"
+"                                relevant department.\n"
+"                            </span>\n"
+"                            <br/>\n"
+"                            <span>\n"
+"                                6 - While the equipment is in my possession, I will be subject to\n"
+"                                inspections without prior notice.\n"
+"                            </span>\n"
+"                            <br/>\n"
+"                            <span>\n"
+"                                I am aware that failure to use personal protective equipment while\n"
+"                                working will subject me to appropriate disciplinary actions, ranging\n"
+"                                from simple warnings to dismissal for just cause, in accordance with\n"
+"                                Article 482 of the Labor Code, in conjunction with NR-1 and NR-6 of\n"
+"                                Ordinance 3,214/78.\n"
+"                            </span>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "<span>Certification</span>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "<span>Code</span>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid ""
+"<span>Customer or Applicant:</span>\n"
+"                                        <span/>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "<span>Cód. Employee:</span>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "<span>Departure Date:</span>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "<span>Description</span>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "<span>Exp. Calibration</span>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "<span>Preci</span>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+msgid "<span>Price</span>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "<span>Quant.</span>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid ""
+"<span>Responsibility Agreement</span>\n"
+"                            <br/>\n"
+"                            <span>I declare for the proper purposes that I have received from EGD\n"
+"                                ENGINEERING LTD., by way of a loan, for my exclusive and mandatory\n"
+"                                use during working hours, as determined by NR-6 Ordinance 3,214/78,\n"
+"                                the equipment specified in this responsibility agreement. I commit\n"
+"                                to keeping them in perfect condition and returning them in perfect\n"
+"                                condition when required by the company, being aware that:\n"
+"                            </span>\n"
+"                            <br/>\n"
+"                            <span>\n"
+"                                1 - I have received training regarding the necessity of using the\n"
+"                                mentioned PPE, the correct way to use them, store them, and clean\n"
+"                                them, as well as my responsibility for their use as determined by\n"
+"                                NR-1 of Ordinance 3,214/78;\n"
+"                            </span>\n"
+"                            <br/>\n"
+"                            <span>\n"
+"                                2 - If the equipment is damaged or rendered unusable due to improper\n"
+"                                use, misuse, negligence, or loss, the company will provide me with a\n"
+"                                replacement and charge me the cost of equipment of the same brand or\n"
+"                                equivalent to market value (Paragraph 1 of Article 462 of the Labor\n"
+"                                Code).\n"
+"                            </span>\n"
+"                            <br/>\n"
+"                            <span>\n"
+"                                3 - I am prohibited from giving or lending the equipment under my\n"
+"                                responsibility unless I receive written authorization from the\n"
+"                                authorized person to do so.\n"
+"                            </span>\n"
+"                            <br/>\n"
+"                            <span>\n"
+"                                4 - In case of damage, rendering unusable, or loss of the equipment,\n"
+"                                I must immediately report it to the relevant department.\n"
+"                            </span>\n"
+"                            <br/>\n"
+"                            <span>\n"
+"                                5 - Upon completion of the services or in the event of termination\n"
+"                                of the employment contract, I will return the equipment complete and\n"
+"                                in perfect condition, considering the duration of its use, to the\n"
+"                                relevant department;\n"
+"                            </span>\n"
+"                            <br/>\n"
+"                            <span>\n"
+"                                6 - While the equipment is in my possession, I will be subject to\n"
+"                                inspections without prior notice;\n"
+"                            </span>\n"
+"                            <br/>\n"
+"                            <span>\n"
+"                                I am aware that failure to use personal protective equipment while\n"
+"                                working will subject me to appropriate disciplinary actions, ranging\n"
+"                                from simple warnings to dismissal for just cause, in accordance with\n"
+"                                Article 482 of the Labor Code, in conjunction with NR-1 and NR-6 of\n"
+"                                Ordinance 3,214/78.\n"
+"                            </span>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "<span>Total</span>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "<span>Unit</span>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid ""
+"<strong>EXIT GUIDE</strong>\n"
+"                        <br/>\n"
+"                        <strong>ASSETS AND TOOLS</strong>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid ""
+"<strong>Outgoing Items</strong>\n"
+"                        <br/>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "<strong>Total</strong>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "Carrier:"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model:ir.model.fields,field_description:egd_stock_picking_custom.field_stock_production_lot__egd_certification
+msgid "Certificate Number"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model:ir.actions.report,name:egd_stock_picking_custom.action_egd_custody_report
+msgid "Custody EGD"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "Custody Status:"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "Date:"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "Departament:"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model:ir.model.fields,field_description:egd_stock_picking_custom.field_stock_picking__display_name
+#: model:ir.model.fields,field_description:egd_stock_picking_custom.field_stock_production_lot__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "Employee:"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "Function/Job:"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model:ir.model.fields,field_description:egd_stock_picking_custom.field_stock_picking__id
+#: model:ir.model.fields,field_description:egd_stock_picking_custom.field_stock_production_lot__id
+msgid "ID"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model:ir.model.fields,field_description:egd_stock_picking_custom.field_stock_picking____last_update
+#: model:ir.model.fields,field_description:egd_stock_picking_custom.field_stock_production_lot____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "Local:"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model:ir.model,name:egd_stock_picking_custom.model_stock_production_lot
+msgid "Lot/Serial"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "Nº Contract EGD:"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "Nº Custody:"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "Observations"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "Purpose of Custody:"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "Release:"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "Requester:"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model:ir.model.fields,field_description:egd_stock_picking_custom.field_stock_picking__egd_responsible_id
+msgid "Responsible for Custody"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model:ir.model,name:egd_stock_picking_custom.model_stock_picking
+msgid "Transfer"
+msgstr ""
