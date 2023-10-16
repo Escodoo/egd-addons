@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="ir_attachment_form_view">
+        <field
+            name="name"
+        >ir.attachment.form (in egd_hr_employee_medical_examination_custom)</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="base.view_attachment_form" />
+        <field name="arch" type="xml">
+             <xpath expr='//field[@name="mimetype"]' position="after">
+                <field name="egd_expiration_date" />
+             </xpath>
+        </field>
+    </record>
+
+
+
+</odoo>
