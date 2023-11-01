@@ -4,7 +4,7 @@
 <odoo>
 
         <record id="action_egd_custody_report" model="ir.actions.report">
-            <field name="name">Custody EGD</field>
+            <field name="name">Caution EGD</field>
             <field name="model">stock.picking</field>
             <field name="report_type">qweb-pdf</field>
             <field
@@ -15,7 +15,7 @@
         >egd_stock_picking_custom.egd_custody_document_report</field>
             <field
             name="print_report_name"
-        >'Custody - %s - %s' % (object.partner_id.name or
+        >'Caution - %s - %s' % (object.partner_id.name or
                 '', object.name)</field>
             <field name="binding_model_id" ref="stock.model_stock_picking" />
             <field name="binding_type">report</field>
