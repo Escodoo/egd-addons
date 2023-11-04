@@ -18,7 +18,7 @@
 
                 <div class="page" style="font-size: 10px">
                     <div class="mt-4 text-right">
-                        <span>Nº Custody: <strong t-field="o.name">
+                        <span>Nº Caution: <strong t-field="o.name">
 
                             </strong>
                         </span>
@@ -39,7 +39,7 @@
 
                         <strong>EXIT GUIDE</strong>
                         <br />
-                        <strong>ASSETS AND TOOLS</strong>
+
 
                     </div>
                     <table
@@ -58,7 +58,7 @@
                                     style="padding: 3px;"
                                 >
                                     <div class="mt-1 text-left">
-                                        <span>Customer or Applicant:</span>
+                                        <span>Customer or Requester</span>
                                         <span />
 
                                     </div>
@@ -69,7 +69,7 @@
                                 <td style="padding: 3px;">
                                     <div class="row mt-1">
                                         <div class="col-8">
-                                            <span>Employee: <strong
+                                            <span>Collaborator: <strong
                                                     t-field="o.egd_responsible_id.name"
                                                 />
 
@@ -77,7 +77,7 @@
                                         </div>
                                         <div style="clear: both;" />
                                         <div class="col-4 text-right">
-                                            <span>Cód. Employee:</span>
+                                            <span>Cód. Collaborator:</span>
                                             <span t-field="o.egd_responsible_id.id" />
 
                                         </div>
@@ -89,7 +89,7 @@
                                 <td style="padding: 3px;">
                                     <div class="row mt-1">
                                         <div class="col-8">
-                                            <span>Function/Job: <strong
+                                            <span>Function / Job: <strong
                                                     t-field="o.egd_responsible_id.department_id"
                                                 />
                                             </span>
@@ -118,8 +118,8 @@
                             <tr>
                                 <td class="center-align" style="padding: 3px;">
                                     <div class="mt-1 text-left">
-                                        <span>Departure Date:</span>
-                                        <span t-field="o.scheduled_date" />
+                                        <span>Output Data:</span>
+
 
                                     </div>
                                 </td>
@@ -142,14 +142,14 @@
                                             </div>
                                             <div style="clear: both;" />
                                             <div class="col-4 text-right">
-                                                <span>Purpose of Custody: <strong
+                                                <span>Purpose of Caution: <strong
                                                         t-field="o.picking_type_id.name"
                                                     />
                                                 </span>
                                             </div>
                                             <div style="clear: both;" />
                                             <div class="col-4 text-right">
-                                                <span>Custody Status: <strong
+                                                <span>Caution Status: <strong
                                                         t-field="o.state"
                                                     />
                                                 </span>
@@ -202,6 +202,16 @@
                         </thead>
                         <tbody>
                             <t t-foreach="o.move_ids_without_package" t-as="product">
+                                <t t-foreach="product.lot_ids" t-as="lot_ids">
+                                    <t
+                                        t-set="egd_certification"
+                                        t-value="lot_ids.egd_certification"
+                                    />
+                                    <t
+                                        t-set="expiration_date"
+                                        t-value="lot_ids.expiration_date"
+                                    />
+                                </t>
                                 <tr>
                                     <td style="padding: 3px;">
                                         <strong>
@@ -220,17 +230,13 @@
                                     </td>
                                     <td style="padding: 3px;">
                                         <strong>
-                                            <span
-                                                t-field="product.lot_ids.egd_certification"
-                                            />
+                                            <span t-esc="egd_certification" />
                                         </strong>
                                     </td>
 
                                         <td style="padding: 3px;">
                                             <strong>
-                                                <span
-                                                t-field="product.lot_ids.expiration_date"
-                                            />
+                                                <span t-esc="expiration_date" />
                                             </strong>
                                         </td>
 
@@ -301,23 +307,22 @@
 
                     <div class="mt-4">
                         <p style="font-size: 10px">
-                            <span>"Responsibility Agreement</span>
+                            <span>"Disclaimer</span>
                             <br />
                             <span
                             >I declare for the proper purposes that I have received from EGD
-                                ENGINEERING LTD.,
-                                by way of a loan, for my exclusive and mandatory use during working
-                                hours,
+                                ENGINEERING LTD., on loan,
+                                for my exclusive and mandatory use during working hours,
                                 as determined by NR-6 Ordinance 3,214/78, the equipment specified in
-                                this responsibility agreement.
-                                I commit to keeping them in perfect condition and returning them in
-                                perfect condition when required by the company, being aware that:
+                                this responsibility agreement,
+                                committing to keep them in perfect condition
+                                and to return them in perfect condition when so determined by the
+                                company, being aware that:
                             </span>
-                            <br />
                             <span>
-                                1 - I have received training regarding the necessity of using the
-                                mentioned PPE,
-                                the correct way to use them, store them, and clean them,
+                                1 - I have received training on the need for using the mentioned
+                                PPE,
+                                the correct way to use, store, and clean them,
                                 as well as my responsibility for their use as determined by NR-1 of
                                 Ordinance 3,214/78.
                             </span>
@@ -354,10 +359,11 @@
                             </span>
                             <br />
                             <span>
-                                I am aware that failure to use personal protective equipment while
-                                working will subject me to appropriate disciplinary actions, ranging
-                                from simple warnings to dismissal for just cause, in accordance with
-                                Article 482 of the Labor Code, in conjunction with NR-1 and NR-6 of
+                                I am aware that by not using personal protective equipment while
+                                working,
+                                I will be subject to appropriate disciplinary sanctions ranging from
+                                simple warnings to dismissal for just cause,
+                                under Article 482 of the CLT, combined with NR-1 and NR-6 of
                                 Ordinance 3,214/78.
                             </span>
                         </p>
@@ -385,7 +391,7 @@
                             colspan="2"
                             style="font-size: 10px"
                         >
-                            <span> Carrier: <strong
+                            <span> Transporter: <strong
                                     t-field="o.user_id.partner_id.name"
                                 />
                             </span>
@@ -432,7 +438,7 @@
 
                 <div class="page" style="font-size: 10px">
                     <div class="mt-4 text-right">
-                        <span>Nº Custody: <strong t-field="o.name">
+                        <span>Nº Caution: <strong t-field="o.name">
 
                             </strong>
                         </span>
@@ -455,7 +461,7 @@
 
                         <strong>EXIT GUIDE</strong>
                         <br />
-                        <strong>ASSETS AND TOOLS</strong>
+
 
                     </div>
                     <table
@@ -477,7 +483,7 @@
                                     style="padding: 3px;"
                                 >
                                     <div class="mt-1 text-left">
-                                        <span>Customer or Applicant:</span>
+                                        <span>Customer or Requester:</span>
                                         <span />
 
                                     </div>
@@ -488,7 +494,7 @@
                                 <td style="padding: 3px;">
                                     <div class="row mt-1">
                                         <div class="col-8">
-                                            <span>Employee: <strong
+                                            <span>Collaborator: <strong
                                                     t-field="o.equipment_request_id.employee_id.name"
                                                 />
 
@@ -496,7 +502,7 @@
                                         </div>
                                         <div style="clear: both;" />
                                         <div class="col-4 text-right">
-                                            <span>Cód. Employee:</span>
+                                            <span>Cód. Collaborator:</span>
                                             <span
                                                 t-field="o.equipment_request_id.employee_id.id"
                                             />
@@ -510,7 +516,7 @@
                                 <td style="padding: 3px;">
                                     <div class="row mt-1">
                                         <div class="col-8">
-                                            <span>Function/Job: <strong
+                                            <span>Function / Job: <strong
                                                     t-field="o.equipment_request_id.employee_id.job_id"
                                                 />
                                             </span>
@@ -539,8 +545,7 @@
                             <tr>
                                 <td class="center-align" style="padding: 3px;">
                                     <div class="mt-1 text-left">
-                                        <span>Departure Date:</span>
-                                        <span t-field="o.scheduled_date" />
+                                        <span>Output Data:</span>
 
                                     </div>
                                 </td>
@@ -564,14 +569,14 @@
 
                                             <div style="clear: both;" />
                                             <div class="col-4 text-right">
-                                                <span>Purpose of Custody: <strong
+                                                <span>Purpose of Caution: <strong
                                                         t-field="o.equipment_request_id"
                                                     />
                                                 </span>
                                             </div>
                                             <div style="clear: both;" />
                                             <div class="col-4 text-right">
-                                                <span>Custody Status: <strong
+                                                <span>Caution Status: <strong
                                                         t-field="o.equipment_request_id.state"
                                                     />
                                                 </span>
@@ -764,22 +769,24 @@
 
                     <div class="mt-4">
                         <p style="font-size: 10px">
-                            <span>Responsibility Agreement</span>
+                            <span>"Disclaimer</span>
                             <br />
                             <span
                             >I declare for the proper purposes that I have received from EGD
-                                ENGINEERING LTD., by way of a loan, for my exclusive and mandatory
-                                use during working hours, as determined by NR-6 Ordinance 3,214/78,
-                                the equipment specified in this responsibility agreement. I commit
-                                to keeping them in perfect condition and returning them in perfect
-                                condition when required by the company, being aware that:
+                                ENGINEERING LTD., on loan,
+                                for my exclusive and mandatory use during working hours,
+                                as determined by NR-6 Ordinance 3,214/78, the equipment specified in
+                                this responsibility agreement,
+                                committing to keep them in perfect condition
+                                and to return them in perfect condition when so determined by the
+                                company, being aware that:
                             </span>
-                            <br />
                             <span>
-                                1 - I have received training regarding the necessity of using the
-                                mentioned PPE, the correct way to use them, store them, and clean
-                                them, as well as my responsibility for their use as determined by
-                                NR-1 of Ordinance 3,214/78;
+                                1 - I have received training on the need for using the mentioned
+                                PPE,
+                                the correct way to use, store, and clean them,
+                                as well as my responsibility for their use as determined by NR-1 of
+                                Ordinance 3,214/78.
                             </span>
                             <br />
                             <span>
@@ -805,19 +812,20 @@
                                 5 - Upon completion of the services or in the event of termination
                                 of the employment contract, I will return the equipment complete and
                                 in perfect condition, considering the duration of its use, to the
-                                relevant department;
+                                relevant department.
                             </span>
                             <br />
                             <span>
                                 6 - While the equipment is in my possession, I will be subject to
-                                inspections without prior notice;
+                                inspections without prior notice.
                             </span>
                             <br />
                             <span>
-                                I am aware that failure to use personal protective equipment while
-                                working will subject me to appropriate disciplinary actions, ranging
-                                from simple warnings to dismissal for just cause, in accordance with
-                                Article 482 of the Labor Code, in conjunction with NR-1 and NR-6 of
+                                I am aware that by not using personal protective equipment while
+                                working,
+                                I will be subject to appropriate disciplinary sanctions ranging from
+                                simple warnings to dismissal for just cause,
+                                under Article 482 of the CLT, combined with NR-1 and NR-6 of
                                 Ordinance 3,214/78.
                             </span>
                         </p>
@@ -845,7 +853,7 @@
                             colspan="2"
                             style="font-size: 10px"
                         >
-                            <span> Carrier: <strong
+                            <span> Transporter: <strong
                                     t-field="o.equipment_request_id.employee_id.name"
                                 />
                             </span>
