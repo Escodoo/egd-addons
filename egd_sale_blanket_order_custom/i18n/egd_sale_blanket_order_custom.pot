@@ -14,6 +14,11 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order_line__egd_analytic_account_id
+msgid "Analytic Account"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
 #: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
 msgid "Are you sure to remove this order plan?"
 msgstr ""
@@ -26,6 +31,11 @@ msgstr ""
 #. module: egd_sale_blanket_order_custom
 #: model:ir.model,name:egd_sale_blanket_order_custom.model_sale_blanket_order
 msgid "Blanket Order"
+msgstr ""
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model,name:egd_sale_blanket_order_custom.model_sale_blanket_order_line
+msgid "Blanket Order Line"
 msgstr ""
 
 #. module: egd_sale_blanket_order_custom
@@ -105,6 +115,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_sale_order_plan__display_name
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__display_name
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__display_name
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order_line__display_name
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__display_name
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order__display_name
 msgid "Display Name"
@@ -141,6 +152,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_sale_order_plan__id
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__id
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__id
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order_line__id
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__id
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order__id
 msgid "ID"
@@ -188,6 +200,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_sale_order_plan____last_update
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service____last_update
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order____last_update
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order_line____last_update
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan____last_update
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order____last_update
 msgid "Last Modified on"
