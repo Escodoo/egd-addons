@@ -187,3 +187,13 @@ class SaleBlanketOrder(models.Model):
             order.egd_total_service_costs = sum(
                 [line.amount_total for line in order.egd_order_service_ids]
             )
+
+
+class BlanketOrderLine(models.Model):
+    _inherit = "sale.blanket.order.line"
+
+    egd_analytic_account_id = fields.Many2one(
+        "account.analytic.account",
+        related="order_id.analytic_account_id",
+        string="Analytic Account",
+    )
