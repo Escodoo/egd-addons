@@ -2,6 +2,22 @@
 <!-- Copyright 2023 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
+    <record
+        id="view_order_form_blanket_order_analytic_account_custom"
+        model="ir.ui.view"
+    >
+        <field name="name">view.order.form.order.analytic.account.custom</field>
+        <field name="model">sale.blanket.order</field>
+        <field name="inherit_id" ref="sale_blanket_order.view_blanket_order_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//page[@name='order_lines']//field[@name='line_ids']//field[@name='analytic_tag_ids']"
+                position="after"
+            >
+                <field name="egd_analytic_account_id" optional="hide" />
+            </xpath>
+        </field>
+    </record>
     <record id="view_order_form_blanket_order_custom" model="ir.ui.view">
         <field name="name">view.order.form.order.custom</field>
         <field name="model">sale.blanket.order</field>
