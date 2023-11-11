@@ -9,8 +9,14 @@
     "license": "AGPL-3",
     "author": "Escodoo",
     "website": "https://github.com/Escodoo/egd-addons",
-    "depends": ["purchase"],
+    "depends": [
+        "purchase",
+        "egd_sale_blanket_order_custom",
+        "stock_request_analytic",
+        "stock_request_purchase_request",
+    ],
     "data": [
+        "views/purchase_order_line.xml",
         "views/purchase_order.xml",
     ],
 }
