@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 - TODAY, Marcel Savegnago <marcel.savegnago@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <!-- <record model="ir.ui.view" id="purchase_order_line_form_view">
+        <field name="name">purchase.order.line.form (in egd_purchase_custom)</field>
+        <field name="model">purchase.order.line</field>
+        <field name="inherit_id" ref="TODO othermodule.form_view"/>
+        <field name="arch" type="xml">
+
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="purchase_order_line_search_view">
+        <field name="name">purchase.order.line.search (in egd_purchase_custom)</field>
+        <field name="model">purchase.order.line</field>
+        <field name="inherit_id" ref="TODO othermodule.search_view"/>
+        <field name="arch" type="xml">
+
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="purchase_order_line_tree_view">
+        <field name="name">purchase.order.line.tree (in egd_purchase_custom)</field>
+        <field name="model">purchase.order.line</field>
+        <field name="inherit_id" ref="TODO othermodule.tree_view"/>
+        <field name="arch" type="xml">
+
+        </field>
+    </record>
+
+     -->
+</odoo>
