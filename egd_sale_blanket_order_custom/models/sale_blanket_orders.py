@@ -53,6 +53,13 @@ class SaleBlanketOrder(models.Model):
         store=True,
     )
 
+    egd_account_analytic_line_ids = fields.One2many(
+        comodel_name="account.analytic.line",
+        compute="_compute_egd_account_analytic_line_ids",
+        string="Analytic Line",
+        required=False,
+    )
+
     egd_mis_cash_flow_forecast_line_ids = fields.One2many(
         comodel_name="mis.cash_flow.forecast_line",
         compute="_compute_egd_mis_cash_flow_forecast_line_ids",
@@ -83,6 +90,16 @@ class SaleBlanketOrder(models.Model):
             rec.egd_mis_cash_flow_forecast_line_count = len(
                 rec.egd_mis_cash_flow_forecast_line_ids
             )
+
+    def _compute_egd_account_analytic_line_ids(self):
+        for rec in self:
+            account_analytic_line = self.env["account.analytic.line"]
+            account_analytic_lines = account_analytic_line.search(
+                [
+                    ("account_id", "=", rec.analytic_account_id.id),
+                ]
+            )
+            rec.egd_account_analytic_line_ids = account_analytic_lines
 
     def _compute_egd_ip_sale_order_plan(self):
         for rec in self:
