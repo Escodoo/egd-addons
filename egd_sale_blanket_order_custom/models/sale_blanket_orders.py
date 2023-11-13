@@ -60,6 +60,11 @@ class SaleBlanketOrder(models.Model):
         required=False,
     )
 
+    egd_account_analytic_line_count = fields.Integer(
+        compute="_compute_egd_account_analytic_line_ids",
+        string="Account Analytic Line Count",
+    )
+
     egd_mis_cash_flow_forecast_line_ids = fields.One2many(
         comodel_name="mis.cash_flow.forecast_line",
         compute="_compute_egd_mis_cash_flow_forecast_line_ids",
@@ -100,6 +105,7 @@ class SaleBlanketOrder(models.Model):
                 ]
             )
             rec.egd_account_analytic_line_ids = account_analytic_lines
+            rec.egd_account_analytic_line_count = len(rec.egd_account_analytic_line_ids)
 
     def _compute_egd_ip_sale_order_plan(self):
         for rec in self:
@@ -248,6 +254,22 @@ class SaleBlanketOrder(models.Model):
             "domain": [
                 ("res_model", "=", self._name),
                 ("res_id", "=", self.id),
+            ],
+            "view_mode": "pivot,tree",
+            "context": context,
+        }
+
+    def action_show_egd_account_analytic_line(self):
+        self.ensure_one()
+        context = dict(self.env.context)
+        context.pop("group_by", None)
+
+        return {
+            "type": "ir.actions.act_window",
+            "name": _("Account Analytic Line"),
+            "res_model": "account.analytic.line",
+            "domain": [
+                ("account_id", "=", self.analytic_account_id.id),
             ],
             "view_mode": "pivot,tree",
             "context": context,
