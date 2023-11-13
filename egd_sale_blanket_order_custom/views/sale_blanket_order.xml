@@ -123,6 +123,14 @@
                         />
                     </group>
                 </page>
+
+                <page
+                    string="Account Analytic Entries"
+                    name="analytic_lines"
+                    groups="analytic.group_analytic_accounting"
+                >
+                    <field name="egd_account_analytic_line_ids" />
+                </page>
                 <page
                     string="Sale Order Plan"
                     name="order_plan"
