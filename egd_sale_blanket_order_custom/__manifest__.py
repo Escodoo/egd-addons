@@ -9,7 +9,10 @@
     "license": "AGPL-3",
     "author": "Escodoo",
     "website": "https://github.com/Escodoo/egd-addons",
-    "depends": ["sale_blanket_order"],
+    "depends": [
+        "sale_blanket_order",
+        "mis_builder_cash_flow_forecast_integration",
+    ],
     "data": [
         "security/egd_sale_blanket_order_product.xml",
         "security/egd_sale_blanket_order_service.xml",
