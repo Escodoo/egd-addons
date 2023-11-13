@@ -53,6 +53,54 @@ class SaleBlanketOrder(models.Model):
         store=True,
     )
 
+    egd_account_analytic_line_ids = fields.One2many(
+        comodel_name="account.analytic.line",
+        compute="_compute_egd_account_analytic_line_ids",
+        string="Analytic Line",
+        required=False,
+    )
+
+    egd_mis_cash_flow_forecast_line_ids = fields.One2many(
+        comodel_name="mis.cash_flow.forecast_line",
+        compute="_compute_egd_mis_cash_flow_forecast_line_ids",
+        string="Forecast Line",
+        required=False,
+    )
+
+    egd_mis_cash_flow_forecast_line_count = fields.Integer(
+        compute="_compute_egd_mis_cash_flow_forecast_line_ids",
+        string="Forecast Line Count",
+    )
+
+    def _compute_egd_mis_cash_flow_forecast_line_ids(self):
+        ForecastLine = self.env["mis.cash_flow.forecast_line"]
+        forecast_lines = ForecastLine.search(
+            [
+                ("res_model", "=", self._name),
+                ("res_id", "in", self.ids),
+            ]
+        )
+
+        result = dict.fromkeys(self.ids, ForecastLine)
+        for forecast in forecast_lines:
+            result[forecast.res_id] |= forecast
+
+        for rec in self:
+            rec.egd_mis_cash_flow_forecast_line_ids = result[rec.id]
+            rec.egd_mis_cash_flow_forecast_line_count = len(
+                rec.egd_mis_cash_flow_forecast_line_ids
+            )
+
+    def _compute_egd_account_analytic_line_ids(self):
+        for rec in self:
+            account_analytic_line = self.env["account.analytic.line"]
+            account_analytic_lines = account_analytic_line.search(
+                [
+                    ("account_id", "=", rec.analytic_account_id.id),
+                ]
+            )
+            rec.egd_account_analytic_line_ids = account_analytic_lines
+
     def _compute_egd_ip_sale_order_plan(self):
         for rec in self:
             has_order_plan = rec.egd_use_sale_order_plan and rec.egd_sale_order_plan_ids
@@ -187,6 +235,23 @@ class SaleBlanketOrder(models.Model):
             order.egd_total_service_costs = sum(
                 [line.amount_total for line in order.egd_order_service_ids]
             )
+
+    def action_show_egd_mis_forecast(self):
+        self.ensure_one()
+        context = dict(self.env.context)
+        context.pop("group_by", None)
+
+        return {
+            "type": "ir.actions.act_window",
+            "name": _("Cash Flow Forecast - Sale Blanket Order"),
+            "res_model": "mis.cash_flow.forecast_line",
+            "domain": [
+                ("res_model", "=", self._name),
+                ("res_id", "=", self.id),
+            ],
+            "view_mode": "pivot,tree",
+            "context": context,
+        }
 
 
 class BlanketOrderLine(models.Model):

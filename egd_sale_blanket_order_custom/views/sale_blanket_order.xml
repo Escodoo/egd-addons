@@ -33,12 +33,32 @@
         <field name="model">sale.blanket.order</field>
         <field name="inherit_id" ref="sale_blanket_order.view_blanket_order_form" />
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="egd_mis_cash_flow_forecast_line_count" invisible="1" />
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    class="oe_stat_button"
+                    type="object"
+                    icon="fa-area-chart"
+                    name="action_show_egd_mis_forecast"
+                    help="MIS Builder Cash Flow Forecast"
+                    attrs="{'invisible': [('egd_mis_cash_flow_forecast_line_count', '=', 0)]}"
+                >
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_text">Cash Flow Forecast
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+
             <xpath expr='/form/sheet/notebook' position="before">
                 <div attrs="{'readonly': [('sale_count', '>', 0)]}">
                     <field name="egd_use_sale_order_plan" />
                     <label for="egd_use_sale_order_plan" />
                 </div>
             </xpath>
+
             <xpath expr="//button[@name='action_cancel']" position="before">
                 <field name="egd_ip_sale_order_plan" invisible="1" />
                 <button
@@ -49,6 +69,7 @@
                     attrs="{'invisible': [('egd_ip_sale_order_plan', '=', False)]}"
                 />
             </xpath>
+
             <xpath expr="/form/sheet/notebook/page" position="after">
                 <page string="Product Cost Targets" name="blanket_product">
                     <field name="egd_order_product_ids">
@@ -101,6 +122,14 @@
                             options="{'currency_field': 'currency_id'}"
                         />
                     </group>
+                </page>
+
+                <page
+                    string="Account Analytic Entries"
+                    name="analytic_lines"
+                    groups="analytic.group_analytic_accounting"
+                >
+                    <field name="egd_account_analytic_line_ids" />
                 </page>
                 <page
                     string="Sale Order Plan"
