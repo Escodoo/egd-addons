@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 - TODAY, Marcel Savegnago <marcel.savegnago@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="account_analytic_line_form_view">
+        <field name="name">account.analytic.line.form (in egd_account_custom)</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_form" />
+        <field name="arch" type="xml">
+            <field name="amount" position="before">
+                <field name="egd_target_above" invisible="1" />
+                <field
+                    name="egd_target_value"
+                    optional="show"
+                    widget="badge"
+                    decoration-success="egd_target_above == False"
+                    decoration-danger="egd_target_above == True"
+                />
+            </field>
+        </field>
+    </record>
+<!--
+    <record model="ir.ui.view" id="account_analytic_line_search_view">
+        <field name="name">account.analytic.line.search (in egd_account_custom)</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="TODO othermodule.search_view"/>
+        <field name="arch" type="xml">
+
+        </field>
+    </record>
+ -->
+    <record model="ir.ui.view" id="account_analytic_line_tree_view">
+        <field name="name">account.analytic.line.tree (in egd_account_custom)</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_tree" />
+        <field name="arch" type="xml">
+            <field name="amount" position="before">
+                <field name="egd_target_above" invisible="1" />
+                <field
+                    name="egd_target_value"
+                    optional="show"
+                    widget="badge"
+                    decoration-success="egd_target_above == False"
+                    decoration-danger="egd_target_above == True"
+                />
+                <field name="egd_target_above" optional="hide" />
+            </field>
+        </field>
+    </record>
+
+</odoo>
