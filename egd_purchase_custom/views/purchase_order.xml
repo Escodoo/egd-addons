@@ -14,6 +14,22 @@
             >
                 <attribute name="required">1</attribute>
             </xpath>
+
+            <xpath
+                expr="//page[@name='products']//field[@name='order_line']//field[@name='price_unit']"
+                position="after"
+            >
+                <field name="egd_target_above" invisible="1" />
+                <field
+                    name="egd_target_value"
+                    optional="show"
+                    widget="badge"
+                    decoration-success="egd_target_above == False"
+                    decoration-danger="egd_target_above == True"
+                />
+                <field name="egd_target_above" optional="hide" />
+            </xpath>
+
         </field>
     </record>
 
