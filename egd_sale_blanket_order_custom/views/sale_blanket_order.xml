@@ -135,7 +135,10 @@
                     name="analytic_lines"
                     groups="analytic.group_analytic_accounting"
                 >
-                    <field name="egd_account_analytic_line_ids" />
+                    <field
+                        name="egd_account_analytic_line_ids"
+                        context="{'tree_view_ref':'analytic.view_account_analytic_line_tree'}"
+                    />
                 </page>
                 <page
                     string="Sale Order Plan"

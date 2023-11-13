@@ -263,6 +263,7 @@ class SaleBlanketOrder(models.Model):
         self.ensure_one()
         context = dict(self.env.context)
         context.pop("group_by", None)
+        context.update({"tree_view_ref": "analytic.view_account_analytic_line_tree"})
 
         return {
             "type": "ir.actions.act_window",
