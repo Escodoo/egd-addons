@@ -27,7 +27,7 @@
                     decoration-success="egd_target_above == False"
                     decoration-danger="egd_target_above == True"
                 />
-                <field name="egd_target_above" optional="show" />
+                <field name="egd_target_above" optional="hide" />
             </xpath>
 
         </field>
