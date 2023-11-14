@@ -272,7 +272,7 @@ class SaleBlanketOrder(models.Model):
             "domain": [
                 ("account_id", "=", self.analytic_account_id.id),
             ],
-            "view_mode": "pivot,tree",
+            "view_mode": "tree,pivot",
             "context": context,
         }
 
