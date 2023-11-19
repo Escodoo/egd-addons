@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="l10n_br_hr_employee_form_view">
+        <field name="name">l10n_br_hr_employee (in egd_l10n_br_hr_custom)</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="l10n_br_hr.view_l10n_br_hr_employee_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='pis_pasep']" position="inside">
+                    <field name="pis_registration_date" />
+            </xpath>
+        </field>
+    </record>
+
+
+
+</odoo>
