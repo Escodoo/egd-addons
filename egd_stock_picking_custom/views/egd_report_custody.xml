@@ -248,14 +248,14 @@
                                     <td style="padding: 3px;">
                                         <strong>
                                             <span
-                                                t-field="product.product_id.lst_price"
+                                                t-field="product.product_id.standard_price"
                                             />
                                         </strong>
                                     </td>
                                     <td style="padding: 3px;">
                                         <strong>
                                             <span
-                                                t-esc="product.product_uom_qty * product.product_id.lst_price "
+                                                t-esc="product.product_uom_qty * product.product_id.standard_price "
                                             />
                                         </strong>
                                     </td>
@@ -270,7 +270,7 @@
                                 />
                                 <t
                                     t-set="total_price"
-                                    t-value="total_price + (product.product_qty * product.product_id.lst_price)"
+                                    t-value="total_price + (product.product_qty * product.product_id.standard_price)"
                                 />
                             </t>
                             <tr class="table-active table-bordered">
@@ -709,14 +709,14 @@
                                     <td style="padding: 3px;">
                                         <strong>
                                             <span
-                                                t-field="product.product_id.lst_price"
+                                                t-field="product.product_id.standard_price"
                                             />
                                         </strong>
                                     </td>
                                     <td style="padding: 3px;">
                                         <strong>
                                             <span
-                                                t-esc="product.quantity * product.product_id.lst_price "
+                                                t-esc="product.quantity * product.product_id.standard_price "
                                             />
                                         </strong>
                                     </td>
@@ -732,7 +732,7 @@
                                 />
                                 <t
                                     t-set="total_price"
-                                    t-value="total_price + (product.product_uom_qty *product.product_id.lst_price)"
+                                    t-value="total_price + (product.product_uom_qty *product.product_id.standard_price)"
                                 />
                                 <t t-set="lote" t-value="" />
                             </t>
