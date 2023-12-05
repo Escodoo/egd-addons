@@ -184,6 +184,9 @@
                                     <span>Unit</span>
                                 </td>
                                 <td style="padding: 3px;">
+                                    <span>Lot/Serial Number</span>
+                                </td>
+                                <td style="padding: 3px;">
                                     <span>Certification</span>
                                 </td>
                                 <td style="padding: 3px;">
@@ -202,16 +205,6 @@
                         </thead>
                         <tbody>
                             <t t-foreach="o.move_ids_without_package" t-as="product">
-                                <t t-foreach="product.lot_ids" t-as="lot_ids">
-                                    <t
-                                        t-set="egd_certification"
-                                        t-value="lot_ids.egd_certification"
-                                    />
-                                    <t
-                                        t-set="expiration_date"
-                                        t-value="lot_ids.expiration_date"
-                                    />
-                                </t>
                                 <tr>
                                     <td style="padding: 3px;">
                                         <strong>
@@ -228,17 +221,56 @@
                                             <span t-field="product.product_id.uom_id" />
                                         </strong>
                                     </td>
-                                    <td style="padding: 3px;">
-                                        <strong>
-                                            <span t-esc="egd_certification" />
-                                        </strong>
-                                    </td>
-
+                                    <t t-if="product.lot_ids.egd_certification">
+                                        <td>
+                                            <strong />
+                                        </td>
                                         <td style="padding: 3px;">
                                             <strong>
-                                                <span t-esc="expiration_date" />
+                                                <span
+                                                    t-esc="product.lot_ids.egd_certification"
+                                                />
                                             </strong>
                                         </td>
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span
+                                                    t-esc="product.lot_ids.expiration_date"
+                                                />
+                                            </strong>
+                                        </td>
+                                    </t>
+                                    <t
+                                        t-elif="not product.lot_ids.egd_certification and product.lot_ids.name"
+                                    >
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span t-esc="product.lot_ids.name" />
+                                            </strong>
+                                        </td>
+                                        <td>
+                                            <strong />
+                                        </td>
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span
+                                                    t-esc="product.lot_ids.expiration_date"
+                                                />
+                                            </strong>
+                                        </td>
+                                    </t>
+                                    <t t-else="">
+                                        <td style="padding: 3px;">
+                                            <strong />
+                                        </td>
+                                        <td style="padding: 3px;">
+                                            <strong />
+                                        </td>
+                                        <td style="padding: 3px;">
+                                            <strong />
+                                        </td>
+                                    </t>
+
 
                                     <td style="padding: 3px;">
                                         <strong>
@@ -274,7 +306,7 @@
                                 />
                             </t>
                             <tr class="table-active table-bordered">
-                                <td colspan="5">
+                                <td colspan="6">
                                     <strong>Total</strong>
                                 </td>
                                 <td colspan="2">
@@ -611,6 +643,9 @@
                                     <span>Certification</span>
                                 </td>
                                 <td style="padding: 3px;">
+                                    <span>Lot/Serial Number</span>
+                                </td>
+                                <td style="padding: 3px;">
                                     <span>Exp. Calibration</span>
                                 </td>
                                 <td style="padding: 3px;">
@@ -663,14 +698,42 @@
                                                 t-if="product.product_id.id == egd_product_certification.product_id.id"
                                             >
 
-
-                                                <td style="padding: 3px;">
-                                                    <strong>
-                                                        <span
-                                                            t-field="egd_product_certification.lot_ids.egd_certification"
-                                                        />
-                                                    </strong>
-                                                </td>
+                                                <t
+                                                    t-if="egd_product_certification.lot_ids.egd_certification"
+                                                >
+                                                    <td>
+                                                        <strong />
+                                                    </td>
+                                                    <td style="padding: 3px;">
+                                                        <strong>
+                                                            <span
+                                                                t-esc="egd_product_certification.lot_ids.egd_certification"
+                                                            />
+                                                        </strong>
+                                                    </td>
+                                                </t>
+                                                <t
+                                                    t-elif="not egd_product_certification.lot_ids.egd_certification and egd_product_certification.lot_ids.name"
+                                                >
+                                                    <td style="padding: 3px;">
+                                                        <strong>
+                                                            <span
+                                                                t-esc="egd_product_certification.lot_ids.name"
+                                                            />
+                                                        </strong>
+                                                    </td>
+                                                    <td>
+                                                        <strong />
+                                                    </td>
+                                                </t>
+                                                <t t-else="">
+                                                    <td style="padding: 3px;">
+                                                        <strong />
+                                                    </td>
+                                                    <td style="padding: 3px;">
+                                                        <strong />
+                                                    </td>
+                                                </t>
                                             </t>
                                         </t>
                                     </t>
