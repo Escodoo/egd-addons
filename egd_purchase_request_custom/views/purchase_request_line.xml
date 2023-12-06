@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright 2023 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record model="ir.ui.view" id="purchase_request_line_form_view">
+        <field
+            name="name"
+        >purchase.request.line.form (in egd_purchase_request_custom)</field>
+        <field name="model">purchase.request.line</field>
+        <field name="inherit_id" ref="purchase_request.purchase_request_line_form" />
+        <field name="arch" type="xml">
+            <!-- Disable editing of the 'estimated_cost' field in the 'settings' group -->
+            <xpath
+                expr="//group[@name='settings']//field[@name='estimated_cost']"
+                position="attributes"
+            >
+                <attribute name="readonly">1</attribute>
+            </xpath>
+
+            <!-- Insert 'egd_estimated_unit_cost' field before 'analytic_account_id' in the
+            'settings' group -->
+            <xpath
+                expr="//group[@name='settings']//field[@name='analytic_account_id']"
+                position="before"
+            >
+                <field name="egd_estimated_unit_cost" widget="monetary" />
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="purchase_request_line_tree_view">
+        <field
+            name="name"
+        >purchase.request.line.tree (in egd_purchase_request_custom)</field>
+        <field name="model">purchase.request.line</field>
+        <field name="inherit_id" ref="purchase_request.purchase_request_line_tree" />
+        <field name="arch" type="xml">
+            <!-- Disable editing of the 'estimated_cost' field in the tree view -->
+            <xpath expr="//tree//field[@name='estimated_cost']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+
+            <!-- Set the required for 'analytic_account_id' in tree view to 'True' -->
+            <xpath
+                expr="//tree//field[@name='analytic_account_id']"
+                position="attributes"
+            >
+                <attribute name="required">1</attribute>
+            </xpath>
+
+            <!-- Insert 'egd_estimated_unit_cost' field after 'estimated_cost' in the tree view -->
+            <xpath expr="//tree//field[@name='estimated_cost']" position="after">
+                <field name="egd_estimated_unit_cost" />
+            </xpath>
+
+            <!-- Insert 'egd_target_value and egd_target_above' field after 'estimated_cost' in
+            tree view -->
+            <xpath
+                expr="//tree//field[@name='egd_estimated_unit_cost']"
+                position="after"
+            >
+                <field name="egd_target_above" invisible="1" />
+                <field
+                    name="egd_target_value"
+                    optional="show"
+                    widget="badge"
+                    decoration-success="egd_target_above == False"
+                    decoration-danger="egd_target_above == True"
+                />
+                <field name="egd_target_above" optional="hide" />
+            </xpath>
+
+            <!-- Set the widget for 'analytic_tag_ids' in the tree view to 'many2many_tags' -->
+            <xpath expr="//tree//field[@name='analytic_tag_ids']" position="attributes">
+                <attribute name="widget">many2many_tags</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

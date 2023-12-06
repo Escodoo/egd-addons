@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright 2023 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record model="ir.ui.view" id="purchase_request_form_view">
+        <field
+            name="name"
+        >purchase.request.form (in egd_purchase_request_custom)</field>
+        <field name="model">purchase.request</field>
+        <field name="inherit_id" ref="purchase_request.view_purchase_request_form" />
+        <field name="arch" type="xml">
+            <!-- Disable editing of the 'estimated_cost' field in the 'line_ids' field -->
+            <xpath
+                expr="//field[@name='line_ids']//field[@name='estimated_cost']"
+                position="attributes"
+            >
+                <attribute name="readonly">1</attribute>
+            </xpath>
+
+            <!-- Set the widget for 'analytic_tag_ids' in 'line_ids' to 'many2many_tags' -->
+            <xpath
+                expr="//field[@name='line_ids']//field[@name='analytic_tag_ids']"
+                position="attributes"
+            >
+                <attribute name="widget">many2many_tags</attribute>
+            </xpath>
+
+            <!-- Set the required for 'analytic_account_id' in 'line_ids' to 'True' -->
+            <xpath
+                expr="//field[@name='line_ids']//field[@name='analytic_account_id']"
+                position="attributes"
+            >
+                <attribute name="required">1</attribute>
+            </xpath>
+
+            <!-- Insert 'egd_estimated_unit_cost' field after 'estimated_cost' in 'line_ids' -->
+            <xpath
+                expr="//field[@name='line_ids']//field[@name='estimated_cost']"
+                position="after"
+            >
+                <field name="egd_estimated_unit_cost" widget="monetary" />
+            </xpath>
+
+            <!-- Insert 'egd_target_value and egd_target_above' field after 'estimated_cost' in
+            'line_ids' -->
+            <xpath
+                expr="//field[@name='line_ids']//field[@name='egd_estimated_unit_cost']"
+                position="after"
+            >
+                <field name="egd_target_above" invisible="1" />
+                <field
+                    name="egd_target_value"
+                    optional="show"
+                    widget="badge"
+                    decoration-success="egd_target_above == False"
+                    decoration-danger="egd_target_above == True"
+                />
+                <field name="egd_target_above" optional="hide" />
+            </xpath>
+
+            <!-- Disable editing of the 'estimated_cost' field in the 'main' group -->
+            <xpath
+                expr="//group[@name='main']//field[@name='estimated_cost']"
+                position="attributes"
+            >
+                <attribute name="readonly">1</attribute>
+            </xpath>
+
+            <!-- Set the required for 'analytic_account_id' in the 'main' group to 'True' -->
+            <xpath
+                expr="//group[@name='main']//field[@name='analytic_account_id']"
+                position="attributes"
+            >
+                <attribute name="required">1</attribute>
+            </xpath>
+            <!-- Insert 'egd_estimated_unit_cost' field before 'analytic_account_id' in the 'main'
+            group -->
+            <xpath
+                expr="//group[@name='main']//field[@name='analytic_account_id']"
+                position="before"
+            >
+                <field name="egd_estimated_unit_cost" widget="monetary" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
