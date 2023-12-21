@@ -90,14 +90,14 @@
                                     <div class="row mt-1">
                                         <div class="col-8">
                                             <span>Function / Job: <strong
-                                                    t-field="o.egd_responsible_id.department_id"
+                                                    t-field="o.egd_responsible_id.job_id"
                                                 />
                                             </span>
                                         </div>
                                         <div style="clear: both;" />
                                         <div class="col-4 text-right">
                                             <span>Departament: <strong
-                                                    t-field="o.egd_responsible_id.job_id"
+                                                    t-field="o.egd_responsible_id.department_id"
                                                 /></span>
 
                                         </div>
