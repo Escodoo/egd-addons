@@ -66,24 +66,24 @@ class PurchaseRequestLine(models.Model):
                 if record.analytic_account_id:
                     account_analytic = record.analytic_account_id
                 if account_analytic:
-                    purchase_requests = record.env["purchase.request.line"].search(
+                    blanket_orders = record.env["sale.blanket.order"].search(
                         [("analytic_account_id", "=", account_analytic.id)]
                     )
-                    if purchase_requests:
-                        product = record.env["product.product"].search(
-                            [("id", "=", record.product_id.id)],
+                    if blanket_orders:
+                        product = blanket_orders.egd_order_product_ids.search(
+                            [("product_id", "=", record.product_id.id)],
                             limit=1,
                             order="write_date desc",
                         )
-                        service = record.env["product.product"].search(
-                            [("id", "=", record.product_id.id)],
+                        service = blanket_orders.egd_order_service_ids.search(
+                            [("product_id", "=", record.product_id.id)],
                             limit=1,
                             order="write_date desc",
                         )
                         if product:
-                            price_unit = product.standard_price
+                            price_unit = product.price_unit
                         elif service:
-                            price_unit = service.standard_price
+                            price_unit = service.price_unit
             record.egd_target_value = price_unit
 
     @api.depends(
