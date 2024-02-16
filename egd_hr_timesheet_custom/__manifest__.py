@@ -9,7 +9,7 @@
     "license": "AGPL-3",
     "author": "Escodoo",
     "website": "https://github.com/Escodoo/egd-addons",
-    "depends": ["hr", "hr_timesheet"],
-    "data": [],
+    "depends": ["hr_timesheet", "account"],
+    "data": ["views/analytic_account_line.xml"],
     "demo": [],
 }
