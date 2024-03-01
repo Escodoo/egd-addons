@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 - TODAY, Matheus Marques <matheus.marques@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="res_partner_form_view">
+        <field name="name">res.partner.form (in egd_work_evaluation_mandatory)</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sqi_value_date']" position="before">
+                <field name="is_evaluation_mandatory" />
+            </xpath>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="res_partner_tree_view">
+        <field name="name">res.partner.tree (in egd_work_evaluation_mandatory)</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="is_evaluation_mandatory" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_partner_evaluation_mandatory" model="ir.actions.act_window">
+        <field name="name">Evaluation Mandatory</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="res_partner_tree_view" />
+        <field name="domain">[('is_evaluation_mandatory', '=', True)]</field>
+    </record>
+
+</odoo>
