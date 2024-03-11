@@ -1,0 +1,13 @@
+<!-- Copyright 2024 - TODAY, Matheus Marques <matheus.marques@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <menuitem
+        id="menu_fleet_employee_expiration"
+        name="CNH Expiry"
+        parent="fleet.fleet_vehicles"
+        sequence="10"
+        action="action_employee_expiration"
+    />
+
+</odoo>
