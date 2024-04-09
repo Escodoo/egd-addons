@@ -71,18 +71,24 @@ class PurchaseRequestLine(models.Model):
                     )
                     if blanket_orders:
                         product = blanket_orders.egd_order_product_ids.search(
-                            [("product_id", "=", record.product_id.id)],
+                            [
+                                ("product_id", "=", record.product_id.id),
+                                ("blanket_order_id", "=", blanket_orders.id),
+                            ],
                             limit=1,
                             order="write_date desc",
                         )
                         service = blanket_orders.egd_order_service_ids.search(
-                            [("product_id", "=", record.product_id.id)],
+                            [
+                                ("product_id", "=", record.product_id.id),
+                                ("blanket_order_id", "=", blanket_orders.id),
+                            ],
                             limit=1,
                             order="write_date desc",
                         )
-                        if product:
+                        if product.id:
                             price_unit = product.price_unit
-                        elif service:
+                        elif service.id:
                             price_unit = service.price_unit
             record.egd_target_value = price_unit
 
