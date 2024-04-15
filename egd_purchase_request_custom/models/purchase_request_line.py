@@ -66,22 +66,24 @@ class PurchaseRequestLine(models.Model):
                 if record.analytic_account_id:
                     account_analytic = record.analytic_account_id
                 if account_analytic:
-                    blanket_orders = record.env["sale.blanket.order"].search(
-                        [("analytic_account_id", "=", account_analytic.id)]
+                    blanket_order = record.env["sale.blanket.order"].search(
+                        [("analytic_account_id", "=", account_analytic.id)],
+                        limit=1,
+                        order="create_date asc",
                     )
-                    if blanket_orders:
-                        product = blanket_orders.egd_order_product_ids.search(
+                    if blanket_order:
+                        product = blanket_order.egd_order_product_ids.search(
                             [
                                 ("product_id", "=", record.product_id.id),
-                                ("blanket_order_id", "=", blanket_orders.id),
+                                ("blanket_order_id", "=", blanket_order.id),
                             ],
                             limit=1,
                             order="write_date desc",
                         )
-                        service = blanket_orders.egd_order_service_ids.search(
+                        service = blanket_order.egd_order_service_ids.search(
                             [
                                 ("product_id", "=", record.product_id.id),
-                                ("blanket_order_id", "=", blanket_orders.id),
+                                ("blanket_order_id", "=", blanket_order.id),
                             ],
                             limit=1,
                             order="write_date desc",
