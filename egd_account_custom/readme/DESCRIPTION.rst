@@ -1,0 +1,1 @@
+This module customizes the supplier invoice dashboard by introducing a new field that displays the due date in the **full date format (dd/mm/yyyy)**. The default behavior of showing the remaining days until the due date is replaced with a static and clear date format, making it easier for users to understand and track invoice due dates.
