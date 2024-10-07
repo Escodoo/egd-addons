@@ -10,5 +10,5 @@
     "author": "Escodoo",
     "website": "https://github.com/Escodoo/egd-addons",
     "depends": ["l10n_br_hr", "fleet"],
-    "data": ["views/hr_employee.xml", "views/fleet_vehicle_menu.xml"],
+    "data": ["views/hr_employee.xml"],
 }
