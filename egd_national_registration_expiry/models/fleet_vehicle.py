@@ -1,7 +1,8 @@
 # Copyright 2024 - TODAY, Matheus Marques <matheus.marques@escodoo.com.br>
+# Copyright 2024 - TODAY, Wesley Oliveira <wesley.oliveira@escodoo.com.br>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from datetime import datetime, timedelta
+from datetime import date
 
 from odoo import api, fields, models
 
@@ -10,20 +11,46 @@ class FleetVehicle(models.Model):
 
     _inherit = "fleet.vehicle"
 
-    renavam_number = fields.Char(string="Renavam number")
-    renavam_validity = fields.Date(string="Renavam expiry")
-    renavam_near_expiry = fields.Boolean(
-        string="renavam Near Expiry", compute="_compute_renavam_near_expiry"
+    renavam_number = fields.Char(string="Renavam Number")
+    renavam_expiry_date = fields.Date(string="Renavam Expiry Date")
+    renavam_days_to_expire = fields.Integer(
+        string="Renavam Days to Expire",
+        compute="_compute_renavam_days_to_expire",
+        readonly=True,
+    )
+    renavam_expiry_state = fields.Selection(
+        selection=[
+            ("valid", "Valid"),
+            ("expiring_soon", "Expiring Soon"),
+            ("expired", "Expired"),
+            ("no_renavam", "No Renavam"),
+        ],
+        string="Renavam Expiry State",
+        compute="_compute_renavam_expiry_state",
+        store=True,
+        readonly=True,
     )
 
-    @api.depends("renavam_validity")
-    def _compute_renavam_near_expiry(self):
-        for vehicle in self:
-            if vehicle.renavam_validity:
-                expiry_date = fields.Date.from_string(vehicle.renavam_validity)
-                if expiry_date - datetime.now().date() <= timedelta(days=30):
-                    vehicle.renavam_near_expiry = True
-                else:
-                    vehicle.renavam_near_expiry = False
+    @api.depends("renavam_expiry_date")
+    def _compute_renavam_days_to_expire(self):
+        today = date.today()
+        for fleet in self:
+            if fleet.renavam_expiry_date:
+                days = (fleet.renavam_expiry_date - today).days
+                fleet.renavam_days_to_expire = days
             else:
-                vehicle.renavam_near_expiry = False
+                fleet.renavam_days_to_expire = 0
+            fleet._compute_renavam_expiry_state()
+
+    @api.depends("renavam_expiry_date", "renavam_days_to_expire")
+    def _compute_renavam_expiry_state(self):
+        for fleet in self:
+            if not fleet.renavam_expiry_date:
+                fleet.renavam_expiry_state = "no_renavam"
+            else:
+                if fleet.renavam_days_to_expire < 0:
+                    fleet.renavam_expiry_state = "expired"
+                elif fleet.renavam_days_to_expire <= 30:
+                    fleet.renavam_expiry_state = "expiring_soon"
+                else:
+                    fleet.renavam_expiry_state = "valid"
