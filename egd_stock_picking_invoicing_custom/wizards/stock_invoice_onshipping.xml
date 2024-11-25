@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="stock_invoice_onshipping_wizard_view">
+        <field
+            name="name"
+        >Stock Invoice Onshipping (in egd_stock_picking_invoicing_custom)</field>
+        <field name="model">stock.invoice.onshipping</field>
+        <field
+            name="inherit_id"
+            ref="stock_picking_invoicing.view_stock_invoice_onshipping"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_date']" position="after">
+                <field name="production_date" string="Production Date" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
