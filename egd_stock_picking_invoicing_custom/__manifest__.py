@@ -12,6 +12,7 @@
     "depends": ["stock_picking_invoicing"],
     "data": [
         "views/account_move.xml",
+        "views/sale_order.xml",
         "wizards/stock_invoice_onshipping.xml",
     ],
 }
