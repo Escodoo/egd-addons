@@ -19,12 +19,3 @@ class StockInvoiceOnshipping(models.TransientModel):
                 if picking.sale_id and picking.sale_id.production_date:
                     defaults["production_date"] = picking.sale_id.production_date
         return defaults
-
-    def _action_generate_invoices(self):
-        invoices = super()._action_generate_invoices()
-
-        for invoice in invoices:
-            if invoice.invoice_line_ids:
-                invoice.write({"production_date": self.production_date})
-
-        return invoices
