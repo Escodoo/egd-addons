@@ -21,7 +21,9 @@ class PurchaseRequestLine(models.Model):
     )
 
     egd_target_value = fields.Float(
-        string="Target Unit Price", compute="_compute_egd_target_value"
+        string="Target Unit Price",
+        compute="_compute_egd_target_value",
+        store=True,
     )
 
     egd_target_above = fields.Boolean(
@@ -102,6 +104,7 @@ class PurchaseRequestLine(models.Model):
     def _compute_egd_target_above(self):
         for record in self:
             target_above = False
+            record._compute_egd_target_value()
             if record.egd_estimated_unit_cost > record.egd_target_value:
                 target_above = True
             record.egd_target_above = target_above
