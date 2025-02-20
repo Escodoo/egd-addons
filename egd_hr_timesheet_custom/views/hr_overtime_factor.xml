@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <!-- Tree View -->
+    <record model="ir.ui.view" id="hr_overtime_factor_tree_view">
+        <field name="name">hr.overtime.factor.tree (in egd_hr_timesheet_custom)</field>
+        <field name="model">hr.overtime.factor</field>
+        <field name="arch" type="xml">
+            <tree string="Overtime Factors" editable="bottom">
+                <field name="name" />
+                <field name="rate" widget="percentage" />
+                <field name="create_date" string="Created on" />
+                <field name="write_date" string="Last Updated on" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_overtime_factor_form_view">
+        <field name="name">hr.overtime.factor.form (in egd_hr_timesheet_custom)</field>
+        <field name="model">hr.overtime.factor</field>
+        <field name="arch" type="xml">
+            <form string="Overtime Factor">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="rate" widget="percentage" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Action Window -->
+    <record model="ir.actions.act_window" id="hr_overtime_factor_act_window">
+        <field name="name">HR Overtime Factor</field>
+        <field name="res_model">hr.overtime.factor</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem
+        id="menu_timesheet_overtime_factor"
+        parent="hr_timesheet.hr_timesheet_menu_configuration"
+        action="hr_overtime_factor_act_window"
+        name="Factor Multiplication"
+    />
+
+</odoo>

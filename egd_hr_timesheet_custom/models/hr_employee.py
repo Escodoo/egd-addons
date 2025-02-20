@@ -11,3 +11,6 @@ class HrEmployee(models.Model):
     timesheet_cost = fields.Monetary(
         tracking=True,
     )
+    timesheet_cost_overtime = fields.Monetary(
+        tracking=True,
+    )
