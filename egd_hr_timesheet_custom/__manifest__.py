@@ -10,6 +10,12 @@
     "author": "Escodoo",
     "website": "https://github.com/Escodoo/egd-addons",
     "depends": ["hr_timesheet", "account"],
-    "data": ["views/analytic_account_line.xml"],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/hr_views.xml",
+        "views/hr_overtime_dsr.xml",
+        "views/hr_overtime_factor.xml",
+        "views/analytic_account_line.xml",
+    ],
     "demo": [],
 }
