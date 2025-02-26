@@ -24,8 +24,11 @@
         <field name="inherit_id" ref="analytic.view_account_analytic_line_form" />
         <field name="arch" type="xml">
             <xpath expr='//field[@name="amount"]' position="after">
-                 <field name="extra_amount" />
-                <field name="factor_multiplication" widget="percentage" />
+                <field name="extra_amount" />
+                <field name="overtime_factor_id" />
+                <field name="overtime_rate" widget="percentage" />
+                <field name="overtime_dsr_id" invisible="1" />
+                <field name="overtime_dsr_factor" />
             </xpath>
         </field>
     </record>
@@ -37,7 +40,10 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='unit_amount']" position="after">
                 <field name="extra_amount" />
-                <field name="factor_multiplication" widget="percentage" />
+                <field name="overtime_factor_id" />
+                <field name="overtime_rate" widget="percentage" />
+                <field name="overtime_dsr_id" invisible="1" />
+                <field name="overtime_dsr_factor" />
             </xpath>
         </field>
     </record>
