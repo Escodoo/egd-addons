@@ -24,6 +24,7 @@
         <field name="inherit_id" ref="analytic.view_account_analytic_line_form" />
         <field name="arch" type="xml">
             <xpath expr='//field[@name="amount"]' position="after">
+                <field name="total_extra_amount" />
                 <field name="extra_amount" />
                 <field name="overtime_factor_id" />
                 <field name="overtime_rate" widget="percentage" />

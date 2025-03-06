@@ -31,6 +31,11 @@ class AccountAnalyticLine(models.Model):
         readonly=True,
     )
 
+    total_extra_amount = fields.Monetary(
+        string="Total Extra Amount",
+        readonly=True,
+    )
+
     @api.onchange("unit_amount", "date", "overtime_factor_id")
     def _onchange_overtime_dsr(self):
         for record in self:
@@ -82,12 +87,7 @@ class AccountAnalyticLine(models.Model):
 
                 result[timesheet.id].update(
                     {
-                        "amount": timesheet.employee_id.currency_id._convert(
-                            total_amount,
-                            timesheet.account_id.currency_id or timesheet.currency_id,
-                            self.env.company,
-                            timesheet.date,
-                        ),
+                        "total_extra_amount": total_amount,
                         "extra_amount": extra_amount,
                         "overtime_dsr_factor": overtime_dsr_factor,
                     }
