@@ -31,7 +31,7 @@ class AccountAnalyticLine(models.Model):
         readonly=True,
     )
 
-    @api.onchange("date", "overtime_factor_id")
+    @api.onchange("unit_amount", "date", "overtime_factor_id")
     def _onchange_overtime_dsr(self):
         for record in self:
             if record.date and record.overtime_factor_id:
