@@ -10,11 +10,8 @@
             ref="hr_timesheet.hr_employee_view_form_inherit_timesheet"
         />
         <field name="arch" type="xml">
-            <xpath expr="//group[@name='timesheet']" position="inside">
-                <label for="timesheet_cost_overtime" />
-                <div>
-                    <field name="timesheet_cost_overtime" />
-                </div>
+            <xpath expr="//group[@name='timesheet']" position="attributes">
+                <attribute name="invisible">1</attribute>
             </xpath>
         </field>
     </record>
