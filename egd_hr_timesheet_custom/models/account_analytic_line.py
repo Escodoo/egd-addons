@@ -31,6 +31,36 @@ class AccountAnalyticLine(models.Model):
         readonly=True,
     )
 
+    total_extra_amount = fields.Monetary(
+        string="Total Extra Amount",
+        readonly=True,
+    )
+
+    timesheet_cost = fields.Monetary(
+        "Timesheet Cost",
+        currency_field="currency_id",
+        groups="hr.group_hr_user",
+        default=0.0,
+        tracking=True,
+    )
+    timesheet_cost_overtime = fields.Monetary(
+        "Timesheet Cost Overtime",
+        currency_field="currency_id",
+        groups="hr.group_hr_user",
+        default=0.0,
+        tracking=True,
+    )
+
+    @api.onchange("timesheet_cost")
+    def _onchange_timesheet_cost(self):
+        if self.timesheet_cost:
+            self.timesheet_cost_overtime = 0.0
+
+    @api.onchange("timesheet_cost_overtime")
+    def _onchange_timesheet_cost_overtime(self):
+        if self.timesheet_cost_overtime:
+            self.timesheet_cost = 0.0
+
     @api.onchange("unit_amount", "date", "overtime_factor_id")
     def _onchange_overtime_dsr(self):
         for record in self:
@@ -43,54 +73,72 @@ class AccountAnalyticLine(models.Model):
                 )
                 record.overtime_dsr_id = overtime_dsr.id if overtime_dsr else False
 
-    def _timesheet_postprocess_values(self, values):
-        result = super()._timesheet_postprocess_values(values)
+        def _timesheet_postprocess_values(self, values):
+            result = super()._timesheet_postprocess_values(values)
 
-        sudo_self = self.sudo()
-        if any(
-            field_name in values
-            for field_name in [
-                "unit_amount",
-                "employee_id",
-                "account_id",
-                "overtime_rate",
-                "overtime_dsr_id",
-            ]
-        ):
-            for timesheet in sudo_self:
-                extra_amount = 0.0
-                overtime_dsr_factor = 0.0
-                total_amount = result[timesheet.id].get("amount", 0.0)
+            sudo_self = self.sudo()
+            if any(
+                field_name in values
+                for field_name in [
+                    "unit_amount",
+                    "employee_id",
+                    "account_id",
+                    "overtime_rate",
+                    "overtime_dsr_id",
+                    "timesheet_cost",
+                    "timesheet_cost_overtime",
+                ]
+            ):
+                for timesheet in sudo_self:
+                    cost = timesheet.timesheet_cost or 0.0
+                    cost_overtime = timesheet.timesheet_cost_overtime or 0.0
 
-                if timesheet.employee_id and timesheet.overtime_factor_id:
-                    cost_overtime = timesheet.employee_id.timesheet_cost_overtime or 0.0
-                    extra_amount = (
-                        -timesheet.unit_amount * cost_overtime * timesheet.overtime_rate
-                    )
-
-                    if (
-                        timesheet.overtime_dsr_id
-                        and timesheet.overtime_dsr_id.working_days > 0
-                    ):
-                        overtime_dsr_factor = (
-                            extra_amount
-                            / timesheet.overtime_dsr_id.working_days
-                            * timesheet.overtime_dsr_id.dsr_count
+                    if cost:
+                        cost_overtime = 0.0
+                        amount = -timesheet.unit_amount * cost
+                        result[timesheet.id].update(
+                            {
+                                "amount": timesheet.employee_id.currency_id._convert(
+                                    amount,
+                                    timesheet.account_id.currency_id
+                                    or timesheet.currency_id,
+                                    self.env.company,
+                                    timesheet.date,
+                                ),
+                            }
                         )
 
-                    total_amount = extra_amount + overtime_dsr_factor
+                    elif cost_overtime:
+                        cost = 0.0
+                        extra_amount = 0.0
+                        overtime_dsr_factor = 0.0
+                        total_amount = result[timesheet.id].get("amount", 0.0)
 
-                result[timesheet.id].update(
-                    {
-                        "amount": timesheet.employee_id.currency_id._convert(
-                            total_amount,
-                            timesheet.account_id.currency_id or timesheet.currency_id,
-                            self.env.company,
-                            timesheet.date,
-                        ),
-                        "extra_amount": extra_amount,
-                        "overtime_dsr_factor": overtime_dsr_factor,
-                    }
-                )
+                        if timesheet.employee_id and timesheet.overtime_factor_id:
+                            extra_amount = (
+                                -timesheet.unit_amount
+                                * cost_overtime
+                                * timesheet.overtime_rate
+                            )
 
-        return result
+                            if (
+                                timesheet.overtime_dsr_id
+                                and timesheet.overtime_dsr_id.working_days > 0
+                            ):
+                                overtime_dsr_factor = (
+                                    extra_amount
+                                    / timesheet.overtime_dsr_id.working_days
+                                    * timesheet.overtime_dsr_id.dsr_count
+                                )
+
+                            total_amount = extra_amount + overtime_dsr_factor
+
+                        result[timesheet.id].update(
+                            {
+                                "total_extra_amount": total_amount,
+                                "extra_amount": extra_amount,
+                                "overtime_dsr_factor": overtime_dsr_factor,
+                            }
+                        )
+
+            return result
