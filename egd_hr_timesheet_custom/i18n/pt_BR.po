@@ -1,0 +1,198 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* egd_hr_timesheet_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-26 18:12+0000\n"
+"PO-Revision-Date: 2025-03-07 12:03-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. module: egd_hr_timesheet_custom
+#: code:addons/egd_hr_timesheet_custom/models/hr_overtime_dsr.py:0
+#, python-format
+msgid "A record with the same Month and Year already exists."
+msgstr "Já existe um registro com o mesmo mês e ano."
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model,name:egd_hr_timesheet_custom.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Linha Analítica"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__create_uid
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_factor__create_uid
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__create_date
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_factor__create_date
+#: model_terms:ir.ui.view,arch_db:egd_hr_timesheet_custom.hr_overtime_dsr_tree_view
+#: model_terms:ir.ui.view,arch_db:egd_hr_timesheet_custom.hr_overtime_factor_tree_view
+msgid "Created on"
+msgstr "Criado em"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.ui.menu,name:egd_hr_timesheet_custom.menu_timesheet_overtime_dsr
+#: model_terms:ir.ui.view,arch_db:egd_hr_timesheet_custom.hr_overtime_dsr_tree_view
+msgid "DSR Calculation"
+msgstr "Cálculo DSR"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model,name:egd_hr_timesheet_custom.model_hr_overtime_dsr
+msgid "DSR Calculation for Overtime"
+msgstr "Cálculo DSR para Horas Extras"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__dsr_count
+msgid "DSR Count"
+msgstr "Contagem de DSR"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line__overtime_dsr_factor
+msgid "DSR Factor"
+msgstr "Fator DSR"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line__display_name
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__display_name
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_factor__display_name
+msgid "Display Name"
+msgstr "Nome de exibição"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model,name:egd_hr_timesheet_custom.model_hr_employee
+msgid "Employee"
+msgstr "Funcionário"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line__extra_amount
+msgid "Extra Amount"
+msgstr "Valor Extra"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.ui.menu,name:egd_hr_timesheet_custom.menu_timesheet_overtime_factor
+msgid "Factor Multiplication"
+msgstr "Fator Multiplicador"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.actions.act_window,name:egd_hr_timesheet_custom.hr_overtime_dsr_act_window
+msgid "HR Overtime DSR"
+msgstr "DSR de horas extras de RH"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.actions.act_window,name:egd_hr_timesheet_custom.hr_overtime_factor_act_window
+msgid "HR Overtime Factor"
+msgstr "Fator de horas extras de RH"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line__id
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_employee__id
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__id
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_factor__id
+msgid "ID"
+msgstr "ID"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line____last_update
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_employee____last_update
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr____last_update
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_factor____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__write_uid
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_factor__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__write_date
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_factor__write_date
+#: model_terms:ir.ui.view,arch_db:egd_hr_timesheet_custom.hr_overtime_dsr_tree_view
+#: model_terms:ir.ui.view,arch_db:egd_hr_timesheet_custom.hr_overtime_factor_tree_view
+msgid "Last Updated on"
+msgstr ""
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__month
+msgid "Month"
+msgstr "Mês"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_factor__name
+msgid "Name"
+msgstr "Nome"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line__overtime_factor_id
+msgid "Overtime"
+msgstr "Tipo de Hora Extra"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line__overtime_dsr_id
+msgid "Overtime DSR"
+msgstr "DSR de Horas Extras"
+
+#. module: egd_hr_timesheet_custom
+#: model_terms:ir.ui.view,arch_db:egd_hr_timesheet_custom.hr_overtime_factor_form_view
+msgid "Overtime Factor"
+msgstr "Fator de horas extras"
+
+#. module: egd_hr_timesheet_custom
+#: model_terms:ir.ui.view,arch_db:egd_hr_timesheet_custom.hr_overtime_factor_tree_view
+msgid "Overtime Factors"
+msgstr "Fatores de horas extras"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line__overtime_rate
+msgid "Overtime Rate"
+msgstr "Taxa de horas extras"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_factor__rate
+msgid "Percentage (%)"
+msgstr "Porcentagem (%)"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_employee__timesheet_cost
+msgid "Timesheet Cost"
+msgstr "Custo da Planilha de Horas"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_employee__timesheet_cost_overtime
+msgid "Timesheet Cost Overtime"
+msgstr "Custo da Planilha de Horas Extras"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__working_days
+msgid "Working Days"
+msgstr "Dias úteis"
+
+#. module: egd_hr_timesheet_custom
+#: code:addons/egd_hr_timesheet_custom/models/hr_overtime_dsr.py:0
+#, python-format
+msgid "Working days and DSR count must be at least 1."
+msgstr "Os dias úteis e a contagem de DSR devem ser de pelo menos 1."
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__year
+msgid "Year"
+msgstr "Ano"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model,name:egd_hr_timesheet_custom.model_hr_overtime_factor
+msgid "hr.overtime.factor"
+msgstr "hr.overtime.factor"
