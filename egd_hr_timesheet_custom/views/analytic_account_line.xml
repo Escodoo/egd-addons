@@ -29,11 +29,13 @@
                     <field name="timesheet_cost_overtime" />
                 </group>
                 <group name="overtime" string="Overtime">
-                    <field name="extra_amount" />
-                    <field name="overtime_factor_id" />
-                    <field name="overtime_rate" widget="percentage" />
-                    <field name="overtime_dsr_id" invisible="1" />
-                    <field name="overtime_dsr_factor" />
+                    <field name="amount" optional="show" />
+                    <field name="total_extra_amount" optional="show" />
+                    <field name="extra_amount" optional="show" />
+                    <field name="overtime_factor_id" optional="show" />
+                    <field name="overtime_rate" widget="percentage" optional="show" />
+                    <field name="overtime_dsr_id" invisible="1"/>
+                    <field name="overtime_dsr_factor" optional="show" />
                 </group>
             </xpath>
             <xpath expr='//field[@name="amount"]' position="after">
