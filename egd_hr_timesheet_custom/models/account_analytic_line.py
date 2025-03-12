@@ -31,11 +31,6 @@ class AccountAnalyticLine(models.Model):
         readonly=True,
     )
 
-    total_extra_amount = fields.Monetary(
-        string="Total Extra Amount",
-        readonly=True,
-    )
-
     timesheet_cost = fields.Monetary(
         "Timesheet Cost",
         currency_field="currency_id",
@@ -98,14 +93,6 @@ class AccountAnalyticLine(models.Model):
                 else:
                     extra_amount = 0.0
                     overtime_dsr_factor = 0.0
-                    total_amount = result[timesheet.id].get("amount", 0.0)
-                    amount = -timesheet.unit_amount * cost
-                    amount_converted = timesheet.employee_id.currency_id._convert(
-                        amount,
-                        timesheet.account_id.currency_id or timesheet.currency_id,
-                        self.env.company,
-                        timesheet.date,
-                    )
 
                     if timesheet.employee_id and timesheet.overtime_factor_id:
                         extra_amount = (
@@ -128,8 +115,7 @@ class AccountAnalyticLine(models.Model):
 
                     result[timesheet.id].update(
                         {
-                            "total_extra_amount": total_amount,
-                            "amount": amount_converted,
+                            "amount": total_amount,
                             "extra_amount": extra_amount,
                             "overtime_dsr_factor": overtime_dsr_factor,
                         }
