@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="mis_account_analytic_line_form_view">
+        <field
+            name="name"
+        >mis.account.analytic.line.form (in egd_mis_builder_analytic_custom)</field>
+        <field name="model">mis.account.analytic.line</field>
+        <field
+            name="inherit_id"
+            ref="mis_builder_analytic.mis_account_analytic_line_view_form"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='balance']" position="after">
+                <field name="balance_extra" />
+            </xpath>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="mis_account_analytic_line_tree_view">
+        <field
+            name="name"
+        >mis.account.analytic.line.tree (in egd_mis_builder_analytic_custom)</field>
+        <field name="model">mis.account.analytic.line</field>
+        <field
+            name="inherit_id"
+            ref="mis_builder_analytic.mis_account_analytic_line_view_tree"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='balance']" position="after">
+                <field name="balance_extra" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
