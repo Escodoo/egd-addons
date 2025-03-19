@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-26 18:12+0000\n"
-"PO-Revision-Date: 2025-03-07 12:03-0300\n"
+"POT-Creation-Date: 2025-03-17 13:13+0000\n"
+"PO-Revision-Date: 2025-03-17 10:17-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -27,6 +27,11 @@ msgstr "Já existe um registro com o mesmo mês e ano."
 #: model:ir.model,name:egd_hr_timesheet_custom.model_account_analytic_line
 msgid "Analytic Line"
 msgstr "Linha Analítica"
+
+#. module: egd_hr_timesheet_custom
+#: model_terms:ir.ui.view,arch_db:egd_hr_timesheet_custom.view_account_analytic_line_form
+msgid "Cost"
+msgstr "Custo"
 
 #. module: egd_hr_timesheet_custom
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__create_uid
@@ -110,13 +115,13 @@ msgstr "ID"
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr____last_update
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_factor____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última modificação em"
 
 #. module: egd_hr_timesheet_custom
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__write_uid
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_factor__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Última atualização por"
 
 #. module: egd_hr_timesheet_custom
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__write_date
@@ -124,7 +129,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:egd_hr_timesheet_custom.hr_overtime_dsr_tree_view
 #: model_terms:ir.ui.view,arch_db:egd_hr_timesheet_custom.hr_overtime_factor_tree_view
 msgid "Last Updated on"
-msgstr ""
+msgstr "Última atualização em"
 
 #. module: egd_hr_timesheet_custom
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__month
@@ -138,6 +143,7 @@ msgstr "Nome"
 
 #. module: egd_hr_timesheet_custom
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line__overtime_factor_id
+#: model_terms:ir.ui.view,arch_db:egd_hr_timesheet_custom.view_account_analytic_line_form
 msgid "Overtime"
 msgstr "Tipo de Hora Extra"
 
@@ -167,14 +173,21 @@ msgid "Percentage (%)"
 msgstr "Porcentagem (%)"
 
 #. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line__timesheet_cost
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_employee__timesheet_cost
 msgid "Timesheet Cost"
 msgstr "Custo da Planilha de Horas"
 
 #. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line__timesheet_cost_overtime
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_employee__timesheet_cost_overtime
 msgid "Timesheet Cost Overtime"
 msgstr "Custo da Planilha de Horas Extras"
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line__total_extra_amount
+msgid "Total Extra Amount"
+msgstr "Total Valor Extra"
 
 #. module: egd_hr_timesheet_custom
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__working_days
