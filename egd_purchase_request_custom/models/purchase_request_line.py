@@ -71,8 +71,9 @@ class PurchaseRequestLine(models.Model):
                     blanket_order = record.env["sale.blanket.order"].search(
                         [("analytic_account_id", "=", account_analytic.id)],
                         limit=1,
-                        order="create_date asc",
+                        order="id desc",
                     )
+
                     if blanket_order:
                         product = blanket_order.egd_order_product_ids.search(
                             [
