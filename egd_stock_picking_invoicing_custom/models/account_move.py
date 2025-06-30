@@ -11,19 +11,22 @@ class AccountMove(models.Model):
         string="Production Date",
         readonly=True,
         compute="_compute_production_date",
-        store=True,
     )
 
     @api.depends("invoice_line_ids.sale_line_ids.order_id")
     def _compute_production_date(self):
         for move in self:
             sale_order = move.invoice_line_ids.sale_line_ids.mapped("order_id")
-            move.production_date = (
-                sale_order[0].production_date if sale_order else False
-            )
+            stock_picking = move.stock_move_id.picking_id
+            production_date = False
+            if sale_order:
+                move.production_date = sale_order[0].production_date
+            elif stock_picking:
+                move.production_date = stock_picking.production_date
+            move.production_date = production_date
 
-    def action_post(self):
-        res = super().action_post()
+    def _post(self, soft=True):
+        res = super()._post(soft=soft)
         for move in self:
             if move.production_date:
                 move.line_ids.analytic_line_ids.write({"date": move.production_date})
