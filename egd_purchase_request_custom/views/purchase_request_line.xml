@@ -50,6 +50,17 @@
                 <attribute name="required">1</attribute>
             </xpath>
 
+            <!-- Insert 'egd_target_quantity' field after 'product_qty' in the tree view -->
+            <xpath expr="//tree//field[@name='product_qty']" position="after">
+                <field
+                    name="egd_target_quantity"
+                    optional="show"
+                    widget="badge"
+                    decoration-success="egd_target_quantity &gt;= product_qty"
+                    decoration-danger="egd_target_quantity &lt; product_qty"
+                />
+            </xpath>
+
             <!-- Insert 'egd_estimated_unit_cost' field after 'estimated_cost' in the tree view -->
             <xpath expr="//tree//field[@name='estimated_cost']" position="after">
                 <field name="egd_estimated_unit_cost" />
