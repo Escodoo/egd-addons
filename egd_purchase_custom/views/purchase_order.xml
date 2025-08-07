@@ -25,6 +25,18 @@
             </xpath>
             <xpath
                 expr="//page[@name='products']//field[@name='order_line']//field[@name='price_unit']"
+                position="before"
+            >
+                <field
+                    name="egd_target_quantity"
+                    optional="show"
+                    widget="badge"
+                    decoration-success="egd_target_quantity &gt;= product_qty"
+                    decoration-danger="egd_target_quantity &lt; product_qty"
+                />
+            </xpath>
+            <xpath
+                expr="//page[@name='products']//field[@name='order_line']//field[@name='price_unit']"
                 position="after"
             >
                 <field name="egd_target_above" invisible="1" />
