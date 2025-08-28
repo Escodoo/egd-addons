@@ -13,6 +13,7 @@
     "data": [
         "views/account_move.xml",
         "views/sale_order.xml",
+        "views/stock_picking.xml",
         "wizards/stock_invoice_onshipping.xml",
     ],
 }
