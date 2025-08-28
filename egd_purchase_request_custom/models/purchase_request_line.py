@@ -22,13 +22,19 @@ class PurchaseRequestLine(models.Model):
 
     egd_target_value = fields.Float(
         string="Target Unit Price",
-        compute="_compute_egd_target_value",
+        compute="_compute_egd_target",
+        store=True,
+    )
+
+    egd_target_quantity = fields.Float(
+        string="Target Quantity",
+        compute="_compute_egd_target",
         store=True,
     )
 
     egd_target_above = fields.Boolean(
         string="Target Above",
-        compute="_compute_egd_target_above",
+        compute="_compute_egd_target",
     )
 
     @api.depends(
@@ -58,12 +64,14 @@ class PurchaseRequestLine(models.Model):
         "analytic_account_id",
         "egd_estimated_unit_cost",
     )
-    def _compute_egd_target_value(self):
+    def _compute_egd_target(self):
         for record in self:
             product = False
             service = False
             price_unit = 0
             account_analytic = False
+            target_above = False
+            target_quantity = 0
             if record.product_id:
                 if record.analytic_account_id:
                     account_analytic = record.analytic_account_id
@@ -93,19 +101,13 @@ class PurchaseRequestLine(models.Model):
                         )
                         if product.id:
                             price_unit = product.price_unit
+                            target_quantity = product.quantity
                         elif service.id:
                             price_unit = service.price_unit
-            record.egd_target_value = price_unit
+                            target_quantity = service.quantity
 
-    @api.depends(
-        "analytic_account_id",
-        "egd_target_value",
-        "egd_estimated_unit_cost",
-    )
-    def _compute_egd_target_above(self):
-        for record in self:
-            target_above = False
-            record._compute_egd_target_value()
-            if record.egd_estimated_unit_cost > record.egd_target_value:
+            record.egd_target_value = price_unit
+            record.egd_target_quantity = target_quantity
+            if record.egd_estimated_unit_cost > price_unit:
                 target_above = True
             record.egd_target_above = target_above
