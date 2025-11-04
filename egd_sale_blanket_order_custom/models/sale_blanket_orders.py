@@ -179,23 +179,46 @@ class SaleBlanketOrder(models.Model):
 
     def _create_sale_order(self):
         order_plan_id = self._context.get("order_plan_id")
-        lines = [
-            (
-                0,
-                0,
-                {
-                    "blanket_line_id": line.id,
-                    "product_id": line.product_id.id,
-                    "date_schedule": line.date_schedule,
-                    "remaining_uom_qty": line.remaining_uom_qty,
-                    "price_unit": line.price_unit,
-                    "product_uom": line.product_uom,
-                    "qty": line.remaining_uom_qty,
-                    "partner_id": line.partner_id,
-                },
+        available_lines = self.line_ids.filtered(lambda l: l.remaining_uom_qty > 0)
+        if not available_lines:
+            return self.env["sale.order"]
+        plan = None
+        if order_plan_id:
+            plan = self.env["egd.sale.blanket.order.sale.order.plan"].browse(
+                order_plan_id
             )
-            for line in self.line_ids
-        ]
+            plan._compute_last()
+        calculated_before = False
+        lines = []
+        for line in available_lines:
+            if plan and not plan.last:
+                plan_qty = line.original_uom_qty * (plan.percent / 100)
+                prec = line.product_uom.rounding
+                plan_qty = float_round(plan_qty, precision_rounding=prec)
+                qty = min(plan_qty, line.remaining_uom_qty)
+                calculated_before = True
+            else:
+                qty = line.remaining_uom_qty
+            if qty <= 0:
+                continue
+            lines.append(
+                (
+                    0,
+                    0,
+                    {
+                        "blanket_line_id": line.id,
+                        "product_id": line.product_id.id,
+                        "date_schedule": line.date_schedule,
+                        "remaining_uom_qty": line.remaining_uom_qty,
+                        "price_unit": line.price_unit,
+                        "product_uom": line.product_uom,
+                        "qty": qty,
+                        "partner_id": line.partner_id,
+                    },
+                )
+            )
+        if not lines:
+            return self.env["sale.order"]
 
         wizard = (
             self.env["sale.blanket.order.wizard"]
@@ -203,20 +226,19 @@ class SaleBlanketOrder(models.Model):
             .create({"blanket_order_id": self.id, "line_ids": lines})
         )
 
-        result = wizard.create_sale_order()  # Create Sale Order using Wizard
-        sale_order_id = result.get("domain", [])[0][2][0]  # Get ID in domain
-        orders = self.env["sale.order"].search(
-            [("id", "=", sale_order_id)]
-        )  # Easy locate for sale.order
-        blanket_orders = self.env["sale.blanket.order"].browse(
-            self.id
-        )  # Usage for compute new quantity
-        if order_plan_id:
-            plan = self.env["egd.sale.blanket.order.sale.order.plan"].browse(
-                order_plan_id
-            )
+        result = wizard.create_sale_order()
+        domain = result.get("domain", [])
+        if not domain or not domain[0]:
+            return self.env["sale.order"]
+        sale_order_id = domain[0][2][0]
+        orders = self.env["sale.order"].search([("id", "=", sale_order_id)])
+        if not orders:
+            return self.env["sale.order"]
+        blanket_orders = self.env["sale.blanket.order"].browse(self.id)
+        if plan:
             for order in orders:
-                plan._compute_new_order_quantity(blanket_orders)
+                if not calculated_before:
+                    plan._compute_new_order_quantity(blanket_orders)
                 order.date_order = plan.plan_date
             plan.sale_order_ids += orders
         return orders

@@ -23,21 +23,14 @@ class EgdBlanketOrderService(models.Model):
         string="Service",
     )
     quantity = fields.Float(
-        string="Quantity",
         default=1,
     )
-    price_unit = fields.Float(
-        string="Price Unit",
-    )
-    subtotal = fields.Float(
-        string="Subtotal", store=True, readonly=True, compute="_compute_subtotal"
-    )
+    price_unit = fields.Float()
+    subtotal = fields.Float(store=True, readonly=True, compute="_compute_subtotal")
     amount_total = fields.Float(
-        string="Total", store=True, readonly=True, compute="_compute_amount_total"
+        store=True, readonly=True, compute="_compute_amount_total"
     )
-    expected_date = fields.Datetime(
-        "Expected Date",
-    )
+    expected_date = fields.Datetime()
 
     @api.onchange("product_id", "quantity")
     def _onchange_product_id(self):

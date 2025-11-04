@@ -31,8 +31,8 @@ class EgdSaleBlanketOrderSaleOrderPlan(models.Model):
         store=True,
         index=True,
     )
-    installment = fields.Integer(string="Installment")
-    plan_date = fields.Date(string="Plan Date", required=True)
+    installment = fields.Integer()
+    plan_date = fields.Date(required=True)
     order_type = fields.Selection(
         [("installment", "Installment")],
         string="Type",
@@ -45,7 +45,6 @@ class EgdSaleBlanketOrderSaleOrderPlan(models.Model):
         help="Last installment will create order use remaining amount",
     )
     percent = fields.Float(
-        string="Percent",
         digits="Product Unit of Measure",
         help="This percent will be used to calculate new quantity",
     )
@@ -117,9 +116,13 @@ class EgdSaleBlanketOrderSaleOrderPlan(models.Model):
                 if float_compare(plan_qty, order_line.product_uom_qty, prec) == 1:
                     raise ValidationError(
                         _(
-                            "Plan quantity: %s, exceeds orderable quantity: %s"
-                            "\nProduct should be available before creating the order"
+                            "Plan quantity: %(plan_qty)s, exceeds orderable "
+                            "quantity: %(orderable_qty)s\n"
+                            "Product should be available before creating the order"
                         )
-                        % (plan_qty, order_line.product_uom_qty)
+                        % {
+                            "plan_qty": plan_qty,
+                            "orderable_qty": order_line.product_uom_qty,
+                        }
                     )
                 order_line.write({"product_uom_qty": plan_qty})
