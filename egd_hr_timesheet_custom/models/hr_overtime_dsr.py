@@ -13,22 +13,15 @@ class HrOvertimeDsr(models.Model):
     _order = "year desc, month desc"
 
     month = fields.Char(
-        "Month",
         size=2,
         required=True,
         default=lambda r: str(datetime.date.today().month),
     )
     year = fields.Char(
-        "Year", size=4, required=True, default=lambda r: str(datetime.date.today().year)
+        size=4, required=True, default=lambda r: str(datetime.date.today().year)
     )
-    working_days = fields.Integer(
-        string="Working Days",
-        required=True,
-    )
-    dsr_count = fields.Integer(
-        string="DSR Count",
-        required=True,
-    )
+    working_days = fields.Integer(required=True)
+    dsr_count = fields.Integer(required=True)
 
     @api.constrains("month", "year")
     def _check_unique_month_year(self):

@@ -8,7 +8,7 @@
         <field name="name">hr.overtime.dsr.tree</field>
         <field name="model">hr.overtime.dsr</field>
         <field name="arch" type="xml">
-            <tree string="DSR Calculation" editable="bottom">
+            <tree editable="bottom">
                 <field name="month" />
                 <field name="year" />
                 <field name="working_days" />

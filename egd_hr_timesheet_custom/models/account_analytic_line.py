@@ -27,19 +27,16 @@ class AccountAnalyticLine(models.Model):
     )
 
     extra_amount = fields.Monetary(
-        string="Extra Amount",
         readonly=True,
     )
 
     timesheet_cost = fields.Monetary(
-        "Timesheet Cost",
         currency_field="currency_id",
         groups="hr.group_hr_user",
         default=0.0,
         tracking=True,
     )
     timesheet_cost_overtime = fields.Monetary(
-        "Timesheet Cost Overtime",
         currency_field="currency_id",
         groups="hr.group_hr_user",
         default=0.0,

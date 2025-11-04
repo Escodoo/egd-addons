@@ -8,7 +8,7 @@
         <field name="name">hr.overtime.factor.tree (in egd_hr_timesheet_custom)</field>
         <field name="model">hr.overtime.factor</field>
         <field name="arch" type="xml">
-            <tree string="Overtime Factors" editable="bottom">
+            <tree editable="bottom">
                 <field name="name" />
                 <field name="rate" widget="percentage" />
                 <field name="create_date" string="Created on" />
