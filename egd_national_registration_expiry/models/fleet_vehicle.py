@@ -11,10 +11,9 @@ class FleetVehicle(models.Model):
 
     _inherit = "fleet.vehicle"
 
-    renavam_number = fields.Char(string="Renavam Number")
-    renavam_expiry_date = fields.Date(string="Renavam Expiry Date")
+    renavam_number = fields.Char()
+    renavam_expiry_date = fields.Date()
     renavam_days_to_expire = fields.Integer(
-        string="Renavam Days to Expire",
         compute="_compute_renavam_days_to_expire",
         readonly=True,
     )
@@ -25,7 +24,6 @@ class FleetVehicle(models.Model):
             ("expired", "Expired"),
             ("no_renavam", "No Renavam"),
         ],
-        string="Renavam Expiry State",
         compute="_compute_renavam_expiry_state",
         store=True,
         readonly=True,
