@@ -9,32 +9,36 @@ class PurchaseRequestLine(models.Model):
     _inherit = "purchase.request.line"
 
     estimated_cost = fields.Float(
-        compute="_compute_egd_estimated_cost", store=True, tracking=True
+        compute="_compute_egd_estimated_cost",
+        store=True,
+        readonly=True,
+        tracking=True,
     )
 
     egd_estimated_unit_cost = fields.Float(
         string="Estimated Unit Cost",
-        compute="_compute_egd_estimated_unit_cost",
-        readonly=False,
-        store=True,
         tracking=True,
     )
 
     egd_target_value = fields.Float(
         string="Target Unit Price",
-        compute="_compute_egd_target",
-        store=True,
-    )
-
-    egd_target_quantity = fields.Float(
-        string="Target Quantity",
-        compute="_compute_egd_target",
+        compute="_compute_egd_target_value",
         store=True,
     )
 
     egd_target_above = fields.Boolean(
         string="Target Above",
-        compute="_compute_egd_target",
+        compute="_compute_egd_target_value",
+    )
+
+    egd_target_quantity = fields.Float(
+        string="Target Quantity",
+        compute="_compute_egd_target_quantity",
+    )
+
+    egd_product_quantity_requested = fields.Float(
+        string="Product Quantity Requested",
+        compute="_compute_egd_product_quantity_requested",
     )
 
     @api.depends(
@@ -49,11 +53,8 @@ class PurchaseRequestLine(models.Model):
         for line in self:
             line.estimated_cost = line.product_qty * line.egd_estimated_unit_cost
 
-    @api.depends("product_id")
-    def _compute_egd_estimated_unit_cost(self):
-        """
-        Compute the estimated unit cost based on product's standard price.
-        """
+    @api.onchange("product_id")
+    def _onchange_product_id(self):
         for line in self:
             if line.product_id:
                 line.egd_estimated_unit_cost = line.product_id.standard_price
@@ -61,17 +62,17 @@ class PurchaseRequestLine(models.Model):
                 line.egd_estimated_unit_cost = 0.0
 
     @api.depends(
+        "product_id",
         "analytic_account_id",
         "egd_estimated_unit_cost",
     )
-    def _compute_egd_target(self):
+    def _compute_egd_target_value(self):
         for record in self:
             product = False
             service = False
             price_unit = 0
             account_analytic = False
             target_above = False
-            target_quantity = 0
             if record.product_id:
                 if record.analytic_account_id:
                     account_analytic = record.analytic_account_id
@@ -101,13 +102,49 @@ class PurchaseRequestLine(models.Model):
                         )
                         if product.id:
                             price_unit = product.price_unit
-                            target_quantity = product.quantity
                         elif service.id:
                             price_unit = service.price_unit
-                            target_quantity = service.quantity
 
             record.egd_target_value = price_unit
-            record.egd_target_quantity = target_quantity
             if record.egd_estimated_unit_cost > price_unit:
                 target_above = True
             record.egd_target_above = target_above
+
+    @api.depends("analytic_account_id", "product_id")
+    def _compute_egd_target_quantity(self):
+        for record in self:
+            target_quantity = 0
+
+            if record.product_id and record.analytic_account_id:
+                blanket_orders = record.env["sale.blanket.order"].search(
+                    [
+                        ("analytic_account_id", "=", record.analytic_account_id.id),
+                        ("state", "=", "open"),
+                    ],
+                )
+                product_lines = blanket_orders.mapped("egd_order_product_ids")
+                service_lines = blanket_orders.mapped("egd_order_service_ids")
+
+                for line in product_lines:
+                    if line.product_id == record.product_id:
+                        target_quantity += line.quantity
+
+                for line in service_lines:
+                    if line.product_id == record.product_id:
+                        target_quantity += line.quantity
+
+            record.egd_target_quantity = target_quantity
+
+    @api.depends("analytic_account_id", "product_id")
+    def _compute_egd_product_quantity_requested(self):
+        for record in self:
+            quantity_requested = 0
+            purchase_request_lines = record.search(
+                [
+                    ("analytic_account_id", "=", record.analytic_account_id.id),
+                    ("product_id", "=", record.product_id.id),
+                ],
+            )
+            for line in purchase_request_lines:
+                quantity_requested += line.product_qty
+            record.egd_product_quantity_requested = quantity_requested
