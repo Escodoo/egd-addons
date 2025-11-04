@@ -12,7 +12,6 @@ class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
     cnh_days_to_expire = fields.Integer(
-        string="CNH Days to Expire",
         compute="_compute_cnh_days_to_expire",
         readonly=True,
     )
@@ -23,7 +22,6 @@ class HrEmployee(models.Model):
             ("expired", "Expired"),
             ("no_cnh", "No CNH"),
         ],
-        string="CNH Expiry State",
         compute="_compute_cnh_expiry_state",
         store=True,
         readonly=True,
