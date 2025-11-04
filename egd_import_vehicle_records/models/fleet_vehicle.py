@@ -8,5 +8,5 @@ class FleetVehicle(models.Model):
 
     _inherit = "fleet.vehicle"
 
-    hour_location = fields.Float(string="Hour location")
-    address = fields.Char(string="Last address")
+    hour_location = fields.Float()
+    address = fields.Char()
