@@ -8,12 +8,9 @@ class AccountAnalyticLine(models.Model):
 
     _inherit = "account.analytic.line"
 
-    egd_target_value = fields.Float(
-        string="Target Unit Price", compute="_compute_egd_target_value"
-    )
+    egd_target_value = fields.Float(compute="_compute_egd_target_value")
 
     egd_target_above = fields.Boolean(
-        string="Target Above",
         compute="_compute_egd_target_above",
     )
 
