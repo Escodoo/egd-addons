@@ -11,9 +11,8 @@ class FleetVehicle(models.Model):
 
     _inherit = "fleet.vehicle"
 
-    insurance_date_expiry = fields.Date(string="Insurance Expiry Date")
+    insurance_date_expiry = fields.Date()
     insurance_days_to_expire = fields.Integer(
-        string="Insurance Days to Expire",
         compute="_compute_insurance_days_to_expire",
         readonly=True,
     )
@@ -24,7 +23,6 @@ class FleetVehicle(models.Model):
             ("expired", "Expired"),
             ("no_insurance", "No Insurance"),
         ],
-        string="Insurance Expiry State",
         compute="_compute_insurance_expiry_state",
         store=True,
         readonly=True,
