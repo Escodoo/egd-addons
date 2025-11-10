@@ -20,9 +20,9 @@ class AccountMove(models.Model):
             stock_picking = move.stock_move_id.picking_id
             production_date = False
             if sale_order:
-                move.production_date = sale_order[0].production_date
+                production_date = sale_order[0].production_date
             elif stock_picking:
-                move.production_date = stock_picking.production_date
+                production_date = stock_picking.production_date
             move.production_date = production_date
 
     def _post(self, soft=True):
