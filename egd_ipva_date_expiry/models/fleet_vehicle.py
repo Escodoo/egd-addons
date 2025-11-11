@@ -11,9 +11,8 @@ class FleetVehicle(models.Model):
 
     _inherit = "fleet.vehicle"
 
-    ipva_expiry_date = fields.Date(string="IPVA Expiry Date", store="True")
+    ipva_expiry_date = fields.Date(store="True")
     ipva_days_to_expire = fields.Integer(
-        string="IPVA Days to Expire",
         compute="_compute_ipva_days_to_expire",
         readonly=True,
     )
@@ -24,7 +23,6 @@ class FleetVehicle(models.Model):
             ("expired", "Expired"),
             ("no_ipva", "No IPVA"),
         ],
-        string="IPVA Expiry State",
         compute="_compute_ipva_expiry_state",
         store=True,
         readonly=True,

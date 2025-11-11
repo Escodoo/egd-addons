@@ -5,7 +5,7 @@
     "name": "Egd Ipva Date Expiry",
     "summary": """
         Module monitor IPVA due dates""",
-    "version": "14.0.1.0.0",
+    "version": "16.0.1.0.0",
     "license": "AGPL-3",
     "author": "Escodoo",
     "website": "https://github.com/Escodoo/egd-addons",
