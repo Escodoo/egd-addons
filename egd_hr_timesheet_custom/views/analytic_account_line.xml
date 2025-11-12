@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 - TODAY, Escodoo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="view_account_analytic_line_tree" model="ir.ui.view">
+        <field
+            name="name"
+        >account.analytic.line.tree (in egd_hr_timesheet_custom)</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_tree" />
+        <field name="arch" type="xml">
+            <xpath expr='//field[@name="account_id"]' position="after">
+                <field name="employee_id" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_line_form" model="ir.ui.view">
+        <field
+            name="name"
+        >account.analytic.line.form (in egd_hr_timesheet_custom)</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='amount']" position="after">
+                <group name="time_cost" string="Cost">
+                    <field name="timesheet_cost" />
+                    <field name="timesheet_cost_overtime" />
+                </group>
+                <group name="overtime" string="Overtime">
+                    <field name="extra_amount" />
+                    <field name="overtime_factor_id" />
+                    <field name="overtime_rate" widget="percentage" />
+                    <field name="overtime_dsr_id" invisible="1" />
+                    <field name="overtime_dsr_factor" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_hr_timesheet_line_tree_inherit" model="ir.ui.view">
+        <field name="name">account.analytic.line.tree.inherit</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree" />
+        <field name="arch" type="xml">
+            <xpath expr='//field[@name="unit_amount"]' position="before">
+                <field name="timesheet_cost" />
+                <field name="timesheet_cost_overtime" />
+            </xpath>
+            <xpath expr="//field[@name='unit_amount']" position="after">
+                <field name="amount" optional="show" />
+                <field name="extra_amount" optional="show" />
+                <field name="overtime_factor_id" optional="show" />
+                <field name="overtime_rate" widget="percentage" optional="show" />
+                <field name="overtime_dsr_id" invisible="1" />
+                <field name="overtime_dsr_factor" optional="show" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

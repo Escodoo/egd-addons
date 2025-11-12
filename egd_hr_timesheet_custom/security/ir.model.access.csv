@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_overtime_factor,hr.overtime.factor,model_hr_overtime_factor,hr.group_hr_user,1,1,1,1
+access_hr_overtime_dsr,hr.overtime.dsr,model_hr_overtime_dsr,hr.group_hr_user,1,1,1,1
