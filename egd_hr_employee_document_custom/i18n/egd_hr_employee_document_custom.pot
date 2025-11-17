@@ -1,0 +1,39 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* egd_hr_employee_document_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: egd_hr_employee_document_custom
+#: model:ir.model,name:egd_hr_employee_document_custom.model_ir_attachment
+msgid "Attachment"
+msgstr ""
+
+#. module: egd_hr_employee_document_custom
+#: model:ir.model.fields,field_description:egd_hr_employee_document_custom.field_ir_attachment__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: egd_hr_employee_document_custom
+#: model:ir.model.fields,field_description:egd_hr_employee_document_custom.field_ir_attachment__egd_expiration_date
+msgid "Expiration Date"
+msgstr ""
+
+#. module: egd_hr_employee_document_custom
+#: model:ir.model.fields,field_description:egd_hr_employee_document_custom.field_ir_attachment__id
+msgid "ID"
+msgstr ""
+
+#. module: egd_hr_employee_document_custom
+#: model:ir.model.fields,field_description:egd_hr_employee_document_custom.field_ir_attachment____last_update
+msgid "Last Modified on"
+msgstr ""
