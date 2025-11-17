@@ -11,7 +11,7 @@ class SaleBlanketOrderRevisionWizard(models.TransientModel):
 
     old_blanket_order_id = fields.Many2one(
         comodel_name="sale.blanket.order",
-        string="Original Blanket Order",
+        string="Old Blanket Order",
         help="Reference to the original blanket order before revision.",
         ondelete="cascade",
         readonly=True,
@@ -25,7 +25,6 @@ class SaleBlanketOrderRevisionWizard(models.TransientModel):
         readonly=True,
     )
     adjustment_percentage = fields.Float(
-        string="Adjustment Percentage",
         help="Percentage to adjust the unit price for each line in the blanket order.",
     )
 
@@ -66,7 +65,10 @@ class SaleBlanketOrderRevisionWizard(models.TransientModel):
         base_name = re.sub(r"\(Rev \d+\)$", "", self.old_blanket_order_id.name).strip()
         next_revision = self._get_revision_count()
 
-        return _("{} (Rev {})").format(base_name, next_revision)
+        return _("%(base_name)s (Rev %(revision)s)") % {
+            "base_name": base_name,
+            "revision": next_revision,
+        }
 
     def _update_blanket_order_lines(self, old_blanket_order, new_blanket_order):
         """
@@ -83,7 +85,9 @@ class SaleBlanketOrderRevisionWizard(models.TransientModel):
             }
         )
         for old_line, new_line in zip(
-            old_blanket_order.line_ids, new_blanket_order.line_ids
+            old_blanket_order.line_ids,
+            new_blanket_order.line_ids,
+            strict=True,
         ):
             # Update quantities in the new line
             new_line.write(
@@ -112,7 +116,8 @@ class SaleBlanketOrderRevisionWizard(models.TransientModel):
         return self.old_blanket_order_id.copy(default_data)
 
     def create_revision(self):
-        """Create a revised blanket order using the copy method with necessary updates."""
+        """Create a revised blanket order using
+        the copy method with necessary updates."""
         for rec in self:
             new_blanket_order = rec._copy_blanket_order()
             rec.new_blanket_order_id = new_blanket_order.id

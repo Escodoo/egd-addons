@@ -15,13 +15,11 @@ class SaleBlanketOrder(models.Model):
         help="References to the revision wizards associated with this blanket order.",
     )
     revision_count = fields.Integer(
-        string="Revision Count",
         compute="_compute_revision_count",
         help="Count of revisions associated with this blanket order.",
     )
 
     all_quotations_invoiced = fields.Boolean(
-        string="All Quotations Invoiced",
         compute="_compute_all_quotations_invoiced",
         help="True if all related quotations are invoiced.",
     )
@@ -64,8 +62,8 @@ class SaleBlanketOrder(models.Model):
             if record.revision_wizard_ids:
                 raise UserError(
                     _(
-                        "You cannot set this Blanket Order to Draft ",
-                        "because it has associated revisions.",
+                        "You cannot set this Blanket Order to Draft because "
+                        "it has associated revisions."
                     )
                 )
         return super().set_to_draft()

@@ -5,11 +5,9 @@ from odoo import fields, models
 
 
 class SaleBlanketOrderLine(models.Model):
-
     _inherit = "sale.blanket.order.line"
 
     contracted_quantity = fields.Float(
-        string="Contracted Quantity",
         readonly=True,
         help="Total quantity contracted based on the associated order lines.",
     )
