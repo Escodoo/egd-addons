@@ -127,8 +127,17 @@
                                     <td class="left-align" style="padding: 3px;">
                                         <div class="row mt-2">
                                             <div class="col-4">
+                                                <!-- TODO: Odoo 16: Extrai contas analíticas do analytic_distribution dos moves -->
+                                                <t
+                                                    t-set="analytic_account_ids"
+                                                    t-value="[int(k) for move in o.move_ids_without_package if move.analytic_distribution for k in (move.analytic_distribution or {}).keys() if str(k).isdigit()]"
+                                                />
+                                                <t
+                                                    t-set="analytic_accounts"
+                                                    t-value="env['account.analytic.account'].browse(list(set(analytic_account_ids))) if analytic_account_ids else env['account.analytic.account']"
+                                                />
                                                 <span>Nº Contract EGD: <t
-                                                        t-foreach="o.move_ids_without_package.analytic_account_id"
+                                                        t-foreach="analytic_accounts"
                                                         t-as="product_analytic"
                                                     >
 
@@ -554,8 +563,17 @@
                                     <td class="left-align" style="padding: 3px;">
                                         <div class="row mt-2">
                                             <div class="col-4">
+                                                <!-- Odoo 16: Extrai contas analíticas do analytic_distribution dos moves -->
+                                                <t
+                                                    t-set="analytic_account_ids"
+                                                    t-value="[int(k) for move in o.move_ids_without_package if move.analytic_distribution for k in (move.analytic_distribution or {}).keys() if str(k).isdigit()]"
+                                                />
+                                                <t
+                                                    t-set="analytic_accounts"
+                                                    t-value="env['account.analytic.account'].browse(list(set(analytic_account_ids))) if analytic_account_ids else env['account.analytic.account']"
+                                                />
                                                 <span>Nº Contract EGD: <t
-                                                        t-foreach="o.move_ids_without_package.analytic_account_id"
+                                                        t-foreach="analytic_accounts"
                                                         t-as="product_analytic"
                                                     >
 
