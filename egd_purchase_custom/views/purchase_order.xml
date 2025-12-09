@@ -17,11 +17,10 @@
                 >{'readonly': [('state', 'in', ('done', 'cancel','purchase'))]}</attribute>
             </xpath>
             <xpath
-                expr="//page[@name='products']//field[@name='order_line']//field[@name='account_analytic_id']"
+                expr="//page[@name='products']//field[@name='order_line']//field[@name='analytic_distribution']"
                 position="attributes"
             >
                 <attribute name="required">1</attribute>
-
             </xpath>
             <xpath
                 expr="//page[@name='products']//field[@name='order_line']//field[@name='price_unit']"

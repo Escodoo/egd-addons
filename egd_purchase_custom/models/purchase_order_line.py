@@ -5,7 +5,6 @@ from odoo import api, fields, models
 
 
 class PurchaseOrderLine(models.Model):
-
     _inherit = "purchase.order.line"
 
     egd_target_value = fields.Float(
@@ -22,9 +21,9 @@ class PurchaseOrderLine(models.Model):
     )
 
     @api.depends(
-        "stock_request_ids",
         "purchase_request_lines",
-        "account_analytic_id",
+        "purchase_request_lines.stock_request_ids",
+        "purchase_request_lines.stock_request_ids.analytic_distribution",
         "price_unit",
     )
     def _compute_egd_target(self):
@@ -36,14 +35,21 @@ class PurchaseOrderLine(models.Model):
             target_above = False
             target_quantity = 0
             if record.product_id:
-                if record.account_analytic_id:
-                    account_analytic = record.account_analytic_id
-                elif record.stock_request_ids:
-                    account_analytic = record.stock_request_ids[0].analytic_account_id
-                elif record.purchase_request_lines.stock_request_ids:
-                    account_analytic = record.purchase_request_lines.stock_request_ids[
-                        0
-                    ].analytic_account_id
+                if record.purchase_request_lines.stock_request_ids:
+                    distribution = (
+                        record.purchase_request_lines.stock_request_ids[
+                            0
+                        ].analytic_distribution
+                        or {}
+                    )
+                    account_ids = (
+                        list(distribution.keys())
+                        if isinstance(distribution, dict)
+                        else []
+                    )
+                    if account_ids:
+                        analytic_account = self.env["account.analytic.account"]
+                        account_analytic = analytic_account.browse(int(account_ids[0]))
                 if account_analytic:
                     blanket_order = record.env["sale.blanket.order"].search(
                         [("analytic_account_id", "=", account_analytic.id)],
