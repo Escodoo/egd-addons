@@ -5,5 +5,4 @@ from odoo import models
 
 
 class PurchaseRequest(models.Model):
-
     _inherit = "purchase.request"

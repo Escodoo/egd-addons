@@ -19,10 +19,10 @@
                 <attribute name="readonly">1</attribute>
             </xpath>
 
-            <!-- Insert 'egd_estimated_unit_cost' field before 'analytic_account_id' in the
+            <!-- Insert 'egd_estimated_unit_cost' field before 'analytic_distribution' in the
             'settings' group -->
             <xpath
-                expr="//group[@name='settings']//field[@name='analytic_account_id']"
+                expr="//group[@name='settings']//field[@name='analytic_distribution']"
                 position="before"
             >
                 <field name="egd_estimated_unit_cost" widget="monetary" />
@@ -42,9 +42,9 @@
                 <attribute name="readonly">1</attribute>
             </xpath>
 
-            <!-- Set the required for 'analytic_account_id' in tree view to 'True' -->
+            <!-- Set the required for 'analytic_distribution' in tree view to 'True' -->
             <xpath
-                expr="//tree//field[@name='analytic_account_id']"
+                expr="//tree//field[@name='analytic_distribution']"
                 position="attributes"
             >
                 <attribute name="required">1</attribute>
@@ -83,10 +83,6 @@
                 <field name="egd_target_above" optional="hide" />
             </xpath>
 
-            <!-- Set the widget for 'analytic_tag_ids' in the tree view to 'many2many_tags' -->
-            <xpath expr="//tree//field[@name='analytic_tag_ids']" position="attributes">
-                <attribute name="widget">many2many_tags</attribute>
-            </xpath>
         </field>
     </record>
 </odoo>
