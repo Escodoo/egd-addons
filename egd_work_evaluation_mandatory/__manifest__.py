@@ -5,7 +5,7 @@
     "name": "Egd Work Evaluation Mandatory",
     "summary": """
         This module creates a field where you select whether work evaluation is mandatory.""",
-    "version": "14.0.1.0.0",
+    "version": "16.0.1.0.0",
     "license": "AGPL-3",
     "author": "Escodoo",
     "website": "https://github.com/Escodoo/egd-addons",
