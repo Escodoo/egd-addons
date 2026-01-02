@@ -1,2 +1,3 @@
 # mis_builder_cash_flow_forecast_integration dependency
 odoo-addon-mis_builder_cash_flow_forecast_integration @ git+https://github.com/Escodoo/account-addons.git@16.0#subdirectory=mis_builder_cash_flow_forecast_integration
+odoo-addon-supplier_quality_index @ git+https://github.com/Escodoo/purchase-addons.git@16.0#subdirectory=supplier_quality_index
