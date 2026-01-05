@@ -52,8 +52,8 @@ class TestAccountAnalyticLine(TransactionCase):
         cls.today = date.today()
         cls.dsr_current = cls.env["hr.overtime.dsr"].create(
             {
-                "month": str(cls.today.month).zfill(2),
-                "year": str(cls.today.year),
+                "month": cls.today.month,
+                "year": cls.today.year,
                 "working_days": 22,
                 "dsr_count": 8,
             }
