@@ -3,45 +3,30 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <template id="egd_custody_report_stock">
-
-
         <t t-call="web.html_container">
             <t t-call="web.external_layout">
                 <t
                     t-set="o"
                     t-value="o.with_context(lang=o.partner_id.lang or o.env.lang)"
                 />
-                <!-- <t
-                    t-set="partner"
-                    t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"
-                /> -->
 
                 <div class="page" style="font-size: 10px">
                     <div class="mt-4 text-right">
-                        <span>Nº Caution: <strong t-field="o.name">
-
-                            </strong>
+                        <span>Nº Caution: <strong t-field="o.name" />
                         </span>
                         <br />
-                        <span> Release: <strong t-field="o.user_id.name">
-
-                            </strong>
+                        <span>Release: <strong t-field="o.user_id.name" />
                         </span>
                         <br />
-                        <span> Date: <strong t-field="o.create_date">
-
-                            </strong>
+                        <span>Date: <strong t-field="o.create_date" />
                         </span>
-
                     </div>
                     <br />
                     <div class="mt-4 text-center">
-
                         <strong>EXIT GUIDE</strong>
                         <br />
-
-
                     </div>
+
                     <table
                         class="table table-bordered"
                         name="info-applicant"
@@ -49,9 +34,7 @@
                     >
                         <thead />
                         <tbody>
-
                             <tr>
-
                                 <td
                                     class="center-align"
                                     width="2%"
@@ -60,10 +43,8 @@
                                     <div class="mt-1 text-left">
                                         <span>Customer or Requester</span>
                                         <span />
-
                                     </div>
                                 </td>
-
                             </tr>
                             <tr>
                                 <td style="padding: 3px;">
@@ -72,18 +53,15 @@
                                             <span>Collaborator: <strong
                                                     t-field="o.egd_responsible_id.name"
                                                 />
-
                                             </span>
                                         </div>
                                         <div style="clear: both;" />
                                         <div class="col-4 text-right">
                                             <span>Cód. Collaborator:</span>
                                             <span t-field="o.egd_responsible_id.id" />
-
                                         </div>
                                     </div>
                                 </td>
-
                             </tr>
                             <tr>
                                 <td style="padding: 3px;">
@@ -98,13 +76,12 @@
                                         <div class="col-4 text-right">
                                             <span>Departament: <strong
                                                     t-field="o.egd_responsible_id.department_id"
-                                                /></span>
-
+                                                />
+                                            </span>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
-
                         </tbody>
                     </table>
 
@@ -119,55 +96,52 @@
                                 <td class="center-align" style="padding: 3px;">
                                     <div class="mt-1 text-left">
                                         <span>Output Data:</span>
-
-
                                     </div>
                                 </td>
-                                <tr>
-                                    <td class="left-align" style="padding: 3px;">
-                                        <div class="row mt-2">
-                                            <div class="col-4">
-                                                <span>Nº Contract EGD: <t
-                                                        t-foreach="o.move_ids_without_package.analytic_account_id"
-                                                        t-as="product_analytic"
-                                                    >
-
-                                                        <strong
-                                                            t-field="product_analytic.name"
-                                                        />
-                                                        <strong>, </strong>
-
-                                                    </t>
-                                                </span>
-                                            </div>
-                                            <div style="clear: both;" />
-                                            <div class="col-4 text-right">
-                                                <span>Purpose of Caution: <strong
-                                                        t-field="o.picking_type_id.name"
+                            </tr>
+                            <tr>
+                                <td class="left-align" style="padding: 3px;">
+                                    <div class="row mt-2">
+                                        <div class="col-4">
+                                            <span>Nº Contract EGD:
+                                                <t
+                                                    t-foreach="o.move_ids_without_package.analytic_account_id"
+                                                    t-as="product_analytic"
+                                                >
+                                                    <strong
+                                                        t-field="product_analytic.name"
                                                     />
-                                                </span>
-                                            </div>
-                                            <div style="clear: both;" />
-                                            <div class="col-4 text-right">
-                                                <span>Caution Status: <strong
-                                                        t-field="o.state"
-                                                    />
-                                                </span>
-                                            </div>
+                                                    <strong>, </strong>
+                                                </t>
+                                            </span>
                                         </div>
-                                    </td>
-                                </tr>
+                                        <div style="clear: both;" />
+                                        <div class="col-4 text-right">
+                                            <span>Purpose of Caution: <strong
+                                                    t-field="o.picking_type_id.name"
+                                                />
+                                            </span>
+                                        </div>
+                                        <div style="clear: both;" />
+                                        <div class="col-4 text-right">
+                                            <span>Caution Status: <strong
+                                                    t-field="o.state"
+                                                />
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="mt-1" style="font-size: 12px">
 
+                    <div class="mt-1" style="font-size: 12px">
                         <strong>Outgoing Items</strong>
                         <br />
-
                     </div>
+
                     <table
-                        class="table "
+                        class="table"
                         name="field"
                         style="font-size:10px; height:12px; border:1px"
                     >
@@ -176,7 +150,6 @@
                                 <td style="padding: 3px;">
                                     <span>Code</span>
                                 </td>
-
                                 <td style="padding: 3px;">
                                     <span>Description</span>
                                 </td>
@@ -202,75 +175,139 @@
                         </thead>
                         <tbody>
                             <t t-foreach="o.move_ids_without_package" t-as="product">
-                                <t t-foreach="product.lot_ids" t-as="lot_ids">
+                                <t t-foreach="product.move_line_ids" t-as="move_line">
+                                    <t t-set="lot" t-value="move_line.lot_id" />
                                     <t
                                         t-set="egd_certification"
-                                        t-value="lot_ids.egd_certification"
+                                        t-value="lot.name if lot else ''"
                                     />
                                     <t
                                         t-set="expiration_date"
-                                        t-value="lot_ids.expiration_date"
+                                        t-value="lot.expiration_date if lot else ''"
                                     />
-                                </t>
-                                <tr>
-                                    <td style="padding: 3px;">
-                                        <strong>
-                                            <span t-field="product.product_id.id" />
-                                        </strong>
-                                    </td>
-                                    <td style="padding: 3px;">
-                                        <strong>
-                                            <span t-field="product.product_id.name" />
-                                        </strong>
-                                    </td>
-                                    <td style="padding: 3px;">
-                                        <strong>
-                                            <span t-field="product.product_id.uom_id" />
-                                        </strong>
-                                    </td>
-                                    <td style="padding: 3px;">
-                                        <strong>
-                                            <span t-esc="egd_certification" />
-                                        </strong>
-                                    </td>
 
+                                    <tr>
                                         <td style="padding: 3px;">
                                             <strong>
-                                                <span t-esc="expiration_date" />
+                                                <span
+                                                    t-field="product.product_id.default_code"
+                                                />
                                             </strong>
                                         </td>
-
-                                    <td style="padding: 3px;">
-                                        <strong>
-                                            <span t-field="product.product_uom_qty" />
-                                        </strong>
-                                    </td>
-                                    <td style="padding: 3px;">
-                                        <strong>
-                                            <span
-                                                t-field="product.product_id.standard_price"
-                                            />
-                                        </strong>
-                                    </td>
-                                    <td style="padding: 3px;">
-                                        <strong>
-                                            <span
-                                                t-esc="product.product_uom_qty * product.product_id.standard_price "
-                                            />
-                                        </strong>
-                                    </td>
-                                </tr>
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span
+                                                    t-field="product.product_id.name"
+                                                />
+                                            </strong>
+                                            <t t-if="lot">
+                                                <br />
+                                            (Lote/Série: <span t-esc="lot.name" />)
+                                            </t>
+                                        </td>
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span
+                                                    t-field="product.product_id.uom_id"
+                                                />
+                                            </strong>
+                                        </td>
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span t-esc="egd_certification" />
+                                            </strong>
+                                        </td>
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span
+                                                    t-if="expiration_date"
+                                                    t-esc="expiration_date"
+                                                    t-options='{"widget": "date"}'
+                                                />
+                                            </strong>
+                                        </td>
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span t-field="move_line.qty_done" />
+                                            </strong>
+                                        </td>
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span
+                                                    t-field="product.product_id.standard_price"
+                                                />
+                                            </strong>
+                                        </td>
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span
+                                                    t-esc="move_line.qty_done * product.product_id.standard_price"
+                                                    t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'
+                                                />
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </t>
+                                <t t-if="not product.move_line_ids">
+                                    <tr>
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span
+                                                    t-field="product.product_id.default_code"
+                                                />
+                                            </strong>
+                                        </td>
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span
+                                                    t-field="product.product_id.name"
+                                                />
+                                            </strong>
+                                        </td>
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span
+                                                    t-field="product.product_id.uom_id"
+                                                />
+                                            </strong>
+                                        </td>
+                                        <td style="padding: 3px;" />
+                                        <td style="padding: 3px;" />
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span
+                                                    t-field="product.product_uom_qty"
+                                                />
+                                            </strong>
+                                        </td>
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span
+                                                    t-field="product.product_id.standard_price"
+                                                />
+                                            </strong>
+                                        </td>
+                                        <td style="padding: 3px;">
+                                            <strong>
+                                                <span
+                                                    t-esc="product.product_uom_qty * product.product_id.standard_price"
+                                                />
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </t>
                             </t>
+
                             <t t-set="total_qty" t-value="0" />
                             <t t-set="total_price" t-value="0" />
                             <t t-foreach="o.move_ids_without_package" t-as="product">
                                 <t
                                     t-set="total_qty"
-                                    t-value="total_qty + product.product_qty"
+                                    t-value="total_qty + product.quantity_done"
                                 />
                                 <t
                                     t-set="total_price"
-                                    t-value="total_price + (product.product_qty * product.product_id.standard_price)"
+                                    t-value="total_price + (product.quantity_done * product.product_id.standard_price)"
                                 />
                             </t>
                             <tr class="table-active table-bordered">
@@ -284,23 +321,25 @@
                                 </td>
                                 <td style="padding: 3px;">
                                     <strong>
-                                        <span t-esc="total_price" />
+                                        <span
+                                            t-esc="total_price"
+                                            t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'
+                                        />
                                     </strong>
                                 </td>
                             </tr>
-
-
                         </tbody>
                     </table>
+
                     <div class="row mt-1" style="font-size: 10px">
                         <div class="col-6">
-                            <span> Local: <strong
+                            <span>Local: <strong
                                     t-field="o.company_id.partner_id.city"
                                 />
                             </span>
                         </div>
                         <div class="col-6 text-right">
-                            <span> Date: <strong t-field="o.create_date" />
+                            <span>Date: <strong t-field="o.create_date" />
                             </span>
                         </div>
                     </div>
@@ -368,22 +407,19 @@
                                 Ordinance 3,214/78.
                             </span>
                         </p>
-
                     </div>
                     <div style="clear: both;" />
                     <div class="row mt-2" style="font-size: 10px">
                         <div class="col-6 text-left" colspan="2">
-                            <span> Requester: <strong
+                            <span>Requester: <strong
                                     t-field="o.user_id.partner_id.name"
                                 />
                             </span>
                         </div>
                         <div class="col-6 text-right">
-                            <span>
-                                _______________________________________________________________________________
-                            </span>
+                            <span
+                            >_______________________________________________________________________________</span>
                         </div>
-
                     </div>
                     <div style="clear: both;" />
                     <div class="row mt-2">
@@ -392,35 +428,30 @@
                             colspan="2"
                             style="font-size: 10px"
                         >
-                            <span> Transporter: <strong
+                            <span>Transporter: <strong
                                     t-field="o.user_id.partner_id.name"
                                 />
                             </span>
                         </div>
                         <div class="col-6 text-right">
-                            <span>
-                                _______________________________________________________________________________
-                            </span>
+                            <span
+                            >_______________________________________________________________________________</span>
                         </div>
                     </div>
                     <br />
                     <table class="table table-bordered" name="observacao">
                         <tbody>
                             <tr>
-                                <td width="10%" height="50"> Observations<span
+                                <td width="10%" height="50">Observations <span
                                         t-field="o.note"
                                     />
                                 </td>
-
                             </tr>
                         </tbody>
-
                     </table>
                 </div>
-
             </t>
         </t>
-
     </template>
 
     <template id="egd_custody_report_stock_equipament_personal">
