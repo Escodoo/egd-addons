@@ -10,7 +10,7 @@
         <field name="model">hr.expense</field>
         <field name="inherit_id" ref="hr_expense.hr_expense_view_form" />
         <field name="arch" type="xml">
-            <field name="analytic_account_id" position="attributes">
+            <field name="analytic_distribution" position="attributes">
                 <attribute name="attrs">
                     {'invisible': [('advance', '!=', False)], 'required': [('advance', '=', False)]}
                 </attribute>
