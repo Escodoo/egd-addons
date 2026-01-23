@@ -8,7 +8,6 @@ class AccountMove(models.Model):
     _inherit = "account.move"
 
     production_date = fields.Date(
-        string="Production Date",
         readonly=True,
         compute="_compute_production_date",
     )

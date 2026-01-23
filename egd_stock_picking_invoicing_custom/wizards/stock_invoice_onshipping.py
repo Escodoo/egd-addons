@@ -7,7 +7,7 @@ from odoo import api, fields, models
 class StockInvoiceOnshipping(models.TransientModel):
     _inherit = "stock.invoice.onshipping"
 
-    production_date = fields.Date(string="Production Date", required=True)
+    production_date = fields.Date(required=True)
 
     @api.model
     def default_get(self, fields_list):

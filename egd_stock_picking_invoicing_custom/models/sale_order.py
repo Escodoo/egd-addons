@@ -5,7 +5,6 @@ from odoo import fields, models
 
 
 class SaleOrder(models.Model):
-
     _inherit = "sale.order"
 
-    production_date = fields.Date(string="Production Date", required=True)
+    production_date = fields.Date(required=True)
