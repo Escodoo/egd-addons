@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="hr_expense_form_view">
+        <field
+            name="name"
+        >hr.expense.form (in egd_hr_expense_advance_clearing_custom)</field>
+        <field name="model">hr.expense</field>
+        <field name="inherit_id" ref="hr_expense.hr_expense_view_form" />
+        <field name="arch" type="xml">
+            <field name="analytic_distribution" position="attributes">
+                <attribute name="attrs">
+                    {'invisible': [('advance', '!=', False)], 'required': [('advance', '=', False)]}
+                </attribute>
+            </field>
+        </field>
+    </record>
+
+
+</odoo>
