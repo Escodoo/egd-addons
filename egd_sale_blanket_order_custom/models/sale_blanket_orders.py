@@ -110,7 +110,9 @@ class SaleBlanketOrder(models.Model):
     def _compute_egd_ip_sale_order_plan(self):
         for rec in self:
             has_order_plan = rec.egd_use_sale_order_plan and rec.egd_sale_order_plan_ids
-            to_order = rec.egd_sale_order_plan_ids.filtered(lambda l: not l.ordered)
+            to_order = rec.egd_sale_order_plan_ids.filtered(
+                lambda line: not line.ordered
+            )
             if rec.state == "open" and has_order_plan and to_order:
                 rec.egd_ip_sale_order_plan = True
                 continue
@@ -120,7 +122,7 @@ class SaleBlanketOrder(models.Model):
     def _check_order_plan(self):
         for rec in self:
             if rec.state != "draft":
-                if rec.egd_sale_order_plan_ids.filtered(lambda l: not l.percent):
+                if rec.egd_sale_order_plan_ids.filtered(lambda line: not line.percent):
                     raise ValidationError(
                         _("Please fill percentage for all order plan lines")
                     )
@@ -179,7 +181,9 @@ class SaleBlanketOrder(models.Model):
 
     def _create_sale_order(self):
         order_plan_id = self._context.get("order_plan_id")
-        available_lines = self.line_ids.filtered(lambda l: l.remaining_uom_qty > 0)
+        available_lines = self.line_ids.filtered(
+            lambda line: line.remaining_uom_qty > 0
+        )
         if not available_lines:
             return self.env["sale.order"]
         plan = None

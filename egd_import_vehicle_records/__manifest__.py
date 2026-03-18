@@ -4,7 +4,8 @@
 {
     "name": "Egd Import Vehicle Records",
     "summary": """
-        used to update records about the vehicle, adding drivers, times of use, and address""",
+        used to update records about the vehicle, adding drivers, t
+        imes of use, and address""",
     "version": "16.0.1.0.0",
     "license": "AGPL-3",
     "author": "Escodoo",

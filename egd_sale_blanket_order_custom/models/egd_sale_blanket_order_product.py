@@ -5,7 +5,6 @@ from odoo import api, fields, models
 
 
 class EgdSaleBlanketOrderProduct(models.Model):
-
     _name = "egd.sale.blanket.order.product"
     _description = "EGD Sale Blanket Order Products Costs "
 

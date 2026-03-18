@@ -5,7 +5,6 @@ from odoo import fields, models
 
 
 class IrAttachment(models.Model):
-
     _inherit = "ir.attachment"
 
     egd_expiration_date = fields.Date(string="Expiration Date")

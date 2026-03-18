@@ -5,5 +5,4 @@ from odoo import models
 
 
 class HrExpense(models.Model):
-
     _inherit = "hr.expense"
