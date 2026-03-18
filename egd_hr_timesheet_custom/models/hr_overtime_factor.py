@@ -5,7 +5,6 @@ from odoo import fields, models
 
 
 class HrOvertimeFactor(models.Model):
-
     _name = "hr.overtime.factor"
 
     name = fields.Char(required=True)

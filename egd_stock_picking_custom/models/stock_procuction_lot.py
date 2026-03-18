@@ -5,7 +5,6 @@ from odoo import fields, models
 
 
 class StockProcuctionLot(models.Model):
-
     _inherit = "stock.lot"
 
     egd_certification = fields.Char(

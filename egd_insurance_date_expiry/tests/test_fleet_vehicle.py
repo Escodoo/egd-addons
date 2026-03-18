@@ -228,7 +228,7 @@ class TestFleetVehicleInsurance(TransactionCase):
             "valid",
         ]
 
-        for vehicle, expected_state in zip(vehicles, expected_states):
+        for vehicle, expected_state in zip(vehicles, expected_states, strict=True):
             self.assertEqual(
                 vehicle.insurance_expiry_state,
                 expected_state,

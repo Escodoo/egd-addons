@@ -5,7 +5,6 @@ from odoo import fields, models
 
 
 class HrEmployeeMedicalExamination(models.Model):
-
     _inherit = "hr.employee.medical.examination"
 
     egd_expiration_date = fields.Date(string="Expiration Date")

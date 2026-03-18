@@ -5,7 +5,6 @@ from odoo import api, fields, models
 
 
 class EgdBlanketOrderService(models.Model):
-
     _name = "egd.sale.blanket.order.service"
     _description = "EGD Sale Blanket Order Service Costs"
 

@@ -90,7 +90,7 @@ class EgdSaleBlanketOrderSaleOrderPlan(models.Model):
     def _compute_ordered(self):
         for rec in self:
             ordered = rec.sale_order_ids.filtered(
-                lambda l: l.state in ("draft", "sale")
+                lambda line: line.state in ("draft", "sale")
             )
             rec.ordered = ordered and True or False
 

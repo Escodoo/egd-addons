@@ -8,7 +8,6 @@ from odoo import api, fields, models
 
 
 class FleetVehicle(models.Model):
-
     _inherit = "fleet.vehicle"
 
     ipva_expiry_date = fields.Date(store="True")

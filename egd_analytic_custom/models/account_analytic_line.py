@@ -5,7 +5,6 @@ from odoo import api, fields, models
 
 
 class AccountAnalyticLine(models.Model):
-
     _inherit = "account.analytic.line"
 
     egd_target_value = fields.Float(compute="_compute_egd_target_value")

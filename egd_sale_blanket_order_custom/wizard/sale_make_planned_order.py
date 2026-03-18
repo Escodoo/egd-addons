@@ -14,7 +14,7 @@ class SaleAdvancePaymentOrder(models.TransientModel):
 
         order_plans = (
             self._context.get("all_remain_orders")
-            and sale.egd_sale_order_plan_ids.filtered(lambda l: not l.ordered)
+            and sale.egd_sale_order_plan_ids.filtered(lambda line: not line.ordered)
             or sale.egd_sale_order_plan_ids.filtered("to_order")
         )
 
