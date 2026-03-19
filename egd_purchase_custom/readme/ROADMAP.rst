@@ -1,0 +1,1 @@
+- Explore Multicurrency Setup in Odoo

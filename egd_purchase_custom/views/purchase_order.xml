@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="purchase_order_form_view">
+        <field name="name">purchase.order.form (in egd_purchase_custom)</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//page[@name='products']//field[@name='order_line']"
+                position="attributes"
+            >
+                <attribute
+                    name="attrs"
+                >{'readonly': [('state', 'in', ('done', 'cancel','purchase'))]}</attribute>
+            </xpath>
+            <xpath
+                expr="//page[@name='products']//field[@name='order_line']//field[@name='analytic_distribution']"
+                position="attributes"
+            >
+                <attribute name="required">1</attribute>
+            </xpath>
+            <xpath
+                expr="//page[@name='products']//field[@name='order_line']//field[@name='price_unit']"
+                position="before"
+            >
+                <field
+                    name="egd_target_quantity"
+                    optional="show"
+                    widget="badge"
+                    decoration-success="egd_target_quantity &gt;= product_qty"
+                    decoration-danger="egd_target_quantity &lt; product_qty"
+                />
+            </xpath>
+            <xpath
+                expr="//page[@name='products']//field[@name='order_line']//field[@name='price_unit']"
+                position="after"
+            >
+                <field name="egd_target_above" invisible="1" />
+                <field
+                    name="egd_target_value"
+                    optional="show"
+                    widget="badge"
+                    decoration-success="egd_target_above == False"
+                    decoration-danger="egd_target_above == True"
+                />
+                <field name="egd_target_above" optional="hide" />
+            </xpath>
+
+        </field>
+    </record>
+
+
+
+</odoo>
