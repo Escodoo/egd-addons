@@ -25,6 +25,7 @@
                 position="attributes"
             >
                 <attribute name="required">1</attribute>
+                <attribute name="optional" />
             </xpath>
 
             <!-- Insert 'egd_target_quantity' field after 'product_qty' in 'line_ids'-->
