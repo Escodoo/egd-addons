@@ -1,0 +1,1 @@
+from . import test_l10n_br_cnab_structure_custom
