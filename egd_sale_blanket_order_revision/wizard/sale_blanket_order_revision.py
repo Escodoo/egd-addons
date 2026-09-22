@@ -112,7 +112,12 @@ class SaleBlanketOrderRevisionWizard(models.TransientModel):
     def _copy_blanket_order(self):
         """Duplicate the blanket order while maintaining key values."""
         default_data = self.old_blanket_order_id.default_get([])
-        default_data.update({"name": self._get_next_revision_name()})
+        default_data.update(
+            {
+                "name": self._get_next_revision_name(),
+                "confirmed": True,
+            }
+        )
         return self.old_blanket_order_id.copy(default_data)
 
     def create_revision(self):
