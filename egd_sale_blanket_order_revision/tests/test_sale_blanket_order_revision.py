@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from types import SimpleNamespace
+from unittest import mock
 
 from odoo.exceptions import UserError
 from odoo.tests.common import TransactionCase
@@ -150,6 +151,30 @@ class TestSaleBlanketOrderRevision(TransactionCase):
             wizard
         )
         self.assertEqual(name, "BO-001 (Rev 8)")
+
+    def test_copy_blanket_order_sets_name_and_confirmed(self):
+        old_order = mock.MagicMock()
+        old_order.default_get.return_value = {}
+        old_order.copy.return_value = SimpleNamespace(id=99)
+
+        wizard = SimpleNamespace(
+            old_blanket_order_id=old_order,
+            _get_next_revision_name=lambda: "BO-001 (Rev 2)",
+        )
+
+        new_order = revision_wizard.SaleBlanketOrderRevisionWizard._copy_blanket_order(
+            wizard
+        )
+
+        self.assertEqual(new_order.id, 99)
+        # `confirmed` must be forced to True: it has copy=False on
+        # sale.blanket.order, so without this the revision would be
+        # created in draft. Confirming it later calls action_confirm(),
+        # which overwrites `name` with a new sequence number, discarding
+        # the "(Rev N)" numbering.
+        old_order.copy.assert_called_once_with(
+            {"name": "BO-001 (Rev 2)", "confirmed": True}
+        )
 
     def test_update_blanket_order_lines_with_adjustment(self):
         old_line = FakeWritable(
