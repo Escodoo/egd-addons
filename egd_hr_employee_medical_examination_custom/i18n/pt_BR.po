@@ -10,17 +10,18 @@ msgstr ""
 "PO-Revision-Date: 2026-09-29 14:31+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: egd_hr_employee_medical_examination_custom
 #: model:ir.model,name:egd_hr_employee_medical_examination_custom.model_hr_employee_medical_examination
 msgid "Employee Medical Examination"
-msgstr ""
+msgstr "Exame Médico do Funcionário"
 
 #. module: egd_hr_employee_medical_examination_custom
 #: model:ir.model.fields,field_description:egd_hr_employee_medical_examination_custom.field_hr_employee_medical_examination__egd_expiration_date
 msgid "Expiration Date"
-msgstr ""
+msgstr "Data de Expiração"

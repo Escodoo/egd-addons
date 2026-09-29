@@ -1,0 +1,37 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* egd_import_vehicle_records
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-29 14:31+0000\n"
+"PO-Revision-Date: 2026-09-29 14:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: egd_import_vehicle_records
+#: model:ir.model.fields,field_description:egd_import_vehicle_records.field_fleet_vehicle__address
+msgid "Address"
+msgstr ""
+
+#. module: egd_import_vehicle_records
+#: model:ir.model.fields,field_description:egd_import_vehicle_records.field_fleet_vehicle__hour_location
+msgid "Hour Location"
+msgstr ""
+
+#. module: egd_import_vehicle_records
+#: model:ir.actions.act_window,name:egd_import_vehicle_records.action_view_fleet_vehicle_custom
+#: model:ir.ui.menu,name:egd_import_vehicle_records.menu_fleet_custom
+msgid "Import records"
+msgstr ""
+
+#. module: egd_import_vehicle_records
+#: model:ir.model,name:egd_import_vehicle_records.model_fleet_vehicle
+msgid "Vehicle"
+msgstr ""

@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-17 13:13+0000\n"
-"PO-Revision-Date: 2025-03-17 13:13+0000\n"
+"POT-Creation-Date: 2026-09-29 14:31+0000\n"
+"PO-Revision-Date: 2026-09-29 14:31+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: egd_hr_timesheet_custom
+#. odoo-python
 #: code:addons/egd_hr_timesheet_custom/models/hr_overtime_dsr.py:0
 #, python-format
 msgid "A record with the same Month and Year already exists."
@@ -47,7 +48,6 @@ msgstr ""
 
 #. module: egd_hr_timesheet_custom
 #: model:ir.ui.menu,name:egd_hr_timesheet_custom.menu_timesheet_overtime_dsr
-#: model_terms:ir.ui.view,arch_db:egd_hr_timesheet_custom.hr_overtime_dsr_tree_view
 msgid "DSR Calculation"
 msgstr ""
 
@@ -57,21 +57,19 @@ msgid "DSR Calculation for Overtime"
 msgstr ""
 
 #. module: egd_hr_timesheet_custom
-#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__dsr_count
-msgid "DSR Count"
-msgstr ""
-
-#. module: egd_hr_timesheet_custom
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line__overtime_dsr_factor
 msgid "DSR Factor"
 msgstr ""
 
 #. module: egd_hr_timesheet_custom
-#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line__display_name
-#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_employee__display_name
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__display_name
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_factor__display_name
 msgid "Display Name"
+msgstr ""
+
+#. module: egd_hr_timesheet_custom
+#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__dsr_count
+msgid "Dsr Count"
 msgstr ""
 
 #. module: egd_hr_timesheet_custom
@@ -100,16 +98,12 @@ msgid "HR Overtime Factor"
 msgstr ""
 
 #. module: egd_hr_timesheet_custom
-#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line__id
-#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_employee__id
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__id
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_factor__id
 msgid "ID"
 msgstr ""
 
 #. module: egd_hr_timesheet_custom
-#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line____last_update
-#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_employee____last_update
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr____last_update
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_factor____last_update
 msgid "Last Modified on"
@@ -156,11 +150,6 @@ msgid "Overtime Factor"
 msgstr ""
 
 #. module: egd_hr_timesheet_custom
-#: model_terms:ir.ui.view,arch_db:egd_hr_timesheet_custom.hr_overtime_factor_tree_view
-msgid "Overtime Factors"
-msgstr ""
-
-#. module: egd_hr_timesheet_custom
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line__overtime_rate
 msgid "Overtime Rate"
 msgstr ""
@@ -183,16 +172,12 @@ msgid "Timesheet Cost Overtime"
 msgstr ""
 
 #. module: egd_hr_timesheet_custom
-#: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_account_analytic_line__total_extra_amount
-msgid "Total Extra Amount"
-msgstr ""
-
-#. module: egd_hr_timesheet_custom
 #: model:ir.model.fields,field_description:egd_hr_timesheet_custom.field_hr_overtime_dsr__working_days
 msgid "Working Days"
 msgstr ""
 
 #. module: egd_hr_timesheet_custom
+#. odoo-python
 #: code:addons/egd_hr_timesheet_custom/models/hr_overtime_dsr.py:0
 #, python-format
 msgid "Working days and DSR count must be at least 1."
