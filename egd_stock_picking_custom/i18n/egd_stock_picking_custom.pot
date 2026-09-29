@@ -4,8 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-29 14:32+0000\n"
+"PO-Revision-Date: 2026-09-29 14:32+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -171,6 +173,12 @@ msgstr ""
 #. module: egd_stock_picking_custom
 #: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
 #: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
+msgid "<strong>, </strong>"
+msgstr ""
+
+#. module: egd_stock_picking_custom
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
+#: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
 msgid ""
 "<strong>EXIT GUIDE</strong>\n"
 "                        <br/>"
@@ -202,7 +210,7 @@ msgid "Caution Status:"
 msgstr ""
 
 #. module: egd_stock_picking_custom
-#: model:ir.model.fields,field_description:egd_stock_picking_custom.field_stock_production_lot__egd_certification
+#: model:ir.model.fields,field_description:egd_stock_picking_custom.field_stock_lot__egd_certification
 msgid "Certificate Number"
 msgstr ""
 
@@ -225,27 +233,9 @@ msgid "Departament:"
 msgstr ""
 
 #. module: egd_stock_picking_custom
-#: model:ir.model.fields,field_description:egd_stock_picking_custom.field_stock_picking__display_name
-#: model:ir.model.fields,field_description:egd_stock_picking_custom.field_stock_production_lot__display_name
-msgid "Display Name"
-msgstr ""
-
-#. module: egd_stock_picking_custom
 #: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock
 #: model_terms:ir.ui.view,arch_db:egd_stock_picking_custom.egd_custody_report_stock_equipament_personal
 msgid "Function / Job:"
-msgstr ""
-
-#. module: egd_stock_picking_custom
-#: model:ir.model.fields,field_description:egd_stock_picking_custom.field_stock_picking__id
-#: model:ir.model.fields,field_description:egd_stock_picking_custom.field_stock_production_lot__id
-msgid "ID"
-msgstr ""
-
-#. module: egd_stock_picking_custom
-#: model:ir.model.fields,field_description:egd_stock_picking_custom.field_stock_picking____last_update
-#: model:ir.model.fields,field_description:egd_stock_picking_custom.field_stock_production_lot____last_update
-msgid "Last Modified on"
 msgstr ""
 
 #. module: egd_stock_picking_custom
@@ -255,7 +245,7 @@ msgid "Local:"
 msgstr ""
 
 #. module: egd_stock_picking_custom
-#: model:ir.model,name:egd_stock_picking_custom.model_stock_production_lot
+#: model:ir.model,name:egd_stock_picking_custom.model_stock_lot
 msgid "Lot/Serial"
 msgstr ""
 

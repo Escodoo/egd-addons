@@ -4,21 +4,71 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
+"POT-Creation-Date: 2026-09-29 14:32+0000\n"
+"PO-Revision-Date: 2026-09-29 14:32+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.3.2\n"
 
 #. module: egd_sale_blanket_order_custom
-#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_blanket_order_form
+msgid ""
+"<span class=\"o_stat_text\">Account Analytic Itens\n"
+"                        </span>"
+msgstr ""
+"<span class=\"o_stat_text\">Itens Analíticos\n"
+"                        </span>"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_blanket_order_form
+msgid ""
+"<span class=\"o_stat_text\">Cash Flow Forecast\n"
+"                        </span>"
+msgstr ""
+"<span class=\"o_stat_text\">Previsão de Fluxo de Caixa\n"
+"                        </span>"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_blanket_order_form
+msgid "Account Analytic Itens"
+msgstr "Itens Analíticos"
+
+#. module: egd_sale_blanket_order_custom
+#. odoo-python
+#: code:addons/egd_sale_blanket_order_custom/models/sale_blanket_orders.py:0
+#, python-format
+msgid "Account Analytic Line"
+msgstr "Item Analítico"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__egd_account_analytic_line_count
+msgid "Account Analytic Line Count"
+msgstr "Quantidade de Itens Analíticos"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__amount_total
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__amount_total
+msgid "Amount Total"
+msgstr "Valor Total"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order_line__egd_analytic_account_id
+msgid "Analytic Account"
+msgstr "Conta Analítica"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__egd_account_analytic_line_ids
+msgid "Analytic Line"
+msgstr "Itens Analíticos"
+
+#. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_blanket_order_form
 msgid "Are you sure to remove this order plan?"
 msgstr "Você tem certeza de que deseja remover esse plano de pedido?"
 
@@ -32,6 +82,11 @@ msgstr ""
 #: model:ir.model,name:egd_sale_blanket_order_custom.model_sale_blanket_order
 msgid "Blanket Order"
 msgstr "Pedido Guarda-Chuva"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model,name:egd_sale_blanket_order_custom.model_sale_blanket_order_line
+msgid "Blanket Order Line"
+msgstr "Linha do Pedido Guarda-Chuva"
 
 #. module: egd_sale_blanket_order_custom
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__egd_order_product_ids
@@ -56,6 +111,13 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: egd_sale_blanket_order_custom
+#. odoo-python
+#: code:addons/egd_sale_blanket_order_custom/models/sale_blanket_orders.py:0
+#, python-format
+msgid "Cash Flow Forecast - Sale Blanket Order"
+msgstr "Previsão de Fluxo de Caixa - Pedido Guarda-Chuva"
+
+#. module: egd_sale_blanket_order_custom
 #: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_make_planned_order
 msgid "Create All Remaining Orders"
 msgstr "Criar Todos os Pedidos Restantes"
@@ -72,7 +134,7 @@ msgid "Create Order Plan"
 msgstr "Criar Plano de Pedidos"
 
 #. module: egd_sale_blanket_order_custom
-#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_blanket_order_form
 msgid "Create Order by Plan"
 msgstr "Criar Pedido por Plano"
 
@@ -109,7 +171,6 @@ msgstr "Dia"
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__display_name
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_sale_order_plan__display_name
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__display_name
-#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__display_name
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__display_name
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order__display_name
 msgid "Display Name"
@@ -137,6 +198,16 @@ msgid "Fillig order planning criteria"
 msgstr "Preenchimento de critérios de planejamento de pedidos"
 
 #. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__egd_mis_cash_flow_forecast_line_ids
+msgid "Forecast Line"
+msgstr "Linhas de Previsão"
+
+#. module: egd_sale_blanket_order_custom
+#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__egd_mis_cash_flow_forecast_line_count
+msgid "Forecast Line Count"
+msgstr "Quantidade de Linhas de Previsão"
+
+#. module: egd_sale_blanket_order_custom
 #: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_order_plan_filter
 msgid "Group By"
 msgstr "Agrupar por"
@@ -145,7 +216,6 @@ msgstr "Agrupar por"
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__id
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_sale_order_plan__id
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__id
-#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__id
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan__id
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order__id
 msgid "ID"
@@ -192,7 +262,6 @@ msgstr "Última Parcela"
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product____last_update
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_sale_order_plan____last_update
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service____last_update
-#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order____last_update
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_create_order_plan____last_update
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_make_planned_order____last_update
 msgid "Last Modified on"
@@ -222,6 +291,11 @@ msgid "Last installment will create order use remaining amount"
 msgstr "A última parcela criará um pedido de uso do valor restante"
 
 #. module: egd_sale_blanket_order_custom
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_blanket_order_form
+msgid "MIS Builder Cash Flow Forecast"
+msgstr "Previsão de Fluxo de Caixa (MIS Builder)"
+
+#. module: egd_sale_blanket_order_custom
 #: model:ir.model.fields.selection,name:egd_sale_blanket_order_custom.selection__sale_create_order_plan__interval_type__month
 msgid "Month"
 msgstr "Mês"
@@ -232,12 +306,14 @@ msgid "Next Order"
 msgstr "Próximo Pedido"
 
 #. module: egd_sale_blanket_order_custom
+#. odoo-python
 #: code:addons/egd_sale_blanket_order_custom/models/egd_sale_blanket_order_sale_order_plan.py:0
 #, python-format
 msgid "No matched order line for sale order"
 msgstr "Não há linha de pedido correspondente para pedido de venda"
 
 #. module: egd_sale_blanket_order_custom
+#. odoo-python
 #: code:addons/egd_sale_blanket_order_custom/wizard/sale_create_order_plan.py:0
 #, python-format
 msgid "Number Installment must greater than 1"
@@ -278,16 +354,18 @@ msgid "Plan Date"
 msgstr "Data do Plano"
 
 #. module: egd_sale_blanket_order_custom
+#. odoo-python
 #: code:addons/egd_sale_blanket_order_custom/models/egd_sale_blanket_order_sale_order_plan.py:0
 #, python-format
 msgid ""
-"Plan quantity: %s, exceeds orderable quantity: %s\n"
+"Plan quantity: %(plan_qty)s, exceeds orderable quantity: %(orderable_qty)s\n"
 "Product should be available before creating the order"
 msgstr ""
-"Quantidade planejada: %s, excede a quantidade solicitável: %s\n"
+"Quantidade planejada: %(plan_qty)s, excede a quantidade solicitável: %(orderable_qty)s\n"
 "O produto deve estar disponível antes da criação do pedido"
 
 #. module: egd_sale_blanket_order_custom
+#. odoo-python
 #: code:addons/egd_sale_blanket_order_custom/models/sale_blanket_orders.py:0
 #, python-format
 msgid "Please fill percentage for all order plan lines"
@@ -305,7 +383,7 @@ msgid "Product"
 msgstr "Produto"
 
 #. module: egd_sale_blanket_order_custom
-#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_blanket_order_form
 msgid "Product Cost Targets"
 msgstr "Metas de Custo de Produto"
 
@@ -332,7 +410,7 @@ msgstr "Pedido de Venda"
 
 #. module: egd_sale_blanket_order_custom
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_sale_blanket_order__egd_sale_order_plan_ids
-#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_blanket_order_form
 msgid "Sale Order Plan"
 msgstr "Plano de Pedidos de Vendas"
 
@@ -375,7 +453,7 @@ msgid "Service"
 msgstr "Serviço"
 
 #. module: egd_sale_blanket_order_custom
-#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_blanket_order_form
 msgid "Service Cost Targets"
 msgstr "Metas de Custo de Serviço"
 
@@ -400,8 +478,8 @@ msgstr "Esta porcentagem será usada para calcular a nova quantidade"
 #: model_terms:ir.actions.act_window,help:egd_sale_blanket_order_custom.action_sale_order_plan
 msgid "This view show all available order plan line for reporting purposes"
 msgstr ""
-"Essa visualização mostra todas as linhas de plano de pedido disponíveis para "
-"fins de relatório"
+"Essa visualização mostra todas as linhas de plano de pedido disponíveis para"
+" fins de relatório"
 
 #. module: egd_sale_blanket_order_custom
 #: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_sale_create_order_plan
@@ -409,9 +487,7 @@ msgid "This wizard help you quickly create order plan."
 msgstr "Esse assistente ajuda você a criar rapidamente um plano de pedido."
 
 #. module: egd_sale_blanket_order_custom
-#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_product__amount_total
-#: model:ir.model.fields,field_description:egd_sale_blanket_order_custom.field_egd_sale_blanket_order_service__amount_total
-#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_blanket_order_form
 msgid "Total"
 msgstr "Total"
 
@@ -436,6 +512,7 @@ msgid "Type"
 msgstr "Tipo"
 
 #. module: egd_sale_blanket_order_custom
+#. odoo-python
 #: code:addons/egd_sale_blanket_order_custom/models/sale_blanket_orders.py:0
 #, python-format
 msgid "Use Order Plan selected, but no plan created"
@@ -462,17 +539,11 @@ msgid "Year"
 msgstr "Ano"
 
 #. module: egd_sale_blanket_order_custom
-#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_blanket_order_form
 msgid "⇒ Create Sale Order Plan"
 msgstr "⇒ Criar Plano de Pedido de Venda"
 
 #. module: egd_sale_blanket_order_custom
-#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_order_form_blanket_order_plan
+#: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_custom.view_blanket_order_form
 msgid "⇒ Remove Sale Order Plan"
 msgstr "⇒ Remover Plano de Pedido de venda"
-
-#~ msgid "Order Plan"
-#~ msgstr "Plano de Pedido"
-
-#~ msgid "Use Order Plan"
-#~ msgstr "Usar Plano de Pedido"

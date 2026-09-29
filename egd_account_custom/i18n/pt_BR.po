@@ -1,0 +1,29 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* egd_account_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-29 14:31+0000\n"
+"PO-Revision-Date: 2026-09-29 14:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: egd_account_custom
+#: model:ir.model.fields,field_description:egd_account_custom.field_account_bank_statement_line__egd_invoice_due_date
+#: model:ir.model.fields,field_description:egd_account_custom.field_account_move__egd_invoice_due_date
+#: model:ir.model.fields,field_description:egd_account_custom.field_account_payment__egd_invoice_due_date
+msgid "Full Date Format (Due Date)"
+msgstr "Data de Vencimento por Extenso"
+
+#. module: egd_account_custom
+#: model:ir.model,name:egd_account_custom.model_account_move
+msgid "Journal Entry"
+msgstr "Lançamento de Diário"

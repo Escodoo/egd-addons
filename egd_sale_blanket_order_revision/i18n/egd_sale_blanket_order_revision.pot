@@ -10,141 +10,136 @@ msgstr ""
 "PO-Revision-Date: 2026-09-29 14:32+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: \n"
 
 #. module: egd_sale_blanket_order_revision
 #. odoo-python
 #: code:addons/egd_sale_blanket_order_revision/wizard/sale_blanket_order_revision.py:0
 #, python-format
 msgid "%(base_name)s (Rev %(revision)s)"
-msgstr "%(base_name)s (Rev %(revision)s)"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_revision.field_sale_blanket_order_revision_wizard__adjustment_percentage
 msgid "Adjustment Percentage"
-msgstr "Porcentagem de ajuste"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_revision.field_sale_blanket_order__all_quotations_invoiced
 msgid "All Quotations Invoiced"
-msgstr "Todas as cotações faturadas"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model,name:egd_sale_blanket_order_revision.model_sale_blanket_order
 msgid "Blanket Order"
-msgstr "Pedido Guarda-Chuva"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model,name:egd_sale_blanket_order_revision.model_sale_blanket_order_line
 msgid "Blanket Order Line"
-msgstr "Linhas do Pedido Guarda-Chuva "
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_revision.view_sale_blanket_order_revision_form
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_revision.field_sale_blanket_order_line__contracted_quantity
 msgid "Contracted Quantity"
-msgstr "Quantidade Contratada"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,help:egd_sale_blanket_order_revision.field_sale_blanket_order__revision_count
 msgid "Count of revisions associated with this blanket order."
-msgstr "Contagem de revisões associadas a este pedido programado."
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.actions.act_window,name:egd_sale_blanket_order_revision.action_create_revision_wizard
 msgid "Create Blanket Order Revision"
-msgstr "Criar revisão do Pedido Guarda-Chuva"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_revision.view_sale_blanket_order_revision_form
 msgid "Create New Revision"
-msgstr "Criar nova revisão"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_revision.view_blanket_order_form
 #: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_revision.view_sale_blanket_order_revision_form
 msgid "Create Revision"
-msgstr "Criar Revisão"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_revision.field_sale_blanket_order_revision_wizard__create_uid
 msgid "Created by"
-msgstr "Criado por"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_revision.field_sale_blanket_order_revision_wizard__create_date
 msgid "Created on"
-msgstr "Criado em"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_revision.field_sale_blanket_order_revision_wizard__display_name
 msgid "Display Name"
-msgstr "Nome de exibição"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_revision.field_sale_blanket_order_revision_wizard__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_revision.field_sale_blanket_order_revision_wizard____last_update
 msgid "Last Modified on"
-msgstr "Última modificação em"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_revision.field_sale_blanket_order_revision_wizard__write_uid
 msgid "Last Updated by"
-msgstr "Última atualização por"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_revision.field_sale_blanket_order_revision_wizard__write_date
 msgid "Last Updated on"
-msgstr "Última atualização em"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #. odoo-python
 #: code:addons/egd_sale_blanket_order_revision/wizard/sale_blanket_order_revision.py:0
 #, python-format
 msgid "New revision created: %s"
-msgstr "Nova revisão criada: %s"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_revision.field_sale_blanket_order_revision_wizard__old_blanket_order_id
 msgid "Old Blanket Order"
-msgstr "Pedido Guarda-Chuva Origem"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,help:egd_sale_blanket_order_revision.field_sale_blanket_order_revision_wizard__adjustment_percentage
 msgid ""
 "Percentage to adjust the unit price for each line in the blanket order."
 msgstr ""
-"Porcentagem para ajustar o preço unitário de cada linha do pedido "
-"programado."
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,help:egd_sale_blanket_order_revision.field_sale_blanket_order_revision_wizard__new_blanket_order_id
 msgid "Reference to the newly created blanket order revision."
-msgstr "Referência à revisão do pedido programado recém-criada."
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,help:egd_sale_blanket_order_revision.field_sale_blanket_order_revision_wizard__old_blanket_order_id
 msgid "Reference to the original blanket order before revision."
-msgstr "Referência ao pedido programado original antes da revisão."
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,help:egd_sale_blanket_order_revision.field_sale_blanket_order__revision_wizard_ids
 msgid "References to the revision wizards associated with this blanket order."
 msgstr ""
-"Referências aos assistentes de revisão associados a este Pedido Guarda-Chuva"
-" programado."
 
 #. module: egd_sale_blanket_order_revision
 #. odoo-python
@@ -152,17 +147,17 @@ msgstr ""
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_revision.field_sale_blanket_order_revision_wizard__new_blanket_order_id
 #, python-format
 msgid "Revised Blanket Order"
-msgstr "Pedido Guarda-Chuva revisado"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_revision.field_sale_blanket_order__revision_count
 msgid "Revision Count"
-msgstr "Contagem de revisões"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,field_description:egd_sale_blanket_order_revision.field_sale_blanket_order__revision_wizard_ids
 msgid "Revision Wizards"
-msgstr "Assistentes de revisão"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #. odoo-python
@@ -170,22 +165,22 @@ msgstr "Assistentes de revisão"
 #: model_terms:ir.ui.view,arch_db:egd_sale_blanket_order_revision.view_blanket_order_form
 #, python-format
 msgid "Revisions"
-msgstr "Revisões"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,help:egd_sale_blanket_order_revision.field_sale_blanket_order_line__contracted_quantity
 msgid "Total quantity contracted based on the associated order lines."
-msgstr "Quantidade total contratada com base nas linhas de pedido associadas."
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model.fields,help:egd_sale_blanket_order_revision.field_sale_blanket_order__all_quotations_invoiced
 msgid "True if all related quotations are invoiced."
-msgstr "Verdadeiro se todas as cotações relacionadas forem faturadas."
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #: model:ir.model,name:egd_sale_blanket_order_revision.model_sale_blanket_order_revision_wizard
 msgid "Wizard for Sale Blanket Order Revision"
-msgstr "Assistente para Revisão de Pedidos Guarda-Chuva"
+msgstr ""
 
 #. module: egd_sale_blanket_order_revision
 #. odoo-python
@@ -195,5 +190,3 @@ msgid ""
 "You cannot set this Blanket Order to Draft because it has associated "
 "revisions."
 msgstr ""
-"Você não pode definir este Pedido Guarda-Chuva como rascunho porque ele "
-"possui revisões associadas."
