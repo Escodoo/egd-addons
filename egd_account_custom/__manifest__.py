@@ -3,12 +3,13 @@
 
 {
     "name": "EGD Account Custom",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.1.0",
     "license": "AGPL-3",
     "author": "Escodoo",
     "website": "https://github.com/Escodoo/egd-addons",
     "depends": ["account"],
     "data": [
         "views/account_move.xml",
+        "views/account_move_line.xml",
     ],
 }
