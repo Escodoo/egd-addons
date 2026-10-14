@@ -1,0 +1,172 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* egd_l10n_br_nfse_obra_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__civil_construction_art
+msgid "ART"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__active
+msgid "Active"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields.selection,name:egd_l10n_br_nfse_obra_custom.selection__l10n_br_fiscal_obra__identification_type__address
+msgid "Address"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__cno_cei
+#: model:ir.model.fields.selection,name:egd_l10n_br_nfse_obra_custom.selection__l10n_br_fiscal_obra__identification_type__cno_cei
+msgid "CNO/CEI"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,help:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__cno_cei
+msgid "Cadastro Nacional de Obras / Cadastro Específico do INSS"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,help:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__property_registration
+msgid ""
+"Code issued by the City Hall to identify the construction site (inscrição "
+"imobiliária fiscal), used for property tax (IPTU) purposes."
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__company_id
+msgid "Company"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__street_number2
+msgid "Complement"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__district
+msgid "District"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model,name:egd_l10n_br_nfse_obra_custom.model_focusnfe_nfse_nacional
+msgid "FocusNFE NFSe Nacional"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__id
+msgid "ID"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__identification_type
+msgid "Identification Type"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model,name:egd_l10n_br_nfse_obra_custom.model_l10n_br_fiscal_document
+msgid "Informações de exportação"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__name
+msgid "Name"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__street_number
+msgid "Number"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_account_bank_statement_line__obra_id
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_account_move__obra_id
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_account_payment__obra_id
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_document__obra_id
+msgid "Obra"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model,name:egd_l10n_br_nfse_obra_custom.model_l10n_br_fiscal_obra
+msgid "Obra (Construction Site)"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.actions.act_window,name:egd_l10n_br_nfse_obra_custom.l10n_br_fiscal_obra_action
+#: model:ir.ui.menu,name:egd_l10n_br_nfse_obra_custom.l10n_br_fiscal_obra_menu
+msgid "Obras"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__property_registration
+#: model:ir.model.fields.selection,name:egd_l10n_br_nfse_obra_custom.selection__l10n_br_fiscal_obra__identification_type__property_registration
+msgid "Property Registration"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_focusnfe_nfse_nacional__smart_search
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_document__smart_search
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__smart_search
+msgid "Smart Search"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__street_name
+msgid "Street"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,help:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__identification_type
+msgid ""
+"The Sistema Nacional NFS-e obra group only accepts one of these three ways "
+"to identify the construction site at a time (cObra, inscImobFisc or end are "
+"an xs:choice in the DPS schema). This selects which one is sent."
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__zip
+msgid "Zip"
+msgstr ""

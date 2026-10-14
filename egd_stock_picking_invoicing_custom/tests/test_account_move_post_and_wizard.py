@@ -42,10 +42,13 @@ class TestAccountMovePostAndWizard(TransactionCase):
         )
 
     def _create_sale_with_production_date(self, production_date):
+        fiscal_operation = self.env.ref("l10n_br_fiscal.fo_venda")
+        fiscal_operation_line = self.env.ref("l10n_br_fiscal.fo_venda_venda")
         sale_order = self.env["sale.order"].create(
             {
                 "partner_id": self.partner.id,
                 "production_date": production_date,
+                "fiscal_operation_id": fiscal_operation.id,
                 "order_line": [
                     (
                         0,
@@ -55,6 +58,8 @@ class TestAccountMovePostAndWizard(TransactionCase):
                             "product_id": self.product.id,
                             "product_uom_qty": 1.0,
                             "price_unit": 100.0,
+                            "fiscal_operation_id": fiscal_operation.id,
+                            "fiscal_operation_line_id": fiscal_operation_line.id,
                         },
                     )
                 ],

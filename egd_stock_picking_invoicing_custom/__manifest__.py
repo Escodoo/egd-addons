@@ -9,7 +9,7 @@
     "license": "AGPL-3",
     "author": "Escodoo",
     "website": "https://github.com/Escodoo/egd-addons",
-    "depends": ["stock_picking_invoicing"],
+    "depends": ["stock_picking_invoicing", "l10n_br_sale"],
     "data": [
         "views/account_move.xml",
         "views/sale_order.xml",
