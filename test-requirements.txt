@@ -1,0 +1,1 @@
+odoo14-addon-mis-builder-cash-flow-forecast-integration @ git+https://github.com/Escodoo/account-addons.git@14.0#subdirectory=setup/mis_builder_cash_flow_forecast_integration
