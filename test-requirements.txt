@@ -1,0 +1,3 @@
+odoo14-addon-mis_builder_cash_flow_forecast_integration @ git+https://github.com/Escodoo/account-addons.git@14.0#subdirectory=setup/mis_builder_cash_flow_forecast_integration
+odoo14-addon-supplier_quality_index @ git+https://github.com/Escodoo/purchase-addons.git@14.0#subdirectory=setup/supplier_quality_index
+odoo14-addon-stock_request_purchase_request @ git+https://github.com/OCA/stock-logistics-warehouse.git@refs/pull/1886/head#subdirectory=setup/stock_request_purchase_request
