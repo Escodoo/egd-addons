@@ -63,6 +63,19 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - name: Check out the unavailable Escodoo dependency
+        uses: actions/checkout@v4
+        with:
+          repository: Escodoo/account-addons
+          # Pinned source from the 14.0 branch.
+          ref: 6786889d6791d317a72304aff3d876115b7cb81b
+          path: .ci-deps/account-addons
+          persist-credentials: false
+      - name: Install the Escodoo cash flow integration
+        # Install only this addon. oca_install_addons resolves its dependencies.
+        run: >-
+          pip install --no-deps
+          ./.ci-deps/account-addons/setup/mis_builder_cash_flow_forecast_integration
       - name: Install addons and dependencies
         run: oca_install_addons
       - name: Check licenses
