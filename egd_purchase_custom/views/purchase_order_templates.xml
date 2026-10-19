@@ -11,5 +11,10 @@
             <p t-field="o.payment_term_id.name" class="m-0" />
         </div>
     </xpath>
+    <xpath expr="//t[@t-set='taxes']" position="attributes">
+        <attribute
+                name="t-value"
+            >', '.join(dict.fromkeys([(tax.description or tax.name) for tax in line.taxes_id]))</attribute>
+    </xpath>
   </template>
 </odoo>
