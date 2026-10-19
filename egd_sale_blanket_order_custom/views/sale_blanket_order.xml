@@ -170,7 +170,10 @@
 
             </xpath>
 
-            <xpath expr="//field[@name='amount_total']" position="after">
+            <!-- amount_total is wrapped in a div with its label outside it:
+                 add the cost targets at the end of the footer so that they get
+                 their own labels -->
+            <xpath expr="//group[hasclass('oe_subtotal_footer')]" position="inside">
 
                 <field
                     name="egd_total_product_costs"
