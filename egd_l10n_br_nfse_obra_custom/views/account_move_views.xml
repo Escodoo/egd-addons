@@ -10,7 +10,11 @@
         <field name="inherit_id" ref="l10n_br_account.invoice_form" />
         <field name="arch" type="xml">
             <xpath expr="//div[@name='journal_div']" position="after">
-                <field name="obra_id" domain="[('company_id', '=', company_id)]" />
+                <field
+                    name="obra_id"
+                    domain="[('company_id', '=', company_id)]"
+                    attrs="{'invisible': ['|', ('move_type', 'not in', ('out_invoice', 'out_refund')), ('document_type', '!=', 'SE')]}"
+                />
             </xpath>
         </field>
     </record>
