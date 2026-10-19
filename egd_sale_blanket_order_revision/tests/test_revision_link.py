@@ -86,3 +86,49 @@ class TestRevisionLink(TransactionCase):
         self.assertEqual(revision_2.revised_from_id, revision_1)
         self.assertFalse(orphan.revised_from_id)
         self.assertEqual(original.revision_count, 1)
+
+    def test_ambiguous_names_are_not_linked(self):
+        self._create_blanket_order(name="BO/DUPLICATE")
+        self._create_blanket_order(name="BO/DUPLICATE")
+        revision = self._create_blanket_order(name="BO/DUPLICATE (Rev 1)")
+        self.env["sale.blanket.order"]._link_revisions_by_name()
+        self.assertFalse(revision.revised_from_id)
+
+    def test_existing_wizard_takes_priority_over_duplicate_names(self):
+        original = self._create_blanket_order(name="BO/WIZARD")
+        self._create_blanket_order(name="BO/WIZARD")
+        revision = self._create_blanket_order(name="BO/WIZARD (Rev 1)")
+        wizard = self.Wizard.create(
+            {
+                "old_blanket_order_id": original.id,
+                "new_blanket_order_id": revision.id,
+            }
+        )
+        self.env["sale.blanket.order"]._link_revisions_by_name()
+        self.assertEqual(revision.revised_from_id, original)
+        wizard.unlink()
+        self.env["sale.blanket.order"]._link_revisions_by_name()
+        self.assertEqual(revision.revised_from_id, original)
+
+    def test_conflicting_wizards_are_not_resolved_by_name(self):
+        first = self._create_blanket_order(name="BO/CONFLICT")
+        second = self._create_blanket_order(name="BO/OTHER")
+        revision = self._create_blanket_order(name="BO/CONFLICT (Rev 1)")
+        for original in first | second:
+            self.Wizard.create(
+                {
+                    "old_blanket_order_id": original.id,
+                    "new_blanket_order_id": revision.id,
+                }
+            )
+        self.env["sale.blanket.order"]._link_revisions_by_name()
+        self.assertFalse(revision.revised_from_id)
+
+    def test_migration_preserves_existing_link(self):
+        original = self._create_blanket_order(name="BO/EXISTING")
+        revision = self._create_blanket_order(
+            name="BO/EXISTING (Rev 1)", revised_from_id=original.id
+        )
+        self._create_blanket_order(name="BO/EXISTING")
+        self.env["sale.blanket.order"]._link_revisions_by_name()
+        self.assertEqual(revision.revised_from_id, original)

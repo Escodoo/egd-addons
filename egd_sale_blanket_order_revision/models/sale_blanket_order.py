@@ -1,10 +1,13 @@
 # Copyright 2025 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+import logging
 import re
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
+
+_logger = logging.getLogger(__name__)
 
 
 class SaleBlanketOrder(models.Model):
@@ -68,17 +71,39 @@ class SaleBlanketOrder(models.Model):
 
     @api.model
     def _link_revisions_by_name(self):
-        """Set `revised_from_id` on the revisions without it, from their names:
-        "<name> (Rev N)" is a revision of "<name> (Rev N-1)", or of "<name>"
-        for the first revision. When several blanket orders have the expected
-        name, the last one created before the revision is used.
-        """
+        """Recover surviving wizard links, then use unambiguous names."""
+        wizards = self.env["sale.blanket.order.revision.wizard"].search(
+            [
+                ("new_blanket_order_id", "!=", False),
+                ("old_blanket_order_id", "!=", False),
+                ("new_blanket_order_id.revised_from_id", "=", False),
+            ]
+        )
+        wizard_revisions = wizards.mapped("new_blanket_order_id")
+        for revision in wizard_revisions:
+            originals = wizards.filtered_domain(
+                [("new_blanket_order_id", "=", revision.id)]
+            ).mapped("old_blanket_order_id")
+            if (
+                len(originals) == 1
+                and originals.company_id == revision.company_id
+                and originals.id < revision.id
+            ):
+                revision.revised_from_id = originals
+            else:
+                _logger.warning(
+                    "Revision %s has conflicting or invalid wizard links; "
+                    "manual verification is required",
+                    revision.id,
+                )
         pattern = re.compile(r"^(?P<base>.*?)\s*\(Rev (?P<number>\d+)\)$")
         revisions = self.search(
             [("name", "like", "(Rev "), ("revised_from_id", "=", False)],
             order="id",
         )
         for revision in revisions:
+            if revision in wizard_revisions:
+                continue
             match = pattern.match(revision.name)
             if not match:
                 continue
@@ -91,11 +116,18 @@ class SaleBlanketOrder(models.Model):
                     ("id", "<", revision.id),
                     ("company_id", "=", revision.company_id.id),
                 ],
-                order="id desc",
-                limit=1,
+                limit=2,
             )
-            if previous:
+            if len(previous) == 1:
                 revision.revised_from_id = previous
+            elif previous:
+                _logger.warning(
+                    "Revision %s has multiple predecessors named %r in company %s; "
+                    "manual verification is required",
+                    revision.id,
+                    previous_name,
+                    revision.company_id.id,
+                )
 
     def action_view_revisions(self):
         """Open a window to view all revisions of the blanket order."""
