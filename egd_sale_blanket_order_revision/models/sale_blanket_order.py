@@ -1,6 +1,8 @@
 # Copyright 2025 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+import re
+
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
@@ -13,6 +15,20 @@ class SaleBlanketOrder(models.Model):
         inverse_name="old_blanket_order_id",
         string="Revision Wizards",
         help="References to the revision wizards associated with this blanket order.",
+    )
+    revised_from_id = fields.Many2one(
+        comodel_name="sale.blanket.order",
+        string="Revised From",
+        readonly=True,
+        copy=False,
+        index=True,
+        help="Blanket order this one is a revision of.",
+    )
+    revision_ids = fields.One2many(
+        comodel_name="sale.blanket.order",
+        inverse_name="revised_from_id",
+        string="Revisions",
+        help="Revisions created from this blanket order.",
     )
     revision_count = fields.Integer(
         compute="_compute_revision_count",
@@ -34,16 +50,58 @@ class SaleBlanketOrder(models.Model):
             else:
                 record.all_quotations_invoiced = False
 
-    @api.depends("revision_wizard_ids")
+    @api.depends("revision_ids")
     def _compute_revision_count(self):
         for record in self:
-            record.revision_count = len(record.revision_wizard_ids)
+            record.revision_count = len(record.revision_ids)
+
+    def _get_revision_number(self):
+        """Return how many revisions separate this blanket order from the
+        original one (0 for the original blanket order)."""
+        self.ensure_one()
+        number = 0
+        order = self.revised_from_id
+        while order:
+            number += 1
+            order = order.revised_from_id
+        return number
+
+    @api.model
+    def _link_revisions_by_name(self):
+        """Set `revised_from_id` on the revisions without it, from their names:
+        "<name> (Rev N)" is a revision of "<name> (Rev N-1)", or of "<name>"
+        for the first revision. When several blanket orders have the expected
+        name, the last one created before the revision is used.
+        """
+        pattern = re.compile(r"^(?P<base>.*?)\s*\(Rev (?P<number>\d+)\)$")
+        revisions = self.search(
+            [("name", "like", "(Rev "), ("revised_from_id", "=", False)],
+            order="id",
+        )
+        for revision in revisions:
+            match = pattern.match(revision.name)
+            if not match:
+                continue
+            number = int(match.group("number"))
+            base = match.group("base")
+            previous_name = base if number == 1 else f"{base} (Rev {number - 1})"
+            previous = self.search(
+                [
+                    ("name", "=", previous_name),
+                    ("id", "<", revision.id),
+                    ("company_id", "=", revision.company_id.id),
+                ],
+                order="id desc",
+                limit=1,
+            )
+            if previous:
+                revision.revised_from_id = previous
 
     def action_view_revisions(self):
         """Open a window to view all revisions of the blanket order."""
         self.ensure_one()
 
-        revision_ids = self.revision_wizard_ids.mapped("new_blanket_order_id.id")
+        revision_ids = self.revision_ids.ids
 
         if not revision_ids:
             return {"type": "ir.actions.act_window_close"}
@@ -59,7 +117,7 @@ class SaleBlanketOrder(models.Model):
     def set_to_draft(self):
         """Restrict setting the order to draft if there are associated revisions."""
         for record in self:
-            if record.revision_wizard_ids:
+            if record.revision_ids:
                 raise UserError(
                     _(
                         "You cannot set this Blanket Order to Draft because "

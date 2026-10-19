@@ -38,25 +38,13 @@ class SaleBlanketOrderRevisionWizard(models.TransientModel):
         return defaults
 
     def _get_revision_count(self):
+        """Return the number of the revision to create.
+
+        The link between a revision and the blanket order it comes from is
+        stored on the blanket order itself (`revised_from_id`): the wizard is
+        a transient record, removed by the vacuum cleaner.
         """
-        Counts how many revisions have been made for this blanket order.
-        If `old_blanket_order_id` appears in previous revisions, increment the count.
-        """
-        count = 1  # Default revision count starts at 1
-
-        # Check if the current blanket order has been revised before
-        previous_revisions = (
-            self.env["sale.blanket.order.revision.wizard"]
-            .sudo()
-            .search([("new_blanket_order_id", "=", self.old_blanket_order_id.id)])
-        )
-
-        if previous_revisions:
-            count += (
-                previous_revisions._get_revision_count()
-            )  # Recursively count previous revisions
-
-        return count
+        return self.old_blanket_order_id._get_revision_number() + 1
 
     def _get_next_revision_name(self):
         """
@@ -126,6 +114,7 @@ class SaleBlanketOrderRevisionWizard(models.TransientModel):
         for rec in self:
             new_blanket_order = rec._copy_blanket_order()
             rec.new_blanket_order_id = new_blanket_order.id
+            new_blanket_order.revised_from_id = rec.old_blanket_order_id
 
             # Link revision wizard to original blanket order
             rec.old_blanket_order_id.write({"revision_wizard_ids": [(4, rec.id)]})

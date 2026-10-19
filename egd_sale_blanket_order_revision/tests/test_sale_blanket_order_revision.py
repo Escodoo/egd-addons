@@ -15,16 +15,6 @@ from odoo.addons.egd_sale_blanket_order_revision.wizard import (
 )
 
 
-class FakeRevisionLinks:
-    def __init__(self, new_ids):
-        self._new_ids = new_ids
-
-    def mapped(self, field_name):
-        if field_name == "new_blanket_order_id.id":
-            return self._new_ids
-        return []
-
-
 class FakeWritable:
     def __init__(self, **values):
         for key, value in values.items():
@@ -36,38 +26,6 @@ class FakeWritable:
             return True
 
         self.write = _write
-
-
-class FakeWizardModel:
-    def __init__(self, chain_map):
-        self.chain_map = chain_map
-
-    def sudo(self):
-        return self
-
-    def search(self, domain):
-        target_id = domain[0][2]
-        return self.chain_map.get(target_id)
-
-
-class FakeEnv:
-    def __init__(self, chain_map):
-        self.chain_map = chain_map
-
-    def __getitem__(self, model_name):
-        if model_name == "sale.blanket.order.revision.wizard":
-            return FakeWizardModel(self.chain_map)
-        raise KeyError(model_name)
-
-
-class FakeRevisionWizard:
-    _get_revision_count = (
-        revision_wizard.SaleBlanketOrderRevisionWizard._get_revision_count
-    )
-
-    def __init__(self, old_id, env):
-        self.old_blanket_order_id = SimpleNamespace(id=old_id)
-        self.env = env
 
 
 class TestSaleBlanketOrderRevision(TransactionCase):
@@ -100,7 +58,7 @@ class TestSaleBlanketOrderRevision(TransactionCase):
         self.assertFalse(no_quotation.all_quotations_invoiced)
 
     def test_compute_revision_count(self):
-        record = SimpleNamespace(revision_wizard_ids=[1, 2, 3], revision_count=0)
+        record = SimpleNamespace(revision_ids=[1, 2, 3], revision_count=0)
 
         SaleBlanketOrder._compute_revision_count([record])
 
@@ -108,7 +66,7 @@ class TestSaleBlanketOrderRevision(TransactionCase):
 
     def test_action_view_revisions(self):
         order_with_revisions = SimpleNamespace(
-            revision_wizard_ids=FakeRevisionLinks([11, 12]),
+            revision_ids=SimpleNamespace(ids=[11, 12]),
             ensure_one=lambda: True,
         )
 
@@ -117,30 +75,25 @@ class TestSaleBlanketOrderRevision(TransactionCase):
         self.assertEqual(action["domain"], [("id", "in", [11, 12])])
 
         order_without_revisions = SimpleNamespace(
-            revision_wizard_ids=FakeRevisionLinks([]),
+            revision_ids=SimpleNamespace(ids=[]),
             ensure_one=lambda: True,
         )
         close_action = SaleBlanketOrder.action_view_revisions(order_without_revisions)
         self.assertEqual(close_action["type"], "ir.actions.act_window_close")
 
     def test_set_to_draft_blocked_when_has_revisions(self):
-        record = SimpleNamespace(revision_wizard_ids=[1])
+        record = SimpleNamespace(revision_ids=[1])
         with self.assertRaises(UserError):
             SaleBlanketOrder.set_to_draft([record])
 
-    def test_get_revision_count_recursive_chain(self):
-        chain = {}
-        env = FakeEnv(chain)
-        first = FakeRevisionWizard(old_id=10, env=env)
-        second = FakeRevisionWizard(old_id=20, env=env)
-        third = FakeRevisionWizard(old_id=30, env=env)
-        chain[10] = None
-        chain[20] = first
-        chain[30] = second
-
-        self.assertEqual(first._get_revision_count(), 1)
-        self.assertEqual(second._get_revision_count(), 2)
-        self.assertEqual(third._get_revision_count(), 3)
+    def test_get_revision_count(self):
+        wizard = SimpleNamespace(
+            old_blanket_order_id=SimpleNamespace(_get_revision_number=lambda: 2)
+        )
+        count = revision_wizard.SaleBlanketOrderRevisionWizard._get_revision_count(
+            wizard
+        )
+        self.assertEqual(count, 3)
 
     def test_get_next_revision_name(self):
         wizard = SimpleNamespace(

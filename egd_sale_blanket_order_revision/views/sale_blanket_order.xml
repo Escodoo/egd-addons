@@ -10,7 +10,7 @@
 
             <!-- Hidden Fields for Tracking Revisions -->
             <xpath expr="//field[@name='validity_date']" position="after">
-                <field name="revision_wizard_ids" invisible="1" />
+                <field name="revised_from_id" invisible="1" />
                 <field name="revision_count" invisible="1" />
                 <field name="all_quotations_invoiced" invisible="1" />
             </xpath>
