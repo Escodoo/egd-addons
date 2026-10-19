@@ -12,10 +12,6 @@ class PurchaseOrderLine(models.Model):
         string="Target Unit Price", compute="_compute_egd_target"
     )
 
-    egd_target_quantity = fields.Float(
-        string="Target Quantity", compute="_compute_egd_target"
-    )
-
     egd_target_above = fields.Boolean(
         string="Target Above",
         compute="_compute_egd_target",
@@ -34,7 +30,6 @@ class PurchaseOrderLine(models.Model):
             price_unit = 0
             account_analytic = False
             target_above = False
-            target_quantity = 0
             if record.product_id:
                 if record.account_analytic_id:
                     account_analytic = record.account_analytic_id
@@ -69,13 +64,10 @@ class PurchaseOrderLine(models.Model):
                         )
                         if product:
                             price_unit = product.price_unit
-                            target_quantity = product.quantity
                         elif service:
                             price_unit = service.price_unit
-                            target_quantity = service.quantity
 
             record.egd_target_value = price_unit
-            record.egd_target_quantity = target_quantity
             if record.price_unit > price_unit:
                 target_above = True
             record.egd_target_above = target_above

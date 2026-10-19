@@ -52,12 +52,13 @@
 
             <!-- Insert 'egd_target_quantity' field after 'product_qty' in the tree view -->
             <xpath expr="//tree//field[@name='product_qty']" position="after">
+                <field name="egd_product_quantity_requested" optional="hide" />
                 <field
                     name="egd_target_quantity"
                     optional="show"
                     widget="badge"
-                    decoration-success="egd_target_quantity &gt;= product_qty"
-                    decoration-danger="egd_target_quantity &lt; product_qty"
+                    decoration-success="egd_target_quantity &gt;= egd_product_quantity_requested"
+                    decoration-danger="egd_target_quantity &lt; egd_product_quantity_requested"
                 />
             </xpath>
 
