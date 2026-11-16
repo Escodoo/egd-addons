@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 - TODAY, Wesley Oliveira <wesley.oliveira@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="stock_request_order_form_view">
+        <field name="name">stock.request.order.form (in egd_purchase_custom)</field>
+        <field name="model">stock.request.order</field>
+        <field
+            name="inherit_id"
+            ref="stock_request_analytic.stock_request_order_form"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//group//field[@name='company_id']" position="after">
+                <xpath
+                    expr="//field[@name='default_analytic_account_id']"
+                    position="move"
+                />
+            </xpath>
+            <xpath
+                expr="//field[@name='default_analytic_account_id']"
+                position="attributes"
+            >
+                <attribute name="required">1</attribute>
+            </xpath>
+            <xpath
+                expr="//field[@name='stock_request_ids']/tree/field[@name='analytic_distribution']"
+                position="attributes"
+            >
+                <attribute name="readonly">1</attribute>
+                <attribute name="required">1</attribute>
+                <attribute name="force_save">1</attribute>
+                <attribute name="widget">analytic_distribution</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
