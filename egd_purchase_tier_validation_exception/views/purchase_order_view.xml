@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="purchase_order_form_tier_validation_exception" model="ir.ui.view">
+        <field
+            name="name"
+        >purchase.order.form (in egd_purchase_tier_validation_exception)</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="l10n_br_purchase.l10n_br_purchase_order_form" />
+        <field name="arch" type="xml">
+            <!--
+                order_line itself is unlocked for records already under Tier
+                Validation via the tier.validation.exception data record, so
+                that qty_received (the only field we actually want editable
+                in that situation) can be changed at all. price_unit has no
+                state-based readonly of its own, so without this it would
+                also become editable once order_line is unlocked - we add
+                back a readonly condition tied to the parent's review_ids so
+                it stays locked, matching product_id/product_uom, which
+                already keep their own 'purchase' state readonly untouched.
+            -->
+            <!--
+                review_ids is only referenced below via parent.review_ids
+                inside order_line's sub-form; Odoo's view validator requires
+                the field to also be declared on the main form itself.
+            -->
+            <xpath expr="//field[@name='order_line']" position="before">
+                <field name="review_ids" invisible="1" />
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']/form//field[@name='price_unit']"
+                position="attributes"
+            >
+                <attribute
+                    name="attrs"
+                >{'readonly': ['|', ('qty_invoiced', '!=', 0), ('parent.review_ids', '!=', [])], 'required': True}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
