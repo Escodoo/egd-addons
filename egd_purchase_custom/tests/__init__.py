@@ -1,1 +1,2 @@
 from . import test_purchase_order_line_egd_target
+from . import test_purchase_report_taxes
