@@ -52,6 +52,25 @@
         </field>
     </record>
 
-
-
+    <!-- Priority 99: applied after purchase_analytic_tag adds analytic_tag_ids -->
+    <record model="ir.ui.view" id="purchase_order_form_analytic_view">
+        <field name="name">purchase.order.form analytic (in egd_purchase_custom)</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='order_line']/tree/field[@name='analytic_distribution']"
+                position="attributes"
+            >
+                <attribute name="optional">show</attribute>
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']/tree/field[@name='analytic_tag_ids']"
+                position="attributes"
+            >
+                <attribute name="optional">show</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>
