@@ -5,12 +5,13 @@
     "name": "Egd Stock Custom",
     "summary": """
         EGD Stock Custom""",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "license": "AGPL-3",
     "author": "Escodoo",
     "website": "https://github.com/Escodoo/egd-addons",
-    "depends": ["stock"],
+    "depends": ["stock", "stock_request_analytic"],
     "data": [
         "views/stock_picking_views.xml",
+        "views/stock_request_order_views.xml",
     ],
 }
