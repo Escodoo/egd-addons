@@ -56,3 +56,16 @@ class TestAccountMove(TransactionCase):
         move.invoice_user_id = self.other_user
         move._compute_invoice_default_sale_person()
         self.assertEqual(move.invoice_user_id, self.other_user)
+
+    def test_journal_entry_stays_without_salesperson(self):
+        account = self.env["account.account"].search([], limit=1)
+        move = self.env["account.move"].create(
+            {
+                "move_type": "entry",
+                "line_ids": [
+                    (0, 0, {"name": "debit", "debit": 100, "account_id": account.id}),
+                    (0, 0, {"name": "credit", "credit": 100, "account_id": account.id}),
+                ],
+            }
+        )
+        self.assertFalse(move.invoice_user_id)

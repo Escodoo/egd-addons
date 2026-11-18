@@ -16,10 +16,11 @@ class AccountMove(models.Model):
 
     @api.depends("move_type")
     def _compute_invoice_default_sale_person(self):
-        # The core implementation only defaults the salesperson to the
-        # current user for sale documents, clearing it otherwise. We want
-        # the same default-if-empty behavior for vendor bills too, so we
-        # don't call super() here (it would wipe the value before we can
-        # preserve it).
+        # Capture the value before super() wipes it for non-sale documents,
+        # so we can still preserve a manually set salesperson on bills.
+        previous_users = {move.id: move.invoice_user_id for move in self}
+        res = super()._compute_invoice_default_sale_person()
         for move in self:
-            move.invoice_user_id = move.invoice_user_id or self.env.user
+            if move.is_purchase_document(include_receipts=True):
+                move.invoice_user_id = previous_users[move.id] or self.env.user
+        return res
