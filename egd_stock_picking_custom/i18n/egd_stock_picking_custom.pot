@@ -18,8 +18,8 @@ msgstr ""
 #. module: egd_stock_picking_custom
 #: model:ir.actions.report,print_report_name:egd_stock_picking_custom.action_egd_custody_report
 msgid ""
-"'Caution - %s - %s' % (object.partner_id.name or\n"
-"                '', object.name)"
+"'Caution - %s - %s' % (object.egd_responsible_id.name or\n"
+"                object.partner_id.name or '', object.name)"
 msgstr ""
 
 #. module: egd_stock_picking_custom
