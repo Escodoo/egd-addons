@@ -70,4 +70,22 @@
 
         </field>
     </record>
+
+    <!-- Priority 99: applied after purchase_request_analytic_tag adds analytic_tag_ids -->
+    <record model="ir.ui.view" id="purchase_request_form_analytic_view">
+        <field
+            name="name"
+        >purchase.request.form analytic (in egd_purchase_request_custom)</field>
+        <field name="model">purchase.request</field>
+        <field name="inherit_id" ref="purchase_request.view_purchase_request_form" />
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='line_ids']/tree/field[@name='analytic_tag_ids']"
+                position="attributes"
+            >
+                <attribute name="optional">show</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>

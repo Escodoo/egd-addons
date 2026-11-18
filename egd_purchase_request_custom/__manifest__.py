@@ -5,11 +5,15 @@
     "name": "Egd Purchase Request Custom",
     "summary": """
         EGD Purchase Request Custom""",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "license": "AGPL-3",
     "author": "Escodoo",
     "website": "https://github.com/Escodoo/egd-addons",
-    "depends": ["purchase_request", "egd_sale_blanket_order_custom"],
+    "depends": [
+        "purchase_request",
+        "purchase_request_analytic_tag",
+        "egd_sale_blanket_order_custom",
+    ],
     "data": [
         "views/purchase_request_view.xml",
         "views/purchase_request_line.xml",

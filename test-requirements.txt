@@ -3,3 +3,5 @@ odoo-addon-mis_builder_cash_flow_forecast_integration @ git+https://github.com/E
 odoo-addon-supplier_quality_index @ git+https://github.com/Escodoo/purchase-addons.git@16.0#subdirectory=setup/supplier_quality_index
 odoo-addon-stock_request_purchase_request @ git+https://github.com/OCA/stock-logistics-warehouse.git@refs/pull/2511/head#subdirectory=setup/stock_request_purchase_request
 odoo-addon-stock_request_analytic @ git+https://github.com/OCA/stock-logistics-warehouse.git@refs/pull/2497/head#subdirectory=setup/stock_request_analytic
+# purchase_request_analytic_tag dependency
+odoo-addon-purchase_request_analytic_tag @ git+https://github.com/OCA/account-analytic.git@refs/pull/904/head#subdirectory=setup/purchase_request_analytic_tag
