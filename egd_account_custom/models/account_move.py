@@ -1,7 +1,7 @@
 # Copyright 2024 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class AccountMove(models.Model):
@@ -13,3 +13,14 @@ class AccountMove(models.Model):
         store=True,
         readonly=True,
     )
+
+    @api.depends("move_type")
+    def _compute_invoice_default_sale_person(self):
+        # Capture the value before super() wipes it for non-sale documents,
+        # so we can still preserve a manually set salesperson on bills.
+        previous_users = {move.id: move.invoice_user_id for move in self}
+        res = super()._compute_invoice_default_sale_person()
+        for move in self:
+            if move.is_purchase_document(include_receipts=True):
+                move.invoice_user_id = previous_users[move.id] or self.env.user
+        return res
