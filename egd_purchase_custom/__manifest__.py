@@ -14,6 +14,7 @@
         "egd_sale_blanket_order_custom",
         "stock_request_analytic",
         "stock_request_purchase_request",
+        "l10n_br_purchase",
     ],
     "data": [
         "views/purchase_order_line.xml",

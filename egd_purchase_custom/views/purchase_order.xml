@@ -7,6 +7,7 @@
         <field name="name">purchase.order.form (in egd_purchase_custom)</field>
         <field name="model">purchase.order</field>
         <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="priority">120</field>
         <field name="arch" type="xml">
             <xpath
                 expr="//page[@name='products']//field[@name='order_line']"
@@ -47,6 +48,14 @@
                     decoration-danger="egd_target_above == True"
                 />
                 <field name="egd_target_above" optional="hide" />
+            </xpath>
+            <xpath expr="//field[@name='amount_other_value']" position="after">
+                <field
+                    name="amount_financial_total"
+                    widget="monetary"
+                    string="Total"
+                    options="{'currency_field': 'currency_id'}"
+                />
             </xpath>
 
         </field>
