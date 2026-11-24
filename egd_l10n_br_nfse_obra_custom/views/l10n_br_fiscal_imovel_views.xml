@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright 2026 - TODAY, Escodoo
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="l10n_br_fiscal_imovel_view_tree" model="ir.ui.view">
+        <field name="name">l10n_br_fiscal.imovel.tree</field>
+        <field name="model">l10n_br_fiscal.imovel</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="street_name" />
+                <field name="street_number" />
+                <field name="district" />
+                <field name="zip" />
+                <field name="city_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="l10n_br_fiscal_imovel_view_form" model="ir.ui.view">
+        <field name="name">l10n_br_fiscal.imovel.form</field>
+        <field name="model">l10n_br_fiscal.imovel</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                            />
+                            <field name="property_registration" />
+                            <field name="cib" />
+                        </group>
+                        <group>
+                            <field name="street_name" />
+                            <field name="street_number" />
+                            <field name="street_number2" />
+                            <field name="district" />
+                            <field name="zip" />
+                            <field
+                                name="city_id"
+                                domain="[('state_id.country_id.code', '=', 'BR')]"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="l10n_br_fiscal_imovel_action" model="ir.actions.act_window">
+        <field name="name">Imóveis</field>
+        <field name="res_model">l10n_br_fiscal.imovel</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="l10n_br_fiscal_imovel_menu"
+        name="Imóveis"
+        action="l10n_br_fiscal_imovel_action"
+        parent="l10n_br_fiscal.others_config_menu"
+        sequence="31"
+    />
+</odoo>

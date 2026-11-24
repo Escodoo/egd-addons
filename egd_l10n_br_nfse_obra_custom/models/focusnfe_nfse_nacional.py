@@ -13,4 +13,7 @@ class FocusnfeNfseNacional(models.AbstractModel):
         obra_data = service_info.get("obra_data")
         if obra_data:
             vals.update(obra_data)
+        imovel_data = service_info.get("imovel_data")
+        if imovel_data:
+            vals.update(imovel_data)
         return vals

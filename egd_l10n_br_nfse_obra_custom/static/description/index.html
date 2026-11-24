@@ -392,6 +392,26 @@ Type” field to select which one is sent:</p>
 <li><strong>Address</strong>: sent as <tt class="docutils literal">logradouro_obra</tt>/<tt class="docutils literal">numero_obra</tt>/
 <tt class="docutils literal">complemento_obra</tt>/<tt class="docutils literal">bairro_obra</tt>/<tt class="docutils literal">cep_obra</tt>.</li>
 </ul>
+<p>This module also adds an “Imóvel” (real estate property) record with a
+city, an address, an optional inscrição imobiliária fiscal and an
+optional CIB (Cadastro Imobiliário Brasileiro) code. The Imóvel can be
+selected on the customer invoice, and its data is sent to Focus NFe in
+the NFSe Nacional payload as the <tt class="docutils literal">imovel</tt> group required by the
+Sistema Nacional NFS-e when the operation indicator
+(<tt class="docutils literal">codigo_indicador_operacao</tt>/<tt class="docutils literal">cIndOp</tt>) refers to an operation on
+real estate property (codes starting with <tt class="docutils literal">02</tt>, e.g. <tt class="docutils literal">020201</tt> -
+Serviço sobre bem imóvel). Without this group, Focus NFe/Sefin Nacional
+rejects the DPS with error <tt class="docutils literal">E0932</tt>.</p>
+<p>The Imóvel address is always sent as <tt class="docutils literal">logradouro_imovel</tt>/
+<tt class="docutils literal">numero_imovel</tt>/<tt class="docutils literal">complemento_imovel</tt>/<tt class="docutils literal">bairro_imovel</tt>/
+<tt class="docutils literal">cep_imovel</tt>, with <tt class="docutils literal">inscricao_imobiliaria_imovel</tt> and
+<tt class="docutils literal">codigo_cib_imovel</tt> added when filled in.</p>
+<p>The Sistema Nacional NFS-e also requires the service location city
+(<tt class="docutils literal">codigo_municipio_prestacao</tt>) to match the Imóvel’s city for these
+operation indicators. Selecting an Imóvel on the invoice automatically
+updates the fiscal lines’ service location city to match, to help avoid
+this mismatch (which Sefin Nacional rejects with the same generic
+<tt class="docutils literal">E0932</tt> error, without indicating the real cause).</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
