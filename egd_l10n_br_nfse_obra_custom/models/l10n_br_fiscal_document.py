@@ -12,6 +12,11 @@ class L10nBrFiscalDocument(models.Model):
         string="Obra",
         domain="[('company_id', '=', company_id)]",
     )
+    imovel_id = fields.Many2one(
+        comodel_name="l10n_br_fiscal.imovel",
+        string="Imóvel",
+        domain="[('company_id', '=', company_id)]",
+    )
 
     @api.onchange("obra_id")
     def _onchange_obra_id(self):
@@ -19,10 +24,19 @@ class L10nBrFiscalDocument(models.Model):
             self.civil_construction_code = self.obra_id.cno_cei
             self.civil_construction_art = self.obra_id.civil_construction_art
 
+    @api.onchange("imovel_id")
+    def _onchange_imovel_id(self):
+        if self.imovel_id:
+            self.fiscal_line_ids.issqn_fg_city_id = self.imovel_id.city_id
+
     def _prepare_dados_servico(self):
         result = super()._prepare_dados_servico()
         if self.obra_id:
             obra_data = self.obra_id._prepare_obra_data()
             if obra_data:
                 result["obra_data"] = obra_data
+        if self.imovel_id:
+            imovel_data = self.imovel_id._prepare_imovel_data()
+            if imovel_data:
+                result["imovel_data"] = imovel_data
         return result

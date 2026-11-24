@@ -4,8 +4,9 @@
 {
     "name": "EGD L10n BR NFSe Obra Custom",
     "summary": """
-        Adds construction site (Obra) data to invoices and sends it in the
-        Focus NFe NFSe Nacional payload""",
+        Adds construction site (Obra) and real estate property (Imóvel)
+        data to invoices and sends it in the Focus NFe NFSe Nacional
+        payload""",
     "version": "16.0.1.0.0",
     "license": "AGPL-3",
     "author": "Escodoo",
@@ -17,6 +18,7 @@
     "data": [
         "security/ir.model.access.csv",
         "views/l10n_br_fiscal_obra_views.xml",
+        "views/l10n_br_fiscal_imovel_views.xml",
         "views/account_move_views.xml",
     ],
 }
