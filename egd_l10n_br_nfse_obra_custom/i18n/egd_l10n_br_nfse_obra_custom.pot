@@ -6,6 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-24 17:28+0000\n"
+"PO-Revision-Date: 2026-11-24 17:28+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,6 +21,7 @@ msgid "ART"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__active
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__active
 msgid "Active"
 msgstr ""
@@ -29,7 +32,11 @@ msgid "Address"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
-#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__cno_cei
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__cib
+msgid "CIB"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
 #: model:ir.model.fields.selection,name:egd_l10n_br_nfse_obra_custom.selection__l10n_br_fiscal_obra__identification_type__cno_cei
 msgid "CNO/CEI"
 msgstr ""
@@ -40,6 +47,16 @@ msgid "Cadastro Nacional de Obras / Cadastro Específico do INSS"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__city_id
+msgid "City"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__cno_cei
+msgid "Cno Cei"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
 #: model:ir.model.fields,help:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__property_registration
 msgid ""
 "Code issued by the City Hall to identify the construction site (inscrição "
@@ -47,31 +64,42 @@ msgid ""
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__company_id
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__company_id
 msgid "Company"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__street_number2
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__street_number2
 msgid "Complement"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__create_uid
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__create_date
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__create_date
 msgid "Created on"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,help:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__cib
+msgid "Código do Cadastro Imobiliário Brasileiro (CIB) of the property."
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__display_name
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__display_name
 msgid "Display Name"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__district
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__district
 msgid "District"
 msgstr ""
@@ -82,6 +110,7 @@ msgid "FocusNFE NFSe Nacional"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__id
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__id
 msgid "ID"
 msgstr ""
@@ -92,31 +121,70 @@ msgid "Identification Type"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.actions.act_window,name:egd_l10n_br_nfse_obra_custom.l10n_br_fiscal_imovel_action
+#: model:ir.ui.menu,name:egd_l10n_br_nfse_obra_custom.l10n_br_fiscal_imovel_menu
+msgid "Imóveis"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_account_bank_statement_line__imovel_id
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_account_move__imovel_id
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_account_payment__imovel_id
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_document__imovel_id
+msgid "Imóvel"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model,name:egd_l10n_br_nfse_obra_custom.model_l10n_br_fiscal_imovel
+msgid "Imóvel (Real Estate Property)"
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
 #: model:ir.model,name:egd_l10n_br_nfse_obra_custom.model_l10n_br_fiscal_document
 msgid "Informações de exportação"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,help:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__property_registration
+msgid ""
+"Inscrição imobiliária fiscal issued by the City Hall to identify the "
+"property, used for property tax (IPTU) purposes."
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel____last_update
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra____last_update
 msgid "Last Modified on"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__write_uid
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__write_date
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__write_date
 msgid "Last Updated on"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,help:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__city_id
+msgid ""
+"Município onde o imóvel está localizado. O Sistema Nacional NFS-e exige que "
+"o município de prestação do serviço seja igual ao município do imóvel para "
+"indicadores de operação relacionados a bem imóvel (ex.: 020201)."
+msgstr ""
+
+#. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__name
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__name
 msgid "Name"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__street_number
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__street_number
 msgid "Number"
 msgstr ""
@@ -141,6 +209,7 @@ msgid "Obras"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__property_registration
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__property_registration
 #: model:ir.model.fields.selection,name:egd_l10n_br_nfse_obra_custom.selection__l10n_br_fiscal_obra__identification_type__property_registration
 msgid "Property Registration"
@@ -149,11 +218,13 @@ msgstr ""
 #. module: egd_l10n_br_nfse_obra_custom
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_focusnfe_nfse_nacional__smart_search
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_document__smart_search
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__smart_search
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__smart_search
 msgid "Smart Search"
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__street_name
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__street_name
 msgid "Street"
 msgstr ""
@@ -167,6 +238,7 @@ msgid ""
 msgstr ""
 
 #. module: egd_l10n_br_nfse_obra_custom
+#: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_imovel__zip
 #: model:ir.model.fields,field_description:egd_l10n_br_nfse_obra_custom.field_l10n_br_fiscal_obra__zip
 msgid "Zip"
 msgstr ""
